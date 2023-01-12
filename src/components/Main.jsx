@@ -12,7 +12,7 @@ const Main = () => {
 
   return (
     <div>
-      main
+      MAIN
     </div>
   );
 };
