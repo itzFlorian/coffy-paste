@@ -1,12 +1,21 @@
-import { useState } from 'react'
 import "./styles/main.scss"
+import { useState } from 'react'
+import { Routes, Route } from 'react-router'
+
+import Login from "./components/Login.jsx"
+import Registration from "./components/Registration.jsx"
+import Main from "./components/Main.jsx"
+import Welcome from "./components/Welcome.jsx"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      
+      <Routes>
+        <Route path="/welcome" element={<Welcome/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/registration" element={<Registration/>} />
+        <Route path="/" element={<Main/>}/>
+      </Routes>      
     </div>
   )
 }
