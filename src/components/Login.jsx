@@ -37,7 +37,7 @@ const Login = () => {
         <img src="" alt="logo" />
       </div>
       <div className="text">
-        <p></p>
+        <p>Login</p>
       </div>
       <div className="form">
         <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ const Login = () => {
         </form>
       </div>
       <div>
-        <p>You already have an account? <span><NavLink to="/registration">registration</NavLink></span></p>
+        <p>You already have an account? <span><NavLink to="/registration">registration</NavLink></span>/<span><NavLink to="/welcome">Back</NavLink></span></p>
       </div>
     </div>
   );
