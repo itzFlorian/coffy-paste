@@ -3,7 +3,7 @@ import logo from "../images/coffypaste_logo_2352.png"
 
 const Welcome = () => {
   const navigate = useNavigate()
-  console.log(logo);
+
   return (
     <div className="welcome-container">
       <div className="logo">

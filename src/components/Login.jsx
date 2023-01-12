@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+
 const INITIAL = {
   email:"",
   password:""
+}
+
+const toastOptions = {
+  position:"bottom-right",
+  autoClose: 8000,
+  theme:"dark"
 }
 
 const Login = () => {
@@ -25,7 +34,7 @@ const Login = () => {
     })
     const data = await promise.json()
     if(data.status.ok){
-
+      toast.error(data.msg, toastOptions)
     }
     }
     sendData()
@@ -49,6 +58,7 @@ const Login = () => {
       <div>
         <p>You already have an account? <span><NavLink to="/registration">registration</NavLink></span>/<span><NavLink to="/welcome">Back</NavLink></span></p>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
