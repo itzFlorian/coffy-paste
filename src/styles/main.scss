@@ -1,5 +1,117 @@
+// - - - - - C O L O R S - - - - - 
+
+:root {
+    --BROWN: rgb(155,85,70);
+    --BEIGE: rgb(255,155,100);
+    --BLUE: rgb(35,45,60);
+    --PASTEL: rgb(255, 243, 230);
+    --OLDWHITE: rgb(255, 250, 245);
+}
+
+.bg-brown{
+    background-color: var(--BROWN);
+}
+
+.bg-beige{
+    background-color: var(--BEIGE);
+}
+
+.bg-blue{
+    background-color: var(--BLUE);
+}
+
+.bg-pastel{
+    background-color: var(--PASTEL);
+}
+
+.bg-oldwhite{
+    background-color: var(--OLDWHITE);
+}
+
+.bg-gradL{
+    background: linear-gradient(135deg, var(--BEIGE), var(--BROWN))
+}
+
+.bg-gradD{
+    background: linear-gradient(135deg, var(--BROWN), var(--BLUE))
+}
+
+
+
+// -------------------------------------------------
+
+
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 0
+    padding: 0;
+}
+
+
+.bg{
+    // border: 2px solid green;
+    display: flex;
+    position: relative;
+}
+
+.bg-img{
+    // border: 2px solid green;
+    display: flex;
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+
+.flex{
+    display: flex;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.icon{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    >img{
+        width: 120px;
+    }
+}
+
+
+
+
+.card{
+    margin: 0.5rem;
+    padding-top:0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 5px;
+}
+
+.bo-ow{
+    border: 1px solid var(--OLDWHITE);
+}
+
+
+
+
+// - - - - - F O N T S - - - - - 
+
+.fo-sig{
+    font-family: 'Bilbo Swash Caps', cursive;
+}
+
+.fo-nor{
+    font-family: 'Questrial', sans-serif;
 }
