@@ -1,0 +1,35 @@
+:root {
+    --BROWN: rgb(155,85,70);
+    --BEIGE: rgb(255,155,100);
+    --BLUE: rgb(35,45,60);
+    --PASTEL: rgb(255, 243, 230);
+    --OLDWHITE: rgb(255, 250, 245);
+}
+
+.bg-brown{
+    background-color: var(--BROWN);
+}
+
+.bg-beige{
+    background-color: var(--BEIGE);
+}
+
+.bg-blue{
+    background-color: var(--BLUE);
+}
+
+.bg-pastel{
+    background-color: var(--PASTEL);
+}
+
+.bg-oldwhite{
+    background-color: var(--OLDWHITE);
+}
+
+.bg-gradL{
+    background: linear-gradient(135deg, var(--BEIGE), var(--BROWN))
+}
+
+.bg-gradD{
+    background: linear-gradient(135deg, var(--BROWN), var(--BLUE))
+}

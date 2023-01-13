@@ -1,6 +1,14 @@
+// - - - - - S A S S - - - - -
 import "./styles/main.scss"
+import "./styles/buttons.scss"
+import "./styles/colors.scss"
+
+// - - - - - - - - -  - - - - -
+
+
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
+
 
 import Login from "./components/Login.jsx"
 import Registration from "./components/Registration.jsx"
