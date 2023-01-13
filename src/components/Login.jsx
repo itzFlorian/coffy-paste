@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
@@ -34,6 +34,7 @@ const toastOptions = {
 }
 
 const Login = () => {
+  const navigate = useNavigate() 
   const [loginData, setLoginData] = useState(INITIAL)
 
   const handleInput = (event) => {
@@ -53,13 +54,40 @@ const Login = () => {
     })
     .then(json => json.json())
     .then(data => {
-      if(data.error.message){
+      console.log(data.message);
+      if(data.error){
         toast.error(data.error.message, toastOptions)
+      }else{
+        navigate("/")
+      }
+      if(data.message){  
+        navigate("/")
+
       }    
     })
     }
-    sendData()
+    sendData()  
   }
+
+  useEffect(()=> {
+  const checkvalidation = async () =>{
+    await fetch(`${host}/users/checklogin`, {
+    credentials:"include",
+    method: 'GET',   
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  })
+  .then(json => json.json())
+  .then(data => {
+    console.log(data);
+    if(data.message){
+      navigate("/")
+    }
+  })
+  }
+  checkvalidation()
+},[])
 
   return (
     <div className="login-container">

@@ -33,7 +33,8 @@ const Main = () => {
     })
     .then(json => json.json())
     .then(data => {
-      if(data.status !== "200"){
+      console.log(data);
+      if(!data.message){
         navigate("/welcome")
       }
     })
@@ -43,6 +44,7 @@ const Main = () => {
 
   return (
     <div>
+      hallo
       <div className="logo">
         <img src="" alt="" />
       </div>
