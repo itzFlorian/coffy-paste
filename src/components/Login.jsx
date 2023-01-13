@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
+import { host } from "../api/Routes.jsx";
+
+import logo from "../images/coffypaste_logo_2352.png"
+
 const INITIAL = {
   email:"",
   password:""
@@ -25,17 +29,19 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const sendData = async () => {
-    const promise = await fetch('', {
+    await fetch(`${host}/users/login`, {
       method: 'POST',
       body: JSON.stringify(loginData),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       }
     })
-    const data = await promise.json()
-    if(data.status.ok){
-      toast.error(data.msg, toastOptions)
-    }
+    .then(json => json.json())
+    .then(data => {
+      if(data.error.message){
+        toast.error(data.error.message, toastOptions)
+      }    
+    })
     }
     sendData()
   }
@@ -43,7 +49,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="logo">
-        <img src="" alt="logo" />
+        <img src={logo} alt="logo" />
       </div>
       <div className="text">
         <p>Login</p>
@@ -51,7 +57,7 @@ const Login = () => {
       <div className="form">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="email" name="email" onChange={handleInput}/>
-          <input type="text" placeholder="password" name="password" onChange={handleInput}/>
+          <input type="password" placeholder="password" name="password" onChange={handleInput}/>
           <button type="submit">Submit</button>
         </form>
       </div>

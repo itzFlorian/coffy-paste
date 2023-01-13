@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
+import {host} from "../api/Routes.jsx"
+
+import logo from "../images/coffypaste_logo_2352.png"
+
 const INITIAL = {
   email:"",
   password:""
@@ -25,17 +29,22 @@ const Registration = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const sendData = async () => {
-    const promise = await fetch('', {
+    await fetch(`${host}/users/`, {
       method: 'POST',
       body: JSON.stringify(regData),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       }
     })
-    const data = await promise.json()
-    if(!data.status.ok){
-      toast.error(data.msg, toastOptions)
-    }
+    .then(json => json.json())
+    .then(data => {
+      console.log(data);
+      if(data.error){
+        data.error.map((err)=>{
+          toast.error(err.msg, toastOptions)
+        })
+      }    
+    })
     }
     sendData()
   }
@@ -43,19 +52,17 @@ const Registration = () => {
   return (
     <div className="reg-container">
       <div className="logo">
-        <img src="" alt="logo" />
+        <img src={logo} alt="logo" />
       </div>
       <div className="text">
         <p>Registration</p>
       </div>
       <div className="form">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="xxx" name="xxx" onChange={handleInput}/>
-          <input type="text" placeholder="xxx" name="xxx" onChange={handleInput}/>        
-          <input type="text" placeholder="xxx" name="xxx" onChange={handleInput}/>
-          <input type="text" placeholder="xxx" name="xxx" onChange={handleInput}/>
+          <input type="text" placeholder="username" name="userName" onChange={handleInput}/>
+          <input type="text" placeholder="city" name="city" onChange={handleInput}/>        
           <input type="text" placeholder="email" name="email" onChange={handleInput}/>
-          <input type="text" placeholder="password" name="password" onChange={handleInput}/>
+          <input type="password" placeholder="password" name="password" onChange={handleInput}/>
           <button type="submit">Submit</button>
         </form>
       </div>
