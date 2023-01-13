@@ -90,25 +90,59 @@ const Login = () => {
 },[])
 
   return (
-    <div className="login-container">
-      <div className="logo">
-        <img src={logo} alt="logo" />
+    <>
+      <div className="flex relative">
+        <div className="bg"></div>
       </div>
+
+      <div className="logoM-container">
+        <img src={logoM} alt="logo" />
+      </div>
+
+      <div className="rotate">
+        <h1 className="center">create my account</h1>
+      </div>
+
+
+    <div className="login-container">
       <div className="text">
-        <p>Login</p>
       </div>
       <div className="form">
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="email" name="email" onChange={handleInput}/>
-          <input type="password" placeholder="password" name="password" onChange={handleInput}/>
-          <button type="submit">Submit</button>
+        <form onSubmit={handleSubmit} className="col" >
+          <input
+            onChange={handleInput}
+            type="text"
+            placeholder="email"
+            name="email"
+            className="card"
+          />
+          <input
+            onChange={handleInput}
+            type="password"
+            placeholder="password"
+            name="password"
+            className="card"
+            />
+            <div className="center">
+              <button
+                type="submit"
+                className="btn">Submit
+              </button>
+            </div>
         </form>
       </div>
-      <div>
+      <div className="center">
         <p>You already have an account? <span><NavLink to="/registration">registration</NavLink></span>/<span><NavLink to="/welcome">Back</NavLink></span></p>
       </div>
       <ToastContainer/>
-    </div>
+      </div>
+      
+      <div className="efjm-logo">
+        <img
+          src={efjm}
+          alt="logo of the efjm-team" />
+      </div>
+    </>
   );
 };
 

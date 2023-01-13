@@ -11,3 +11,43 @@
         margin-bottom: 1rem;
     }
 }
+
+.bg{
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/coffypaste_bg_568217968.png");
+    
+}
+
+// .bg-img{
+//     display: flex;
+//     position:absolute;
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: -1;
+//     background-repeat: no-repeat;
+//     object-fit: cover;
+// }
+
+.iconL{
+    color: var(--OLDWHITE);
+    width: 150px;
+    height: 150px;
+    border-radius: 7px;
+    border: 1px solid var(--OLDWHITE);
+    justify-content: center;
+    margin: auto;
+    img{
+        width: 150px;
+    }
+    p{
+        text-align: center;
+    }
+}

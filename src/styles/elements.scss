@@ -3,9 +3,31 @@
 
 .card{
     margin: 0.5rem;
-    padding-top:0.25rem;
-    padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-radius: 5px;
+    background-color: var(--OLDWHITE);
+}
+
+.icon{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    >img{
+        width: 120px;
+    }
+}
+
+input{
+    border: none;
+}
+
+.navbar{
+    
 }
