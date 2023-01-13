@@ -1,7 +1,11 @@
 // - - - - - S A S S - - - - -
-import "./styles/main.scss"
+
 import "./styles/buttons.scss"
 import "./styles/colors.scss"
+import "./styles/fonts.scss"
+import "./styles/fonts.scss"
+import "./styles/images.scss"
+import "./styles/main.scss"
 
 // - - - - - - - - -  - - - - -
 
