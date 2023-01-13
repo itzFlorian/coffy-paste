@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <area51 />
     </div>
   )
 }
