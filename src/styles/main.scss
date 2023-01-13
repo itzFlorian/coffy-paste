@@ -1,7 +1,30 @@
+// - - - - - M A I N - - - - -
+
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+
+.flex{
+    display: flex;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap{
+    display:flex;
+    flex-wrap: wrap;
 }
 
 
@@ -23,13 +46,12 @@
 }
 
 
-.flex{
-    display: flex;
-}
 
-.wrap{
-    flex-wrap: wrap;
-}
+
+
+
+
+
 
 .icon{
     display: flex;
@@ -43,6 +65,9 @@
         width: 120px;
     }
 }
+
+
+
 
 
 // - - - - - ELEMENTS - - - - -
@@ -61,34 +86,3 @@
 
 
 
-.card{
-    margin: 0.5rem;
-    padding-top:0.25rem;
-    padding-bottom: 0.25rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    border-radius: 5px;
-}
-
-
-
-
-.bo-ow{
-    border: 1px solid var(--OLDWHITE);
-}
-
-
-
-
-// - - - - - F O N T S - - - - - 
-
-
-
-.fo-sig{
-    font-family: 'Bilbo Swash Caps', cursive;
-    color: var(--OLDWHITE)
-}
-
-.fo-nor{
-    font-family: 'Questrial', sans-serif;
-}

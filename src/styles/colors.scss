@@ -1,9 +1,13 @@
+// - - - - - C O L O R S - - - - -
+
 :root {
     --BROWN: rgb(155,85,70);
     --BEIGE: rgb(255,155,100);
     --BLUE: rgb(35,45,60);
     --PASTEL: rgb(255, 243, 230);
     --OLDWHITE: rgb(255, 250, 245);
+    --EMPTY:rgba(255, 250, 245, 0);
+    --FLAT:rgba(255, 250, 245, 0.3)
 }
 
 .bg-brown{
