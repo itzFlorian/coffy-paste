@@ -18,7 +18,6 @@ const Main = () => {
     .then(json => json.json())
     .then(data => {
       if(data.status !== "200"){
-        console.log("not ok");
         navigate("/welcome")
       }
     })
@@ -28,7 +27,20 @@ const Main = () => {
 
   return (
     <div>
-      MAIN
+      <div className="logo">
+        <img src="" alt="" />
+      </div>
+      <div className="nav-bar">
+        <div className="top">
+          <div></div>
+          <div></div>
+        </div>
+
+        <div className="bottom">
+          <div></div>
+          <div></div>
+        </div>
+      </div>      
     </div>
   );
 };

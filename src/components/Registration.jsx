@@ -30,6 +30,7 @@ const Registration = () => {
     event.preventDefault()
     const sendData = async () => {
     await fetch(`${host}/users/`, {
+      credentials:"include",
       method: 'POST',
       body: JSON.stringify(regData),
       headers: {
@@ -58,7 +59,7 @@ const Registration = () => {
         <p>Registration</p>
       </div>
       <div className="form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <input type="text" placeholder="username" name="userName" onChange={handleInput}/>
           <input type="text" placeholder="city" name="city" onChange={handleInput}/>        
           <input type="text" placeholder="email" name="email" onChange={handleInput}/>

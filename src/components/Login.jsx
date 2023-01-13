@@ -30,6 +30,7 @@ const Login = () => {
     event.preventDefault()
     const sendData = async () => {
     await fetch(`${host}/users/login`, {
+      credentials:"include",
       method: 'POST',
       body: JSON.stringify(loginData),
       headers: {
