@@ -1,46 +1,3 @@
-// - - - - - C O L O R S - - - - - 
-
-:root {
-    --BROWN: rgb(155,85,70);
-    --BEIGE: rgb(255,155,100);
-    --BLUE: rgb(35,45,60);
-    --PASTEL: rgb(255, 243, 230);
-    --OLDWHITE: rgb(255, 250, 245);
-}
-
-.bg-brown{
-    background-color: var(--BROWN);
-}
-
-.bg-beige{
-    background-color: var(--BEIGE);
-}
-
-.bg-blue{
-    background-color: var(--BLUE);
-}
-
-.bg-pastel{
-    background-color: var(--PASTEL);
-}
-
-.bg-oldwhite{
-    background-color: var(--OLDWHITE);
-}
-
-.bg-gradL{
-    background: linear-gradient(135deg, var(--BEIGE), var(--BROWN))
-}
-
-.bg-gradD{
-    background: linear-gradient(135deg, var(--BROWN), var(--BLUE))
-}
-
-
-
-// -------------------------------------------------
-
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -88,6 +45,20 @@
 }
 
 
+// - - - - - ELEMENTS - - - - -
+
+.logoM-container{
+    border: 3px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >img{
+        width: 60vw;
+        margin-top: 1vw;
+    }
+}
+
+
 
 
 .card{
@@ -99,6 +70,9 @@
     border-radius: 5px;
 }
 
+
+
+
 .bo-ow{
     border: 1px solid var(--OLDWHITE);
 }
@@ -108,8 +82,11 @@
 
 // - - - - - F O N T S - - - - - 
 
+
+
 .fo-sig{
     font-family: 'Bilbo Swash Caps', cursive;
+    color: var(--OLDWHITE)
 }
 
 .fo-nor{
