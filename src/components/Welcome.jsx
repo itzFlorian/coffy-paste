@@ -18,7 +18,7 @@ import  efjm from "/src/images/efjm_logo.png"
 
 const Welcome = () => {
   const navigate = useNavigate()
-
+console.log(logo);
   return (
     <>
       <div className="bg">
