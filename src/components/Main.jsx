@@ -33,7 +33,6 @@ const Main = () => {
     })
     .then(json => json.json())
     .then(data => {
-      console.log(data);
       if(!data.message){
         navigate("/welcome")
       }
@@ -44,7 +43,7 @@ const Main = () => {
 
   return (
     <div>
-      hallo
+      MAIN
       <div className="logo">
         <img src="" alt="" />
       </div>

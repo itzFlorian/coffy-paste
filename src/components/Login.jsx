@@ -80,7 +80,6 @@ const Login = () => {
   })
   .then(json => json.json())
   .then(data => {
-    console.log(data);
     if(data.message){
       navigate("/")
     }
