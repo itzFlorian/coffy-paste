@@ -18,7 +18,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
-    height: 150px;
+    height: 200px;
     background-color: var(--OLDWHITE);
 }
 
@@ -50,7 +50,9 @@
 .avatar-icon{
     width: 100px;
 }
-
+.sm-icon{
+    width: 80px;
+}
 
 
 input{
@@ -72,13 +74,12 @@ input{
 }
 
 
-
-
 .circle-container{
     display: flex;
     justify-content: center;
     margin-top: 1rem
 }
+
 
 .circle{
     width: 40px;
