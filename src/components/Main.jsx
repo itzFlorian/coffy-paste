@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-
+import { Route, Routes } from "react-router";
 import { host } from "../api/Routes.jsx";
+import NavBar from "./NavBar.jsx";
+// import Shops from "./Shops.jsx";
+import Stats from "./Stats.jsx";
+import MyAccount from "./MyAccount.jsx"
+import MyProfile from "./MyProfile.jsx"
+import Community from "./Community.jsx"
 
 // - - - - - ICONS - - - - - 
 import avatar from "/src/images/coffypaste_icon_avatar.png"
@@ -29,7 +35,6 @@ const Main = () => {
     })
     .then(json => json.json())
     .then(data => {
-      console.log(data);
       if(!data.message){
         navigate("/welcome")
       }
@@ -47,33 +52,16 @@ const Main = () => {
       <div className="logoM-container">
         <img src={logoM} alt="logo" />
       </div>
-
-
-      {/* - - - N A V B A R - - - */}
-      <div className="nav-bar">
-
-        <div className="top row">
-          <div className="iconL center col">
-            <img src={avatar} />
-            <p>my account</p>
-          </div>
-          <div className="iconL center col">
-            <img src={community} />
-            <p>my community</p>
-          </div>
-        </div>
-
-        <div className="bottom row">
-          <div className="iconL center col">
-            <img src={shop} />
-            <p>shops</p>
-          </div>
-          <div className="iconL center col">
-            <img src={stats} />
-            <p>stats</p>
-          </div>
-        </div>
-      </div>
+      
+        <Routes>
+          <Route path="/" element={<NavBar/>} />
+          {/* <Route path="/shops" element={<Shops/>} /> */}
+          <Route path="/myaccount" element={<MyAccount/>} />
+          <Route path="/myProfile" element={<MyProfile/>} />          
+          <Route path="/community" element={<Community/>} />          
+          <Route path="/stats" element={<Stats/>} />          
+          <Route path="/efjm" element={"EFJM"} />
+        </Routes>     
       
       <div className="efjm-logo">
         <img

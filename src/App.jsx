@@ -19,6 +19,7 @@ import Main from "./components/Main.jsx"
 import Welcome from "./components/Welcome.jsx"
 import EFJM from "./components/EFJM.jsx"
 
+import NavBar from "./components/NavBar.jsx"
 
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
         <Route path="/welcome" element={<Welcome/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/registration" element={<Registration/>} />
-        <Route path="/" element={<Main />} />
-        <Route path="/efjm" element={<EFJM />}/>
+        <Route path="*" element={<Main />} />
+        <Route path="/efjm" element={<EFJM />} />     
       </Routes>      
     </div>
   )
