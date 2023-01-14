@@ -17,6 +17,8 @@ import Login from "./components/Login.jsx"
 import Registration from "./components/Registration.jsx"
 import Main from "./components/Main.jsx"
 import Welcome from "./components/Welcome.jsx"
+import EFJM from "./components/EFJM.jsx"
+
 
 function App() {
   return (
@@ -25,7 +27,8 @@ function App() {
         <Route path="/welcome" element={<Welcome/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/registration" element={<Registration/>} />
-        <Route path="/" element={<Main/>}/>
+        <Route path="/" element={<Main />} />
+        <Route path="/efjm" element={<EFJM />}/>
       </Routes>      
     </div>
   )
