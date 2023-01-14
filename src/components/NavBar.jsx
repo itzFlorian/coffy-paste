@@ -12,22 +12,28 @@ const NavBar = () => {
   return (
     <div className="nav-bar">
       <div className="top row">
-        <div className="iconL center col">
+        <div
+          className="iconL center col"
+          onClick={() => navigate("/myaccount")}
+        >
           <img src={avatar} />
           <p>my account</p>
         </div>
-        <div className="iconL center col">
-          <img src={community} onClick={() => navigate("/friends")} />
+        <div
+          className="iconL center col"
+          onClick={() => navigate("/community")}
+        >
+          <img src={community} />
           <p>my community</p>
         </div>
       </div>
 
       <div className="bottom row">
-        <div className="iconL center col">
+        <div className="iconL center col" onClick={() => navigate("/shops")}>
           <img src={shop} />
           <p>shops</p>
         </div>
-        <div className="iconL center col">
+        <div className="iconL center col" onClick={() => navigate("/stats")}>
           <img src={stats} />
           <p>stats</p>
         </div>
