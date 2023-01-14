@@ -14,7 +14,7 @@ const NavBar = () => {
   return (
 <div className="nav-bar">
         <div className="top row">
-          <div className="iconL center col" onClick={()=>navigate("/myAccount")}>
+          <div className="iconL center col" onClick={()=>navigate("/myaccount")}>
             <img src={avatar} />
             <p>my account</p>
           </div>

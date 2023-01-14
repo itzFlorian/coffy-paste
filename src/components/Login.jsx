@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { toast, ToastContainer } from "react-toastify";
@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 import { host } from "../api/Routes.jsx";
 
-import logo from "../images/coffypaste_logo_2352.png"
+import UserContext from "../context/userContext.jsx";
 
 // - - - - - ICONS - - - - - 
 const bg = "/src/images/coffypaste_bg_568217968.png"
@@ -36,6 +36,7 @@ const toastOptions = {
 const Login = () => {
   const navigate = useNavigate() 
   const [loginData, setLoginData] = useState(INITIAL)
+  const [currentUser, setCurrentUser] = useContext(UserContext)
 
   const handleInput = (event) => {
     setLoginData({...loginData, [event.target.name]:event.target.value})
@@ -54,15 +55,15 @@ const Login = () => {
     })
     .then(json => json.json())
     .then(data => {
-      console.log(data.message);
       if(data.error){
         toast.error("email or password wrong!", toastOptions)
       }
       if(data.message){  
         navigate("/")
-
+        
       }    
     })
+    setCurrentUser(data.userId)
     }
     sendData()  
   }

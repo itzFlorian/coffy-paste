@@ -55,12 +55,12 @@ const Main = () => {
       
         <Routes>
           <Route path="/" element={<NavBar/>} />
-          <Route path="/shops" element={<Shops/>}/>
-          <Route path="/myaccount" element={<MyAccount/>}/>
-          <Route path="/myProfile" element={<MyProfile/>}/>          
-          <Route path="/community" element={<Community/>}/>          
-          <Route path="/stats" element={<Stats/>}/>          
-          <Route path="/efjm" element={"EFJM"}/>
+          <Route path="/shops" element={<Shops/>} />
+          <Route path="/myaccount" element={<MyAccount/>} />
+          <Route path="/myProfile" element={<MyProfile/>} />          
+          <Route path="/community" element={<Community/>} />          
+          <Route path="/stats" element={<Stats/>} />          
+          <Route path="/efjm" element={"EFJM"} />
         </Routes>     
       
       <div className="efjm-logo">

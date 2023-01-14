@@ -101,6 +101,13 @@ const Registration = () => {
               name="password"
               className="card"
             />
+            <input
+            onChange={handleInput}
+            type="text"
+            placeholder="your favorite coffee"
+            name="favCoffee"
+            className="card"
+          />
             <div className="center">
               <button
                 type="submit"
