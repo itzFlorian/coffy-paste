@@ -57,38 +57,71 @@ const Registration = () => {
   }
 
   return (
+    <>
+      <div className="flex relative">
+        <div className="bg"></div>
+      </div>
 
-        <>
-      <div className="bg">
+      <div className="reg-container">
+        <div className="logoM-container">
+          <img src={logoM} alt="logo" />
+        </div>
+
+        <div className="rotate">
+          <h1 className="center">Registration</h1>
+        </div>
+
+        <div className="form">
+          <form onSubmit={handleSubmit} className="col" >
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder="username"
+              name="userName"
+              className="card"
+            />
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder="city"
+              name="city"
+              className="card"
+            />        
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder="email"
+              name="email"
+              className="card"
+            />
+            <input
+              onChange={handleInput}
+              type="password"
+              placeholder="password"
+              name="password"
+              className="card"
+            />
+            <div className="center">
+              <button
+                type="submit"
+                className="btn">Submit
+              </button>
+            </div>
+
+          </form>
+        </div>
+        <div className="center">
+          <p>You already have an account? <span><NavLink to="/login">Login</NavLink></span>/<span><NavLink to="/welcome">Back</NavLink></span></p>
+      </div>
+        <ToastContainer/>
+      </div>
+        
+      <div className="efjm-logo">
         <img
-            src={bg}
-            className="bg-img"
-            alt="tasty coffee beans"
-        />
+          src={efjm}
+          alt="logo of the efjm-team" />
       </div>
-    <div className="reg-container">
-      <div className="logo">
-        <img src={logoM} alt="logo" />
-      </div>
-      <div className="text">
-        <p>Registration</p>
-      </div>
-      <div className="form">
-        <form onSubmit={handleSubmit} >
-          <input type="text" placeholder="username" name="userName" onChange={handleInput}/>
-          <input type="text" placeholder="city" name="city" onChange={handleInput}/>        
-          <input type="text" placeholder="email" name="email" onChange={handleInput}/>
-          <input type="password" placeholder="password" name="password" onChange={handleInput}/>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-      <div>
-        <p>You already have an account? <span><NavLink to="/login">Login</NavLink></span>/<span><NavLink to="/welcome">Back</NavLink></span></p>
-      </div>
-      <ToastContainer/>
-      </div>
-      
-      </>
+    </>
   );
 };
 

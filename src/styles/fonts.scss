@@ -3,9 +3,24 @@
 
 .fo-sig{
     font-family: 'Bilbo Swash Caps', cursive;
-    color: var(--OLDWHITE)
+    color: var(--OLDWHITE);
 }
 
 .fo-nor{
+    font-family: 'Questrial', sans-serif;
+}
+
+h1{
+    font-size: 3.5rem;
+    letter-spacing: .05rem;
+    color: var(--OLDWHITE);
+    font-family: 'Bilbo Swash Caps', cursive;
+}
+
+h3{
+    color: var(--BEIGE);
+}
+
+p{
     font-family: 'Questrial', sans-serif;
 }

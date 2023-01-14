@@ -12,24 +12,21 @@ const Welcome = () => {
 console.log(logoM);
   return (
     <>
-      <div className="bg">
-        <img
-            src={bg}
-            className="bg-img"
-            alt="tasty coffee beans"
-        />
+      <div className="flex relative">
+        <div className="bg"></div>
       </div>
 
       <div className="welcome-container">
         <div className="logoM-container">
           <img src={logoM} alt="logo" />
         </div>
-        <div className="text">
-          <h1 className="fo-sig">Welcome to the tasty side</h1>
+
+        <div className="rotate">
+          <h1 className="center">Welcome to the tasty side</h1>
         </div>
 
 
-        <div className="buttons col">
+        <div className="buttons col center">
           <button
             className="btn"
             onClick={() => navigate("/registration")}>create account
@@ -41,8 +38,12 @@ console.log(logoM);
         </div>
       </div>
 
+
       <div className="efjm-logo">
-        <img src={efjm} alt="logo of the efjm-team" />
+        <img
+          src={efjm}
+          alt="logo of the efjm-team"
+        />
       </div>
 
     </>
