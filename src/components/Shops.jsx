@@ -1,7 +1,7 @@
 const Shops = () => {
   return (
     <div>
-      Friends
+      shops
     </div>
   );
 };

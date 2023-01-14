@@ -4,6 +4,10 @@ import { Route, Routes } from "react-router";
 import { host } from "../api/Routes.jsx";
 import NavBar from "./NavBar.jsx";
 import Shops from "./Shops.jsx";
+import Stats from "./Stats.jsx";
+import MyAccount from "./MyAccount.jsx"
+import MyProfile from "./MyProfile.jsx"
+import Community from "./Community.jsx"
 
 // - - - - - ICONS - - - - - 
 import avatar from "/src/images/coffypaste_icon_avatar.png"
@@ -52,9 +56,11 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<NavBar/>} />
           <Route path="/shops" element={<Shops/>}/>
+          <Route path="/myaccount" element={<MyAccount/>}/>
+          <Route path="/myProfile" element={<MyProfile/>}/>          
+          <Route path="/community" element={<Community/>}/>          
+          <Route path="/stats" element={<Stats/>}/>          
           <Route path="/efjm" element={"EFJM"}/>
-          <Route path="/friends" element={<Friends/>}/>
-          <Route path="/friends" element={<Friends/>}/>          
         </Routes>     
       
       <div className="efjm-logo">
