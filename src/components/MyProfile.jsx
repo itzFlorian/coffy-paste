@@ -1,4 +1,4 @@
-import avatar from "/src/images/coffypaste_icon_avatar";
+import avatar from "/src/images/coffypaste_icon_avatar.png";
 import coffee from "/src/images/coffypaste_icon_coffee_default.png";
 
 const MyProfile = () => {
