@@ -56,9 +56,7 @@ const Login = () => {
     .then(data => {
       console.log(data.message);
       if(data.error){
-        toast.error(data.error.message, toastOptions)
-      }else{
-        navigate("/")
+        toast.error("email or password wrong!", toastOptions)
       }
       if(data.message){  
         navigate("/")
@@ -80,7 +78,6 @@ const Login = () => {
   })
   .then(json => json.json())
   .then(data => {
-    console.log(data);
     if(data.message){
       navigate("/")
     }

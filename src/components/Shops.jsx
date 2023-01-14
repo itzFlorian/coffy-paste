@@ -67,3 +67,5 @@ function MyMap({ allShops, user }) {
 }
 
 export default MyMap;
+
+export default Shops;
