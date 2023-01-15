@@ -1,7 +1,7 @@
 import avatar from "/src/images/coffypaste_icon_avatar.png";
 import coffee from "/src/images/coffypaste_icon_coffee_default.png";
 import UserContext from "../context/userContext.jsx";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const MyProfile = () => {
   const [userData, setUserData] = useState();
