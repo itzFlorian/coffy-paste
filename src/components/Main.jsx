@@ -5,43 +5,40 @@ import { host } from "../api/Routes.jsx";
 import NavBar from "./NavBar.jsx";
 // import Shops from "./Shops.jsx";
 import Stats from "./Stats.jsx";
-import MyAccount from "./MyAccount.jsx"
-import MyProfile from "./MyProfile.jsx"
-import Community from "./Community.jsx"
+import MyAccount from "./MyAccount.jsx";
+import Community from "./Community.jsx";
 
-// - - - - - ICONS - - - - - 
-import avatar from "/src/images/coffypaste_icon_avatar.png"
-import community from "/src/images/coffypaste_icon_community.png"
-import searchS from "/src/images/coffypaste_icon_search_s.png"
-import shop from "/src/images/coffypaste_icon_shop.png"
-import stats from "/src/images/coffypaste_icon_stats.png"
-import logoM from "/src/images/coffypaste_logo_900.png"
-import efjm from "/src/images/efjm_logo.png"
+// - - - - - ICONS - - - - -
+import avatar from "/src/images/coffypaste_icon_avatar.png";
+import community from "/src/images/coffypaste_icon_community.png";
+import searchS from "/src/images/coffypaste_icon_search_s.png";
+import shop from "/src/images/coffypaste_icon_shop.png";
+import stats from "/src/images/coffypaste_icon_stats.png";
+import logoM from "/src/images/coffypaste_logo_900.png";
+import efjm from "/src/images/efjm_logo.png";
 // - - - - - - - - -
 
-
-
 const Main = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=> {
-    const checkvalidation = async () =>{
+  useEffect(() => {
+    const checkvalidation = async () => {
       await fetch(`${host}/users/checklogin`, {
-      credentials:"include",
-      method: 'GET',   
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      }
-    })
-    .then(json => json.json())
-    .then(data => {
-      if(!data.message){
-        navigate("/welcome")
-      }
-    })
-    }
-    checkvalidation()
-  },[])
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((json) => json.json())
+        .then((data) => {
+          if (!data.message) {
+            navigate("/welcome");
+          }
+        });
+    };
+    checkvalidation();
+  }, []);
 
   return (
     <>
@@ -52,21 +49,17 @@ const Main = () => {
       <div className="logoM-container">
         <img src={logoM} alt="logo" />
       </div>
-      
-        <Routes>
-          <Route path="/" element={<NavBar/>} />
-          {/* <Route path="/shops" element={<Shops/>} /> */}
-          <Route path="/myaccount" element={<MyAccount/>} />
-          <Route path="/myProfile" element={<MyProfile/>} />          
-          <Route path="/community" element={<Community/>} />          
-          <Route path="/stats" element={<Stats/>} />          
-          <Route path="/efjm" element={"EFJM"} />
-        </Routes>     
-      
+
+      <Routes>
+        <Route path="/" element={<NavBar />} />
+        {/* <Route path="/shops" element={<Shops/>} /> */}
+        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/efjm" element={"EFJM"} />
+      </Routes>
+
       <div className="efjm-logo">
-        <img
-          src={efjm}
-          alt="logo of the efjm-team" />
+        <img src={efjm} alt="logo of the efjm-team" />
       </div>
     </>
   );
