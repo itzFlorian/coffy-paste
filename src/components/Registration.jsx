@@ -45,7 +45,9 @@ const Registration = () => {
     })
     .then(json => json.json())
     .then(data => {
-      console.log(data);
+      if(data.message){
+        toast.info("Please verify your emailadress",toastOptions)
+      }
       if(data.error){
         data.error.map((err)=>{
           toast.error(err.msg, toastOptions)
@@ -105,7 +107,7 @@ const Registration = () => {
             onChange={handleInput}
             type="text"
             placeholder="your favorite coffee"
-            name="favCoffee"
+            name="myFavCoff"
             className="card"
           />
             <div className="center">

@@ -59,33 +59,13 @@ const Login = () => {
         toast.error("email or password wrong!", toastOptions)
       }
       if(data.message){  
-        navigate("/")
-        
-      }    
+        navigate("/")        
+      }     
     })
-    setCurrentUser(data.userId)
     }
     sendData()  
   }
 
-  useEffect(()=> {
-  const checkvalidation = async () =>{
-    await fetch(`${host}/users/checklogin`, {
-    credentials:"include",
-    method: 'GET',   
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    }
-  })
-  .then(json => json.json())
-  .then(data => {
-    if(data.message){
-      navigate("/")
-    }
-  })
-  }
-  checkvalidation()
-},[])
 
   return (
     <>
