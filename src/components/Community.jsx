@@ -41,6 +41,10 @@ const Community = () => {
       fetchUsers()
   },[])
 
+  const addFriendHandler = () => {
+    
+  }
+
   return (
     <div>
       <div className="nav-bar">
@@ -71,7 +75,7 @@ const Community = () => {
               <img src={user.avatar} alt="avatar" />
               <p>{user.userName}</p>
               <p>{user.favCoffee}</p>
-              <BsPlusCircleFill/>
+              <BsPlusCircleFill onClick={addFriendHandler}/>
             </div>
             )
           })}          

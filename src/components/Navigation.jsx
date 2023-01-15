@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router";
+
 const Navigation = () => {
+  const navigate = useNavigate()
   return (
     <div>
-      <button>my account</button>
-      <button>community</button>
-      <button>shops</button>
-      <button>stats</button>
+      <button onClick={()=>navigate("/myaccount")}>my account</button>
+      <button onClick={()=>navigate("/community")}>community</button>
+      <button onClick={()=>navigate("/shops")}>shops</button>
+      <button onClick={()=>navigate("/stats")}>stats</button>
     </div>
   );
 };
