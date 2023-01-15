@@ -1,5 +1,5 @@
 // - - - - - F I L E S - - - - -
-import Navigation from "./Navigation.jsx";
+import Navigation from "../Navigation.jsx";
 
 
 // - - - - - I M A G E S - - - - -

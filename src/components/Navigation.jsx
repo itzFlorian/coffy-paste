@@ -3,11 +3,23 @@ import { useNavigate } from "react-router";
 const Navigation = () => {
   const navigate = useNavigate()
   return (
-    <div>
-      <button onClick={()=>navigate("/myaccount")}>my account</button>
-      <button onClick={()=>navigate("/community")}>community</button>
-      <button onClick={()=>navigate("/shops")}>shops</button>
-      <button onClick={()=>navigate("/stats")}>stats</button>
+    <div className="flex center">
+
+    <div className="space">
+      <button
+        className="btn"
+        onClick={() => navigate("/myaccount")}>my account</button>
+      <button
+        className="btn"
+        onClick={() => navigate("/community")}>community</button>
+      <button
+        className="btn"
+        onClick={() => navigate("/shops")}>shops</button>
+      <button
+        className="btn"
+        onClick={() => navigate("/stats")}>stats</button>
+    </div>
+
     </div>
   );
 };
