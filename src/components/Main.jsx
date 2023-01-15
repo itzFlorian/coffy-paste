@@ -38,8 +38,10 @@ const Main = () => {
     .then(data => {    
       console.log("data von checkValidation", data);
       if(data.message){
-        navigate("/")
         setUser(data.userId)
+        navigate("/")
+      }else{
+        navigate("/welcome")
       }
     })
     }

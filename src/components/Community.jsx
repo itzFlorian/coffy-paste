@@ -8,11 +8,13 @@ import UserContext from "../context/userContext.jsx";
 
 const Community = () => {
   const navigate = useNavigate()
+  
   const [users, setUsers] = useState([])
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState()
+
   const [user, setUser] = useContext(UserContext)
 
-  useEffect(()=> {
+  useEffect(() => {
     const checkValidation = async () =>{
       await fetch(`${host}/users/checklogin`, {
       credentials:"include",
@@ -24,13 +26,16 @@ const Community = () => {
     .then(json => json.json())
     .then(data => {    
       console.log("data von checkValidation", data);
-      if(data.message){
+      if(data.userId){
         setUser(data.userId)
+      }
+      if(data.error){
+        navigate("/welcome")     
       }
     })
     }
     checkValidation()
-  },[])
+  }, []);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -57,6 +62,7 @@ const Community = () => {
         })
         .then(json => json.json())
         .then(data => {
+          console.log("fetchUser", data);
          setCurrentUser(data)
         })
         }
@@ -64,12 +70,14 @@ const Community = () => {
       fetchUsers()
   },[])
 
+  console.log(user);
+  
   const addFriendHandler = async (event, friend) => {
     console.log(friend, user);
     await fetch(`${host}/users/addFriend`, {
       credentials:"include",
       method: 'POST',
-      body: JSON.stringify({friend: friend, user:currentUser}),
+      body: JSON.stringify({friend: friend, user:user}),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       }
@@ -87,8 +95,8 @@ const Community = () => {
         </div>
       </div>
       <div className="my-friends-container">
-        <h3>my friends{currentUser.friends && currentUser.friends.length}</h3>
-        {currentUser.friends && currentUser.friends.map((event)=>{
+        <h3>my friends({currentUser?.friends && currentUser.friends.length})</h3>
+        {currentUser?.friends && currentUser.friends.map((event)=>{
           return (
             <div>
               <img src={friend.avatar} alt="avatar" />
@@ -100,7 +108,7 @@ const Community = () => {
         })}
       </div>
       <div className="all-users-container">
-        <h3>all users</h3>
+        <h3>all users({users && users.length})</h3>
         <div>
           {users && users.map((user)=>{
             return(

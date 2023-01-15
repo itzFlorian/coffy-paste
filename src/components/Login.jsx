@@ -66,26 +66,6 @@ const Login = () => {
     sendData()  
   }
 
-  useEffect(()=> {
-    checkValidation = async () =>{
-      await fetch(`${host}/users/checklogin`, {
-      credentials:"include",
-      method: 'GET',   
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      }
-    })
-    .then(json => json.json())
-    .then(data => {    
-      console.log("data von checkValidation", data);
-      if(data.message){
-        navigate("/")
-        setUser(data.userId)
-      }
-    })
-    }
-    checkValidation()
-},[])
 
   return (
     <>
