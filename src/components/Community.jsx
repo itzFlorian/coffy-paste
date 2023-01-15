@@ -9,6 +9,9 @@ import UserContext from "../context/userContext.jsx";
 
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png"
+import heart from "../images/coffypaste_icon_heart.png"
+import plus from "../images/coffypaste_icon_plus.png"
+import avatar from "../images/coffypaste_icon_avatar.png"
 
 
 const Community = () => {
@@ -102,21 +105,71 @@ const Community = () => {
         </div>
       </div>
 
+      {/* ORIGINAL-CODE */}
       <div className="my-friends-container">
-        <h3>my friends({currentUser?.friends && currentUser.friends.length})</h3>
+        <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
+
+        {/* MUSTER-FRIEND */}
+        <div className="store-card">
+          <div className="flex center">
+            <div className="iconS bg-gradL">
+              <img src={avatar} className="avatar-icon"/>
+            </div>
+            <div className="col">
+              <p>friend-name</p>
+              <p>friend-coffee</p>
+            </div>
+          </div>
+          <div className=" patch-container">
+            <div className="patch-btn-l row">
+              <div className="patch-btn bg-gradL center">
+                <img src={heart} className="patch-img" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* ORIGINAL-CODE */}
         {currentUser?.friends && currentUser.friends.map((event)=>{
           return (
-            <div>
-              <img src={friend.avatar} alt="avatar" />
-              <p>{friend.userName}</p>
-              <p>{friend.favCoffee}</p>
-              <BsPlusCircleFill/>
-            </div>
+            <>
+              <div>
+                <img src={friend.avatar} alt="avatar" />
+                <p>{friend.userName}</p>
+                <p>{friend.favCoffee}</p>
+                <BsPlusCircleFill/>
+              </div>
+            </>
           )
         })}
       </div>
+
+
+      {/* ORIGINAL-CODE */}
       <div className="all-users-container">
-        <h3>all users({users && users.length})</h3>
+        <h1>all users({users && users.length})</h1>
+
+        {/* MUSTER-USER */}
+        <div className="store-card">
+          <div className="flex center">
+            <div className="iconS bg-gradD">
+              <img src={avatar} className="avatar-icon"/>
+            </div>
+            <div className="col">
+              <p>user-name</p>
+              <p>user-coffee</p>
+            </div>
+          </div>
+          <div className=" patch-container">
+            <div className="patch-btn-l row">
+              <div className="patch-btn bg-gradD center">
+                <img src={plus} className="patch-img" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ORIGINAL-CODE */}
         <div>
           {users && users.map((user)=>{
             return(
