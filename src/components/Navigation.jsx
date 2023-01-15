@@ -1,10 +1,12 @@
+
+
 const Navigation = () => {
   return (
-    <div>
-      <button>my account</button>
-      <button>community</button>
-      <button>shops</button>
-      <button>stats</button>
+    <div className="flex space">
+      <button className="btn">my account</button>
+      <button className="btn">community</button>
+      <button className="btn">shops</button>
+      <button className="btn">stats</button>
     </div>
   );
 };

@@ -1,5 +1,15 @@
 // - - - - - E L E M E N T S - - - - - 
 
+.logoM-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 60vw;
+        margin-top: 1vw;
+    }
+}
+
 
 .card{
     margin: 0.5rem;
@@ -11,6 +21,7 @@
     background-color: var(--OLDWHITE);
 }
 
+
 .member-card{
     margin: 0.5rem;
     padding-top:0.5rem;
@@ -18,7 +29,6 @@
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
-    height: 200px;
     background-color: var(--OLDWHITE);
 }
 
@@ -87,3 +97,7 @@ input{
     border-radius: 50%;
     margin: 0.3rem
 }
+
+
+
+

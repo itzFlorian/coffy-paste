@@ -4,6 +4,11 @@ import Navigation from "./Navigation.jsx";
 import { BsPlusCircleFill } from "react-icons/bs" 
 import UserContext from "../context/userContext.jsx";
 
+
+// - - - - - I M A G E S - - - - -
+import searchS from "../images/coffypaste_icon_search_s.png"
+
+
 const Community = () => {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState([])
@@ -42,13 +47,16 @@ const Community = () => {
   },[])
 
   return (
-    <div>
-      <div className="nav-bar">
-        <Navigation/>
-        <div className="search">
-          <button>LUPE</button>
+    <>
+      <div className="flex">
+        <Navigation />
+        <div className="">
+          <button className="search-btn">
+            <img src={searchS} className="search-img" alt="search" />
+          </button>
         </div>
       </div>
+
       <div className="my-friends-container">
         <h3>my friends{currentUser.friends && currentUser.friends.length}</h3>
         {currentUser.friends && currentUser.friends.map((friend)=>{
@@ -77,7 +85,7 @@ const Community = () => {
           })}          
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

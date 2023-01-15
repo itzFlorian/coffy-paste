@@ -1,13 +1,10 @@
 // - - - - - M A I N - - - - -
 
-
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-
 
 .relative{
     position: relative;
@@ -38,25 +35,16 @@
     flex-wrap: wrap;
 }
 
+.space{
+    *{
+        margin-left: 1rem;
+    }
+}
 
 
 .turn{
 
 }
-
-// - - - - - ELEMENTS - - - - -
-
-.logoM-container{
-    border: 3px solid green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    img{
-        width: 60vw;
-        margin-top: 1vw;
-    }
-}
-
 
 
 
