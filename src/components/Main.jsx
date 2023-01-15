@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import { Route, Routes } from "react-router";
 import { host } from "../api/Routes.jsx";
@@ -7,6 +7,9 @@ import NavBar from "./NavBar.jsx";
 import Stats from "./Stats.jsx";
 import MyAccount from "./MyAccount.jsx";
 import Community from "./Community.jsx";
+
+import UserContext from "../context/userContext.jsx";
+
 
 // - - - - - ICONS - - - - -
 import avatar from "/src/images/coffypaste_icon_avatar.png";
@@ -20,24 +23,27 @@ import efjm from "/src/images/efjm_logo.png";
 
 const Main = () => {
   const navigate = useNavigate();
-
+  const [user, setUser] = useContext(UserContext)
+  
   useEffect(() => {
-    const checkvalidation = async () => {
+    const checkValidation = async () =>{
       await fetch(`${host}/users/checklogin`, {
-        credentials: "include",
-        method: "GET",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((json) => json.json())
-        .then((data) => {
-          if (!data.message) {
-            navigate("/welcome");
-          }
-        });
-    };
-    checkvalidation();
+      credentials:"include",
+      method: 'GET',   
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json => json.json())
+    .then(data => {    
+      console.log("data von checkValidation", data);
+      if(data.message){
+        navigate("/")
+        setUser(data.userId)
+      }
+    })
+    }
+    checkValidation()
   }, []);
 
   return (
