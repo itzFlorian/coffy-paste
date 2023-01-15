@@ -1,9 +1,10 @@
+import Navigation from "./Navigation.jsx";
 import { useState, useEffect, useContext } from "react";
 import { host } from "../api/Routes.jsx";
-import Navigation from "./Navigation.jsx";
 import { BsPlusCircleFill } from "react-icons/bs" 
-import UserContext from "../context/userContext.jsx";
 import { useNavigate } from "react-router-dom";
+
+import UserContext from "../context/userContext.jsx";
 
 const Community = () => {
   const navigate = useNavigate()
