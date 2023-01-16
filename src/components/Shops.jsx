@@ -31,11 +31,11 @@ const efjm = "/src/images/efjm_logo.png"
 // Get latitude & longitude from address. // Google API
 function Shops() {
 // GET USERDATA FROM USECONTEXT //
-const [shops, setShops] = useState([]);         // SHOPS DATA
-const [currShop, setCurrShop] = useState(undefined);   // 
-const [user, setUser] = useContext(UserContext) // USER ID
-const [userData, setUserData] = useState("");   // USER DATA
-const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0})
+const [shops, setShops] = useState([]);                // SHOPS DATA
+const [currShop, setCurrShop] = useState(undefined);   // CURR SHOP
+const [user, setUser] = useContext(UserContext)        // USER ID
+const [userData, setUserData] = useState("");          // USER DATA
+const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0});
 
 // FETCH START // 
 useEffect(() => {
@@ -149,7 +149,7 @@ const [isShown, setIsShown] = useState(false);
 const overlayHandler = (e, shop) => {
   setCurrShop(shop);
 }
-
+// console.log();
 // [latitude, longitude]
   return (
     <div className='map' height={"500px"} width={"750px"}>
@@ -159,12 +159,12 @@ const overlayHandler = (e, shop) => {
       height={300} width={500} 
       defaultCenter={[userGeoData.lat, userGeoData.lon]}  
       defaultZoom={8}>
-        {shops.map((shop, i) => {
+        {shops.map((shop) => {
           return (      
             <Marker
               width={30}
               anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
-              key={i}
+              key={shop._id}
               onClick={(e) => overlayHandler(e, shop)}
             />
           )
@@ -184,7 +184,10 @@ const overlayHandler = (e, shop) => {
       <div>
         <ul>
           {sortShopsByDist.map((shop) => 
-            <li>{shop.shop.name}</li>
+            <li 
+              onClick={(e) => overlayHandler(e, shop.shop)}
+              key={shop.shop._id}
+            >{shop.shop.name}</li>
           )}
         </ul>
       </div> 
