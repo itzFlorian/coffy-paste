@@ -4,6 +4,7 @@ import React from 'react'
 import { Map, Marker, ZoomControl, Overlay } from "pigeon-maps";
 import { host } from "../api/Routes.jsx";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router'; 
 import Geocode from "react-geocode";
 
 // I M P O R T   C O N T E X T
@@ -42,6 +43,7 @@ const [user, setUser] = useContext(UserContext)        // USER ID
 const [userData, setUserData] = useState("");          // USER DATA
 const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0});
 
+const navigate = useNavigate()
 
 const toastOptions = {
   position:"bottom-right",
@@ -219,7 +221,7 @@ const overlayHandler = (e, shop) => {
       <div>
         <ul>
           {sortShopsByDist.map((shop) => 
-          <div onClick={() => addShopHandler(shop.shop._id)}>
+          <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
             <li 
               onClick={(e) => overlayHandler(e, shop.shop)}
               key={shop.shop._id}
@@ -230,7 +232,7 @@ const overlayHandler = (e, shop) => {
         </ul>
       </div> 
       <div>
-        <div>{currShop && currShop.name}</div> 
+        <div onClick={() => addShopHandler(currShop._id)}>{currShop && currShop.name}</div> 
       </div>
       <ToastContainer/>
     </div>
