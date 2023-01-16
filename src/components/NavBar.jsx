@@ -10,7 +10,7 @@ import efjm from "/src/images/efjm_logo.png";
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="nav-bar">
+    <div className="navbarL row-col">
       <div className="top row">
         <div
           className="iconL center col"
@@ -28,7 +28,7 @@ const NavBar = () => {
         </div>
       </div>
 
-      <div className="bottom row">
+      <div className="bottom row" >
         <div className="iconL center col" onClick={() => navigate("/shops")}>
           <img src={shop} />
           <p>shops</p>

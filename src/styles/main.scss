@@ -37,7 +37,7 @@
 
 .space{
     *{
-        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }
 
@@ -49,9 +49,19 @@
 .x{
     border: 2px solid orangered
 }
-
+.y{
+    border: 2px solid greenyellow
+}
+.z{
+    border: 2px solid aqua
+}
 
 .App{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+
     overflow-y: hidden;
     overflow-x: hidden;
     background-image: url("../images/coffypaste_bg_568217968.png");
@@ -60,5 +70,19 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
+
+    >*{
+        width: 80%;
+        align-items: center;
+    }
 }
 
+
+
+.between{
+    justify-content: space-between;
+}
+
+.w50{
+    width: 50%
+}

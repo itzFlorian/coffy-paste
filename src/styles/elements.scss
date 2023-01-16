@@ -11,7 +11,6 @@
     }
 }
 
-
 .logoL-container{
     display: flex;
     align-items: center;
@@ -28,8 +27,6 @@
     flex-direction: column;
     height: 70vh;
     justify-content: space-around;
-
-    
 }
 
 .card{
@@ -98,6 +95,7 @@
     }
 }
 
+
 .avatar-icon{
     width: 100px;
 }
@@ -111,7 +109,6 @@ input{
 }
 
 
-
 .card-container{
     display: flex;
     flex-direction: column;
@@ -120,13 +117,11 @@ input{
     margin-top: 2rem;
 }
 
-
 .circle-container{
     display: flex;
     justify-content: center;
     margin-top: 1rem
 }
-
 
 .circle{
     width: 40px;
@@ -135,18 +130,21 @@ input{
     margin: 0.3rem
 }
 
-.scroll-container{
-    margin: auto;
-    width: 90%;
-    height: 65%;
-    overflow: scroll;
-    overflow-x: hidden;
+
+.navbarL{
+    display: flex;
+    justify-content: center;
+    >*>*{
+        margin: 1rem
+    }
 }
 
-.content{
-    border: 5px solid blue;
-    width: 80%;
-    align-items: center;
-    overflow: scroll;
-    overflow-x: hidden;
+
+.row-col{
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+    }
 }
+

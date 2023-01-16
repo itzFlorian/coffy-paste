@@ -5,6 +5,7 @@ import "./styles/elements.scss"
 import "./styles/fonts.scss"
 import "./styles/images.scss"
 import "./styles/main.scss"
+import "./styles/scrolling.scss"
 
 
 import { useState } from 'react'

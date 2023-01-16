@@ -13,7 +13,7 @@ console.log(logoM);
   return (
     <>
       {/* BODY */}
-      <div className="x center">
+      <div className="center col">
         <div className="logoL-container">
           <img src={logoM} alt="logo" />
         </div>

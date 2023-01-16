@@ -32,25 +32,10 @@ const efjm = "/src/images/efjm_logo.png"
 function Shops() {
 // GET USERDATA FROM USECONTEXT //
 const [shops, setShops] = useState([]);         // SHOPS DATA
+const [currShop, setCurrShop] = useState(undefined);   // 
 const [user, setUser] = useContext(UserContext) // USER ID
 const [userData, setUserData] = useState("");   // USER DATA
-const [userLatLon, setUserLatLon] = useState({lat: 0, lon: 0})
-
-// FETCH USER LONG.- & LATITUDE //
-// Geocode.setApiKey(GOOGLE_API_KEY);
-// Geocode.setLanguage("de");
-// Geocode.setRegion("de");
-// Geocode.fromAddress(user.city).then(
-//   (response) => {
-//     const { lat, lng } = response.results[0].geometry.location;
-//     setUserLatLon({lat: lat, lon: lon});
-//     console(lat, lon);
-//   },
-//   (error) => {
-//     console.error(error);
-//   }
-// );
-// console.log(Geocode);
+const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0})
 
 // FETCH START // 
 useEffect(() => {
@@ -61,19 +46,19 @@ useEffect(() => {
     method: 'GET',   
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-      }
-    })
-    .then(json => json.json())
-    .then(data => {    
-      // console.log("data von checkValidation", data);
-      if(data.userId){
-        setUser(data.userId)
-      }
-      if(data.error){
-        navigate("/welcome")     
-      }
-    })
+    }
+  })
+  .then(json => {
+    if(!json.ok){
+      navigate("/welcome")
+    }
+    return json.json()
+  })
+  .then(data => {
+    setUser(data.userId)
+  })
   }
+  checkValidation()
 
   // FETCH CURRENT USER DATA //
   const fetchCurrentUserData = async () =>{
@@ -87,7 +72,7 @@ useEffect(() => {
     .then(json => json.json())
     .then(data => setUserData(data));
   }
-  
+
   // FETCH SHOPS DATA //
     const fetchShops = async () =>{
       await fetch(`${host}/coffeeshops`, {
@@ -105,53 +90,107 @@ useEffect(() => {
   fetchCurrentUserData();
   fetchShops()
 }, []);
+
+useEffect(() => {
+  // FETCH USER LONG.- & LATITUDE //
+  Geocode.setApiKey(GOOGLE_API_KEY);
+  Geocode.setLanguage("de");
+  Geocode.setRegion("de");
+  Geocode.fromAddress(userData.city).then(
+  (response) => {
+    const { lat, lng } = response.results[0].geometry.location;
+    // console.log(lat, lng)
+    setUserGeoData({lat: lat, lon: lng});
+  },
+  (error) => {
+    console.error(error);
+  }
+  );
+  // console.log(userGeoData);
+}, [userData])
+
 // FETCH END //
-console.log('user', user);
-console.log('userData', userData);
-console.log('shops', shops);
-// console.log('lat', +shops[0].location.address.latitude);
-// console.log('lon', +shops[0].location.address.longitude);
+// console.log('user', user); 
+// console.log('userData', userData);
+// console.log('shops', shops);
 
-
-const [isShown, setIsShown] = useState(false);
-const overlayHandler = (e) => {
-  setIsShown(current => !current);
+// CALULATE & FILTER DISTANCE WITH GEOCODES START //
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+  let R = 6371; // Radius of the earth in km
+  let dLat = deg2rad(lat2-lat1);  // deg2rad below
+  let dLon = deg2rad(lon2-lon1); 
+  let a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  let d = R * c; // Distance in km
+  return d;
 }
 
- // [latitude, longitude]
+const addDistToShops = shops.map((shop) => {
+  const addDist = getDistanceFromLatLonInKm(
+      userGeoData.lat, 
+      userGeoData.lon, 
+      +shop.location.address.latitude,
+      +shop.location.address.longitude
+    )
+    return {distance:addDist, shop: shop};
+})
+const sortShopsByDist = addDistToShops.sort((a,b) => a.distance - b.distance);
+// CALULATE & FILTER DISTANCE WITH GEOCODES END //
+
+// SHOW PIN OVERLAYS
+const [isShown, setIsShown] = useState(false);
+const overlayHandler = (e, shop) => {
+  setCurrShop(shop);
+}
+
+// [latitude, longitude]
   return (
     <div className='map' height={"500px"} width={"750px"}>
-      <Map height={300} width={500} defaultCenter={[51.1646177154734, 7.050247815379566]} defaultZoom={4}>
+      {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
+      && 
+      <Map 
+      height={300} width={500} 
+      defaultCenter={[userGeoData.lat, userGeoData.lon]}  
+      defaultZoom={8}>
         {shops.map((shop, i) => {
           return (      
             <Marker
               width={30}
               anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
               key={i}
-              onClick={(e) => overlayHandler(e)}
+              onClick={(e) => overlayHandler(e, shop)}
             />
           )
         })}
-        {isShown && (shops.map((shop, i) => {
-          return (
+        {currShop && 
             <Overlay 
-              anchor={[+shop.location.address.latitude, +shop.location.address.longitude]} 
+              anchor={[+currShop.location.address.latitude, +currShop.location.address.longitude]} 
               offset={[120, 79]}>
               <div width={240} height={158} alt=''>
-                {shop.name}
+                {currShop.name}
               </div>
             </Overlay>
-          )
-        }))}
+        }
         <ZoomControl />
       </Map>
+      }
       <div>
         <ul>
-          {shops.map((shop) => 
-            <li>{shop.name}</li>
+          {sortShopsByDist.map((shop) => 
+            <li>{shop.shop.name}</li>
           )}
         </ul>
       </div> 
+      <div>
+        <div>{currShop && currShop.name}</div> 
+      </div>
     </div>
   )
 }
