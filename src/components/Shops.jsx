@@ -1,5 +1,4 @@
 // I M P O R T:  E X T E R N A L  D E P E N D E N C I E S
-import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 import React from 'react'
 import { Map, Marker, ZoomControl, Overlay } from "pigeon-maps";
 import { host } from "../api/Routes.jsx";
@@ -10,13 +9,12 @@ import Geocode from "react-geocode";
 // I M P O R T   C O N T E X T
 import UserContext from '../context/userContext.jsx';
 
-
 // TOAST 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
 // I M P O R T  &  D E C L A R E  K E Y S
-
+import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 
 // - - - - - ICONS - - - - - 
 const bg = "/src/images/coffypaste_bg_568217968.png"
@@ -50,7 +48,6 @@ const toastOptions = {
   autoClose: 8000,
   theme:"dark"
 }
-
 
 // FETCH START // 
 useEffect(() => {
