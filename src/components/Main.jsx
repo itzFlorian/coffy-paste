@@ -63,10 +63,10 @@ const Main = () => {
         <Route path="/" element={<NavBar />} />
         <Route path="/shops" element={<Shops/>} />
         <Route path="/myaccount/" element={<MyAccount />} />
-        <Route path="/community" element={<Community />} />
         <Route path="/stats" element={<Stats />} />
-        <Route path="/efjm" element={<EFJM/>} />
+        <Route path="/community" element={<Community />} />
         <Route path="/community/showUser/:id" element={<ShowUser />} />
+        <Route path="/efjm" element={<EFJM/>} />
       </Routes>
 
       <div className="efjm-logo">

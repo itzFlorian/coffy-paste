@@ -9,6 +9,11 @@ import Geocode from "react-geocode";
 // I M P O R T   C O N T E X T
 import UserContext from '../context/userContext.jsx';
 
+
+// TOAST 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+
 // I M P O R T  &  D E C L A R E  K E Y S
 
 
@@ -24,18 +29,26 @@ const stats = "/src/images/coffypaste_icon_stats.png"
 const logoM = "/src/images/coffypaste_logo_900.png"
 const logoL = "/src/images/coffypaste_logo_2352.png"
 const efjm = "/src/images/efjm_logo.png"
-// - - - - - - - - -  
+// - - - - - - - - - -  
 
 //========================
 
 // Get latitude & longitude from address. // Google API
 function Shops() {
 // GET USERDATA FROM USECONTEXT //
-const [shops, setShops] = useState([]);         // SHOPS DATA
-const [currShop, setCurrShop] = useState(undefined);   // 
-const [user, setUser] = useContext(UserContext) // USER ID
-const [userData, setUserData] = useState("");   // USER DATA
-const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0})
+const [shops, setShops] = useState([]);                // SHOPS DATA
+const [currShop, setCurrShop] = useState(undefined);   // CURR SHOP
+const [user, setUser] = useContext(UserContext)        // USER ID
+const [userData, setUserData] = useState("");          // USER DATA
+const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0});
+
+
+const toastOptions = {
+  position:"bottom-right",
+  autoClose: 8000,
+  theme:"dark"
+}
+
 
 // FETCH START // 
 useEffect(() => {
@@ -109,6 +122,28 @@ useEffect(() => {
   // console.log(userGeoData);
 }, [userData])
 
+const addShopHandler = async (shopId) => {
+  await fetch(`${host}/coffeeshops/favshop/${shopId}`, {
+  method: 'POST',
+  body: JSON.stringify( {userId:user} ),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => {
+    if(!response.ok){
+      toast.info("something went wrong", toastOptions)
+    }
+    return response.json()
+  })
+  .then((json) => {
+    if(json){
+      toast.info(json.message, toastOptions)
+      console.log("hallo");
+    }
+  });
+}
+
 // FETCH END //
 // console.log('user', user); 
 // console.log('userData', userData);
@@ -149,7 +184,7 @@ const [isShown, setIsShown] = useState(false);
 const overlayHandler = (e, shop) => {
   setCurrShop(shop);
 }
-
+// console.log();
 // [latitude, longitude]
   return (
     <div className='map' height={"500px"} width={"750px"}>
@@ -159,12 +194,12 @@ const overlayHandler = (e, shop) => {
       height={300} width={500} 
       defaultCenter={[userGeoData.lat, userGeoData.lon]}  
       defaultZoom={8}>
-        {shops.map((shop, i) => {
+        {shops.map((shop) => {
           return (      
             <Marker
               width={30}
               anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
-              key={i}
+              key={shop._id}
               onClick={(e) => overlayHandler(e, shop)}
             />
           )
@@ -184,13 +219,20 @@ const overlayHandler = (e, shop) => {
       <div>
         <ul>
           {sortShopsByDist.map((shop) => 
-            <li>{shop.shop.name}</li>
+          <div onClick={() => addShopHandler(shop.shop._id)}>
+            <li 
+              onClick={(e) => overlayHandler(e, shop.shop)}
+              key={shop.shop._id}
+              >{shop.shop.name}
+            </li>
+          </div>
           )}
         </ul>
       </div> 
       <div>
         <div>{currShop && currShop.name}</div> 
       </div>
+      <ToastContainer/>
     </div>
   )
 }
