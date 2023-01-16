@@ -11,6 +11,7 @@ import Navigation from "./Navigation.jsx";
 import searchS from "../images/coffypaste_icon_search_s.png"
 import avatar from "../images/coffypaste_icon_avatar.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
+import minus from "../images/coffypaste_icon_minus.png"
 
 
 const MyProfile = () => {
@@ -135,8 +136,8 @@ const MyProfile = () => {
               </div>
               <div className="patch-container">
                 <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL">
-                    <p>heart</p>
+                  <div className="patch-btn bg-gradL center">
+                    <img src={minus} className="patch-img"/>
                   </div>
                 </div>
               </div>
@@ -149,8 +150,8 @@ const MyProfile = () => {
               </div>
               <div className="patch-container">
                 <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL">
-                    <p>heart</p>
+                  <div className="patch-btn bg-gradL center">
+                    <img src={minus} className="patch-img"/>
                   </div>
                 </div>
               </div>
@@ -163,8 +164,8 @@ const MyProfile = () => {
               </div>
               <div className="patch-container">
                 <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL">
-                    <p>heart</p>
+                  <div className="patch-btn bg-gradL center">
+                    <img src={minus} className="patch-img"/>
                   </div>
                 </div>
               </div>
