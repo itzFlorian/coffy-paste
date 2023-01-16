@@ -7,9 +7,10 @@ import Shops from "./Shops.jsx";
 import Stats from "./Stats.jsx";
 import MyAccount from "./MyAccount.jsx";
 import Community from "./Community.jsx";
+import EFJM from "./EFJM.jsx"
+import ShowUser from "./ShowUser.jsx";
 
 import UserContext from "../context/userContext.jsx";
-
 
 // - - - - - ICONS - - - - -
 import avatar from "/src/images/coffypaste_icon_avatar.png";
@@ -61,10 +62,11 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<NavBar />} />
         <Route path="/shops" element={<Shops/>} />
-        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/myaccount/" element={<MyAccount />} />
         <Route path="/community" element={<Community />} />
         <Route path="/stats" element={<Stats />} />
-        <Route path="/efjm" element={"EFJM"} />
+        <Route path="/efjm" element={<EFJM/>} />
+        <Route path="/community/showUser/:id" element={<ShowUser />} />
       </Routes>
 
       <div className="efjm-logo">

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import UserContext from "../context/userContext.jsx";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png"
@@ -17,8 +19,14 @@ const Community = () => {
   
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState()
-
+  const [trigger, setTrigger] = useState(false)
   const [user, setUser] = useContext(UserContext)
+
+  const toastOptions = {
+  position:"bottom-right",
+  autoClose: 8000,
+  theme:"dark"
+}
 
   useEffect(() => {
     const checkValidation = async () =>{
@@ -72,20 +80,39 @@ const Community = () => {
         }
       fetchUser()
       fetchUsers()
-  },[])
+  },[trigger])
   
   const addFriendHandler = async (friend) => {
     console.log(friend, user);
-    await fetch(`${host}/users/addFriend`, {
+    await fetch(`${host}/users/friends`, {
       credentials:"include",
-      method: 'POST',
+      method: 'PATCH',
       body: JSON.stringify({friend:friend, user:user}),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       }
     })
-    .then(json => json.json())
-    .then(data => {})
+    .then(json =>json.json())
+    .then(data => {
+      toast.info(data.message, toastOptions)
+    })
+    setTrigger(!trigger)
+  }
+
+  const deleteFriendHandler = async (friend) => {
+    await fetch(`${host}/users/friends`, {
+      credentials:"include",
+      method: 'DELETE',
+      body: JSON.stringify({friend:friend, user:user}),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json =>json.json())
+    .then(data => {
+      toast.info(data.message, toastOptions)
+    })
+    setTrigger(!trigger)
   }
 
   return (
@@ -101,13 +128,13 @@ const Community = () => {
 
       <div className="my-friends-container">
         <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
-        {currentUser?.friends && currentUser.friends.map((event)=>{
+        {currentUser?.friends && currentUser.friends.map((friend)=>{
           return (
             <>
-              <div className="store-card">
-          <div className="flex center">
-            <div className="iconS bg-gradL">
-              <img src={friend.avatar} className="avatar-icon"/>
+              <div className="store-card" key={friend._id} >
+                <div className="flex center">
+                <div className="iconS bg-gradL">
+                <img src={friend.avatar} className="avatar-icon" onClick={() => navigate(`showUser/${friend._id}`)}/>
             </div>
             <div className="col">
               <p>{friend.userName}</p>
@@ -117,7 +144,7 @@ const Community = () => {
           <div className=" patch-container">
             <div className="patch-btn-l row">
               <div className="patch-btn bg-gradL center">
-                <img src={heart} className="patch-img" alt="" />
+                <img src={heart} className="patch-img" alt="" onClick={() => deleteFriendHandler(friend._id)}/>
               </div>
             </div>
           </div>
@@ -136,7 +163,7 @@ const Community = () => {
                   <div className="store-card" key={user._id}>
                   <div className="flex center">
                     <div className="iconS bg-gradD">
-                      <img src={user.avatar} className="avatar-icon"/>
+                      <img src={user.avatar} className="avatar-icon"  onClick={() => navigate(`showUser/${user._id}`)}/>
                     </div>
                     <div className="col">
                       <p>{user.userName}</p>
@@ -146,7 +173,7 @@ const Community = () => {
                   <div className=" patch-container">
                     <div className="patch-btn-l row">
                       <div className="patch-btn bg-gradD center">
-                        <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler( user._id)}/>
+                        <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler(user._id)}/>
                       </div>
                     </div>
                   </div>
@@ -154,6 +181,7 @@ const Community = () => {
             )
           })}          
         </div>
+        <ToastContainer/>
       </div>
     </>
   );
