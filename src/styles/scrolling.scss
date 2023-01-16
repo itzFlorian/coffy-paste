@@ -1,0 +1,25 @@
+.scroll-container{
+    margin: auto;
+    height: 56%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+    width: 4px;
+}
+
+/* track */
+::-webkit-scrollbar-track{
+    background: none;
+}
+::-webkit-scrollbar-track-piece{
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 20px;
+}
+
+/* thumb */
+::-webkit-scrollbar-thumb{
+    background-color: var(--BEIGE);
+    border-radius: 3px;
+}

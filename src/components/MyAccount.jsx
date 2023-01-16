@@ -57,7 +57,7 @@ const MyProfile = () => {
       </div>
 
 
-      <div className="x scroll-container">
+      <div className="scroll-container">
         {/* L E F T S I D E */}
         <>
           {/* POFILE-CONTAINER */}

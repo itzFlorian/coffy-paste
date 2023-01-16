@@ -110,62 +110,64 @@ const Community = () => {
         </div>
       </div>
 
-      <div className="my-friends-container">
-        <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
-        {currentUser?.friends && currentUser.friends.map((friend)=>{
-          return (
-            <>
-              <div className="store-card">
-          <div className="flex center">
-            <div className="iconS bg-gradL">
-              <img src={friend.avatar} className="avatar-icon"/>
+      <div className="scroll-container">
+        <div className="my-friends-container">
+          <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
+          {currentUser?.friends && currentUser.friends.map((friend)=>{
+            return (
+              <>
+                <div className="store-card">
+            <div className="flex center">
+              <div className="iconS bg-gradL">
+                <img src={friend.avatar} className="avatar-icon"/>
+              </div>
+              <div className="col">
+                <p>{friend.userName}</p>
+                <p>{friend.favCoffee}</p>
+              </div>
             </div>
-            <div className="col">
-              <p>{friend.userName}</p>
-              <p>{friend.favCoffee}</p>
-            </div>
-          </div>
-          <div className=" patch-container">
-            <div className="patch-btn-l row">
-              <div className="patch-btn bg-gradL center">
-                <img src={heart} className="patch-img" alt="" />
+            <div className=" patch-container">
+              <div className="patch-btn-l row">
+                <div className="patch-btn bg-gradL center">
+                  <img src={heart} className="patch-img" alt="" />
+                </div>
               </div>
             </div>
           </div>
+              </>
+            )
+          })}
         </div>
-            </>
-          )
-        })}
-      </div>
 
 
-      <div className="all-users-container">
-        <h1>all users({users && users.length})</h1>
-        <div>
-          {users && users.map((user)=>{
-            return( 
-                  <div className="store-card" key={user._id}>
-                  <div className="flex center">
-                    <div className="iconS bg-gradD">
-                      <img src={user.avatar} className="avatar-icon"/>
+        <div className="all-users-container">
+          <h1>all users({users && users.length})</h1>
+          <div>
+            {users && users.map((user)=>{
+              return( 
+                    <div className="store-card" key={user._id}>
+                    <div className="flex center">
+                      <div className="iconS bg-gradD">
+                        <img src={user.avatar} className="avatar-icon"/>
+                      </div>
+                      <div className="col">
+                        <p>{user.userName}</p>
+                        <p>{user.favCoffee}</p>
+                      </div>
                     </div>
-                    <div className="col">
-                      <p>{user.userName}</p>
-                      <p>{user.favCoffee}</p>
-                    </div>
-                  </div>
-                  <div className=" patch-container">
-                    <div className="patch-btn-l row">
-                      <div className="patch-btn bg-gradD center">
-                        <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler( user._id)}/>
+                    <div className=" patch-container">
+                      <div className="patch-btn-l row">
+                        <div className="patch-btn bg-gradD center">
+                          <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler( user._id)}/>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-            )
-          })}          
+              )
+            })}          
+          </div>
+          <ToastContainer/>
         </div>
-        <ToastContainer/>
       </div>
     </>
   );
