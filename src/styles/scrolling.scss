@@ -23,3 +23,11 @@
     background-color: var(--BEIGE);
     border-radius: 3px;
 }
+
+
+.efjm-scroll-container{
+    margin: auto;
+    height: 47%;
+    overflow: scroll;
+    overflow-x: hidden;
+}

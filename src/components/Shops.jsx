@@ -1,5 +1,4 @@
 // I M P O R T:  E X T E R N A L  D E P E N D E N C I E S
-import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 import React from 'react'
 import { Map, Marker, ZoomControl, Overlay } from "pigeon-maps";
 import { host } from "../api/Routes.jsx";
@@ -10,27 +9,26 @@ import Geocode from "react-geocode";
 // I M P O R T   C O N T E X T
 import UserContext from '../context/userContext.jsx';
 
-
 // TOAST 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
 // I M P O R T  &  D E C L A R E  K E Y S
+import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 
 
 // - - - - - ICONS - - - - - 
-const bg = "/src/images/coffypaste_bg_568217968.png"
-const avatar = "/src/images/coffypaste_icon_avatar.png"
-const coffee = "/src/images/coffypaste_icon_coffee_default.png"
-const community = "/src/images/coffypaste_icon_community.png"
-const searchL = "/src/images/coffypaste_icon_search_l.png"
-const searchS = "/src/images/coffypaste_icon_search_s.png"
-const shop = "/src/images/coffypaste_icon_shop.png"
-const stats = "/src/images/coffypaste_icon_stats.png"
-const logoM = "/src/images/coffypaste_logo_900.png"
-const logoL = "/src/images/coffypaste_logo_2352.png"
-const efjm = "/src/images/efjm_logo.png"
-// - - - - - - - - - -  
+import searchS from "../images/coffypaste_icon_search_s.png"
+import efjm from "../images/efjm_logo.png"
+import heart from "../images/coffypaste_icon_heart.png"
+import shop from "../images/coffypaste_icon_shop.png"
+import minus from "../images/coffypaste_icon_minus.png"
+import plus from "../images/coffypaste_icon_plus.png"
+
+
+// - - - - - F I L E S - - - - -
+import Navigation from "./Navigation.jsx";
+
 
 //========================
 
@@ -50,7 +48,6 @@ const toastOptions = {
   autoClose: 8000,
   theme:"dark"
 }
-
 
 // FETCH START // 
 useEffect(() => {
@@ -188,54 +185,128 @@ const overlayHandler = (e, shop) => {
 }
 // console.log();
 // [latitude, longitude]
+console.log(currShop);
+
   return (
-    <div className='map' height={"500px"} width={"750px"}>
-      {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
-      && 
-      <Map 
-      height={300} width={500} 
-      defaultCenter={[userGeoData.lat, userGeoData.lon]}  
-      defaultZoom={8}>
-        {shops.map((shop) => {
-          return (      
-            <Marker
-              width={30}
-              anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
-              key={shop._id}
-              onClick={(e) => overlayHandler(e, shop)}
-            />
-          )
-        })}
-        {currShop && 
-            <Overlay 
-              anchor={[+currShop.location.address.latitude, +currShop.location.address.longitude]} 
-              offset={[120, 79]}>
-              <div width={240} height={158} alt=''>
-                {currShop.name}
-              </div>
-            </Overlay>
-        }
-        <ZoomControl />
-      </Map>
-      }
-      <div>
-        <ul>
-          {sortShopsByDist.map((shop) => 
-          <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
-            <li 
-              onClick={(e) => overlayHandler(e, shop.shop)}
-              key={shop.shop._id}
-              >{shop.shop.name}
-            </li>
-          </div>
-          )}
-        </ul>
-      </div> 
-      <div>
-        <div onClick={() => addShopHandler(currShop._id)}>{currShop && currShop.name}</div> 
+    <>
+      <div className="flex">
+        <Navigation />
+        <div className="">
+          <button className="search-btn">
+            <img src={searchS} className="search-img" alt="search" />
+          </button>
+        </div>
       </div>
-      <ToastContainer/>
-    </div>
+
+      <div className="scroll-container">
+        <>
+          <h1>map</h1>
+
+          {/* MAP */}
+          <div className='map'>
+            {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
+            && 
+            <Map 
+            height={300} width={500} 
+            defaultCenter={[userGeoData.lat, userGeoData.lon]}  
+            defaultZoom={8}>
+              {shops.map((shop) => {
+                return (      
+                  <Marker
+                    width={30}
+                    anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
+                    key={shop._id}
+                    onClick={(e) => overlayHandler(e, shop)}
+                  />
+                )
+              })}
+              {currShop && 
+                  <Overlay 
+                    anchor={[+currShop.location.address.latitude, +currShop.location.address.longitude]} 
+                    offset={[120, 79]}>
+                    <div width={240} height={158} alt=''>
+                      {currShop.name}
+                    </div>
+                  </Overlay>
+              }
+              <ZoomControl />
+            </Map>
+            }
+
+            {/* CLICKED STORE */}
+            <div className="store-card">
+              <div className="flex center">
+                <div className="col">
+                  {/* NAME */}
+                  <div onClick={() => addShopHandler(currShop._id)}>
+                    <p><span className="sigfontL">name: </span>{currShop && currShop.name}</p>
+                  </div>
+                  {/* DISTANCE */}
+                  <div onClick={() => addShopHandler(currShop._id)}>
+                    <p><span className="sigfontL">distance: </span>{currShop && currShop.name}</p>
+                  </div> 
+                </div>
+              </div>
+              <div className=" patch-container">
+                <div className="patch-btn-l row">
+                  <div className="patch-btn bg-gradL center">
+                    <img src={plus} className="patch-img" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* LIST OF SHOPS */}
+            <div>
+              <h1>list sorted by distance</h1>
+              <ul>
+                {sortShopsByDist.map((shop) => 
+                <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
+                  <li 
+                    onClick={(e) => overlayHandler(e, shop.shop)}
+                    key={shop.shop._id}
+                    >
+
+
+                    {/* DISTANCE-LIST */}
+                    <div className="store-card">
+                      <div className="flex center">
+
+                        <div className="col">
+                          {/* NAME */}
+                          <div onClick={() => addShopHandler(currShop._id)}>
+                            <p><span className="sigfontD">name: </span>
+                            {shop.shop.name}
+                            </p>
+                          </div>
+                          {/* DISTANCE */}
+                          <div onClick={() => addShopHandler(currShop._id)}>
+                            <p><span className="sigfontD">distance: </span>xxx</p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div className=" patch-container">
+                        <div className="patch-btn-l row">
+                          <div className="patch-btn bg-gradD center">
+                            <img src={plus} className="patch-img" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </li>
+                </div>
+                )}
+              </ul>
+            </div> 
+            <ToastContainer/>
+          </div>
+
+
+
+        </>
+      </div>
+    </>
   )
 }
 

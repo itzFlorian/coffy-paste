@@ -56,7 +56,7 @@ const Main = () => {
         <div className="bg"></div>
       </div>
 
-      <div className="logoM-container">
+      <div className="logoM-container" onClick={() => navigate("/")}>
         <img src={logoM} alt="logo" />
       </div>
 
