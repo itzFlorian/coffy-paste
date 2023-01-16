@@ -46,7 +46,7 @@ const Registration = () => {
     .then(json => json.json())
     .then(data => {
       if(data.message){
-        toast.info("Please verify your emailadress",toastOptions)
+        toast.info("Please verify your emaildadress",toastOptions)
       }
       if(data.error){
         data.error.map((err)=>{
