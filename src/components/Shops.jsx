@@ -223,7 +223,8 @@ const overlayHandler = (e, shop) => {
             <li 
               onClick={(e) => overlayHandler(e, shop.shop)}
               key={shop.shop._id}
-            >{shop.shop.name}</li>
+              >{shop.shop.name}
+            </li>
           </div>
           )}
         </ul>
