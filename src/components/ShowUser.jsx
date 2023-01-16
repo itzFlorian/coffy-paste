@@ -80,7 +80,7 @@ console.log(currentUser);
         <div>
           <h1>my top stores</h1>
 
-          {currentUser?.shops && currentUser.shops.map((shop)=>{
+          {currentUser?.shops && currentUser.topShops.map((shop)=>{
             <div className="store-card flex">
               <div className="col">
                 <p>store</p>
