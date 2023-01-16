@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 const Navigation = () => {
   const navigate = useNavigate()
   return (
-    <div className="flex center">
+    <div className="x flex center">
 
     <div className="space">
       <button
