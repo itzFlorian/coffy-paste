@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { Route, Routes } from "react-router";
 import { host } from "../api/Routes.jsx";
 import NavBar from "./NavBar.jsx";
-// import Shops from "./Shops.jsx";
+import Shops from "./Shops.jsx";
 import Stats from "./Stats.jsx";
 import MyAccount from "./MyAccount.jsx";
 import Community from "./Community.jsx";
@@ -60,7 +60,7 @@ const Main = () => {
 
       <Routes>
         <Route path="/" element={<NavBar />} />
-        {/* <Route path="/shops" element={<Shops/>} /> */}
+        <Route path="/shops" element={<Shops/>} />
         <Route path="/myaccount/:id?" element={<MyAccount />} />
         <Route path="/community" element={<Community />} />
         <Route path="/stats" element={<Stats />} />
