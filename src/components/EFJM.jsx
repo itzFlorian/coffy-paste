@@ -22,7 +22,8 @@ const EFJM = () => {
         <div className="bg"></div>
       </div>
 
-      <div className="logoM-container">
+      <div className="logoM-container"
+      onClick={() => navigate("/")}>
         <img src={logoM} alt="logo" />
       </div>
 
@@ -33,7 +34,7 @@ const EFJM = () => {
 
 
         {/* E L E N I */}
-        <div className="scroll-container">
+        <div className="efjm-scroll-container">
           <div className="card-container">
             <div className="icon-container icon-top bg-gradL flex center">
               <img src={avatar} className="avatar-icon"/>
