@@ -12,13 +12,8 @@ const Welcome = () => {
 console.log(logoM);
   return (
     <>
-      {/* HEADER */}
-      <div className="flex relative">
-        <div className="bg"></div>
-      </div>
-
       {/* BODY */}
-      <div className="x middle-container">
+      <div className="x center">
         <div className="logoL-container">
           <img src={logoM} alt="logo" />
         </div>

@@ -66,6 +66,12 @@
     background-color: var(--OLDWHITE);
 }
 
+.overflow-container{
+    width: 90%;
+    height: 80%;
+    overflow: scroll;
+}
+
 
 .icon-container{
     width: 60px;
@@ -105,10 +111,6 @@ input{
 }
 
 
-.navbar{
-    
-}
-
 
 .card-container{
     display: flex;
@@ -131,4 +133,20 @@ input{
     height: 40px;
     border-radius: 50%;
     margin: 0.3rem
+}
+
+.scroll-container{
+    margin: auto;
+    width: 90%;
+    height: 65%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.content{
+    border: 5px solid blue;
+    width: 80%;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
 }
