@@ -1,16 +1,6 @@
 // - - - - - I M A G E S - - - - -
 
-.efjm-logo{
-    display: flex;
-    position: absolute;
-    bottom: 0%;
-    width: 100vw;
-    justify-content: center;
-    img{
-        height: 30px;
-        margin-bottom: 1rem;
-    }
-}
+
 
 .bg{
     display: flex;
@@ -23,7 +13,6 @@
     background-size: cover;
     background-position: center;
     background-image: url("../images/coffypaste_bg_568217968.png");
-    
 }
 
 // .bg-img{
@@ -67,5 +56,18 @@
     img{
         position: absolute;
         width: 80px;
+    }
+}
+
+
+.efjm-logo{
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    width: 100vw;
+    justify-content: center;
+    img{
+        height: 30px;
+        margin-bottom: 1rem;
     }
 }

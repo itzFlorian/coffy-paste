@@ -68,7 +68,9 @@ const Main = () => {
       </Routes>
 
       <div className="efjm-logo">
-        <img src={efjm} alt="logo of the efjm-team" />
+        <div onClick={() => navigate("/efjm")}>
+          <img src={efjm} alt="logo of the efjm-team" />
+        </div>
       </div>
     </>
   );
