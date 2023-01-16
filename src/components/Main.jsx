@@ -61,7 +61,7 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<NavBar />} />
         {/* <Route path="/shops" element={<Shops/>} /> */}
-        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/myaccount/:id?" element={<MyAccount />} />
         <Route path="/community" element={<Community />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/efjm" element={"EFJM"} />
