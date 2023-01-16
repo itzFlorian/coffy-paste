@@ -5,11 +5,32 @@
     align-items: center;
     justify-content: center;
     img{
-        width: 60vw;
-        margin-top: 1vw;
+        max-width: 300px;
+        margin-top: 30px;
+        margin-bottom: 30px
     }
 }
 
+
+.logoL-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        max-width: 55vw;
+        min-width: 400px;
+        margin-top: 10vw;
+    }
+}
+
+.middle-container{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    justify-content: space-around;
+
+    
+}
 
 .card{
     margin: 0.5rem;

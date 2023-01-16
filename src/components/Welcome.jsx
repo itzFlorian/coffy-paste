@@ -12,19 +12,20 @@ const Welcome = () => {
 console.log(logoM);
   return (
     <>
+      {/* HEADER */}
       <div className="flex relative">
         <div className="bg"></div>
       </div>
 
-      <div className="welcome-container">
-        <div className="logoM-container">
+      {/* BODY */}
+      <div className="x middle-container">
+        <div className="logoL-container">
           <img src={logoM} alt="logo" />
         </div>
 
         <div className="rotate">
           <h1 className="center">Welcome to the tasty side</h1>
         </div>
-
 
         <div className="buttons col center">
           <button
@@ -38,7 +39,7 @@ console.log(logoM);
         </div>
       </div>
 
-
+      {/* FOOTER */}
       <div className="efjm-logo">
         <img
           src={efjm}
