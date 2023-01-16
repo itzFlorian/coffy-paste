@@ -23,15 +23,15 @@ const Community = () => {
         'Content-type': 'application/json; charset=UTF-8',
       }
     })
-    .then(json => json.json())
-    .then(data => {    
-      console.log("data von checkValidation", data);
-      if(data.userId){
-        setUser(data.userId)
-      }
-      if(data.error){
-        navigate("/welcome")     
-      }
+    .then(json => {
+      if(!json.ok){
+          navigate("/welcome")
+        }
+        return json.json()
+    })
+    .then(data => {
+      console.log(data);
+      setUser(data.userId)
     })
     }
     checkValidation()
@@ -62,17 +62,14 @@ const Community = () => {
         })
         .then(json => json.json())
         .then(data => {
-          console.log("fetchUser", data);
          setCurrentUser(data)
         })
         }
       fetchUser()
       fetchUsers()
   },[])
-
-  console.log(user);
   
-  const addFriendHandler = async (event, friend) => {
+  const addFriendHandler = async (friend) => {
     console.log(friend, user);
     await fetch(`${host}/users/addFriend`, {
       credentials:"include",
@@ -116,7 +113,7 @@ const Community = () => {
               <img src={user.avatar} alt="avatar" />
               <p>{user.userName}</p>
               <p>{user.favCoffee}</p>
-              <BsPlusCircleFill onClick={() => addFriendHandler(event, user._id)}/>
+              <BsPlusCircleFill onClick={() => addFriendHandler( user._id)}/>
             </div>
             )
           })}          

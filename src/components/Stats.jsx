@@ -1,7 +1,9 @@
+import Navigation from "./Navigation.jsx";
+
 const Stats = () => {
   return (
     <div>
-      stats
+      <Navigation/>
     </div>
   );
 };

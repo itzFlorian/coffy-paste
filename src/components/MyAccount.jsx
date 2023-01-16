@@ -36,7 +36,7 @@ const MyProfile = () => {
   };
 
   return (
-    <>
+    <>    
       <h2>my profile</h2>
       <div className="row">
         <div className="icon">
