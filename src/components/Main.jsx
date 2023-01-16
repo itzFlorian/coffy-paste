@@ -66,7 +66,7 @@ const Main = () => {
         <Route path="/community" element={<Community />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/efjm" element={<EFJM/>} />
-        <Route path="/showUser/:id" element={<ShowUser/>} />
+        <Route path="/community/showUser/:id" element={<ShowUser />} />
       </Routes>
 
       <div className="efjm-logo">

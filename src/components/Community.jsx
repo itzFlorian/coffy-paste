@@ -99,6 +99,22 @@ const Community = () => {
     setTrigger(!trigger)
   }
 
+  const deleteFriendHandler = async (friend) => {
+    await fetch(`${host}/users/friends`, {
+      credentials:"include",
+      method: 'DELETE',
+      body: JSON.stringify({friend:friend, user:user}),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json =>json.json())
+    .then(data => {
+      toast.info(data.message, toastOptions)
+    })
+    setTrigger(!trigger)
+  }
+
   return (
     <>
       <div className="flex">
@@ -115,10 +131,10 @@ const Community = () => {
         {currentUser?.friends && currentUser.friends.map((friend)=>{
           return (
             <>
-              <div className="store-card">
-          <div className="flex center">
-            <div className="iconS bg-gradL">
-              <img src={friend.avatar} className="avatar-icon"/>
+              <div className="store-card" key={friend._id} >
+                <div className="flex center">
+                <div className="iconS bg-gradL">
+                <img src={friend.avatar} className="avatar-icon" onClick={() => navigate(`showUser/${friend._id}`)}/>
             </div>
             <div className="col">
               <p>{friend.userName}</p>
@@ -128,7 +144,7 @@ const Community = () => {
           <div className=" patch-container">
             <div className="patch-btn-l row">
               <div className="patch-btn bg-gradL center">
-                <img src={heart} className="patch-img" alt="" />
+                <img src={heart} className="patch-img" alt="" onClick={() => deleteFriendHandler(friend._id)}/>
               </div>
             </div>
           </div>
@@ -147,7 +163,7 @@ const Community = () => {
                   <div className="store-card" key={user._id}>
                   <div className="flex center">
                     <div className="iconS bg-gradD">
-                      <img src={user.avatar} className="avatar-icon"/>
+                      <img src={user.avatar} className="avatar-icon"  onClick={() => navigate(`showUser/${user._id}`)}/>
                     </div>
                     <div className="col">
                       <p>{user.userName}</p>
@@ -157,7 +173,7 @@ const Community = () => {
                   <div className=" patch-container">
                     <div className="patch-btn-l row">
                       <div className="patch-btn bg-gradD center">
-                        <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler( user._id)}/>
+                        <img src={plus} className="patch-img" alt="" onClick={() => addFriendHandler(user._id)}/>
                       </div>
                     </div>
                   </div>
