@@ -129,6 +129,7 @@ useEffect(()=> {
           shopsFiltered.map((shop) => li)
         </ul>
       </div>  */}
+      
     </>
   )
 }
