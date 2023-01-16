@@ -56,6 +56,7 @@
     border: 2px solid aqua
 }
 
+
 .App{
     display: flex;
     flex-direction: column;
@@ -74,8 +75,13 @@
     >*{
         width: 80%;
         align-items: center;
+    };
+
+    @media screen and (min-width: 1500px) {
+        background-position: 0px -1100px;
     }
 }
+
 
 
 

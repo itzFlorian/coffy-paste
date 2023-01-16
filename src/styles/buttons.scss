@@ -42,3 +42,25 @@
 .search-img{
     height: 3.5rem;
 }
+
+
+.close-section{
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    div{
+        display: flex;
+        border: 1.5px solid white;
+        border-radius: 50px;
+        width: 50px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        >*{
+            height: 40px;
+            transform: rotate(45deg)
+        }
+    }
+}
