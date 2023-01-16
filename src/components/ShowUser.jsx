@@ -4,11 +4,8 @@ import { host } from "../api/Routes.jsx";
 
 import Navigation from "./Navigation.jsx";
 
-
 import searchS from "../images/coffypaste_icon_search_s.png"
-import avatar from "../images/coffypaste_icon_avatar.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
-
 
 const ShowUser = () => {
   const { id } = useParams()
@@ -30,14 +27,6 @@ const ShowUser = () => {
       }
     fetchUser()
   },[])
-
-  const handleInput =() => {
-
-  }
-
-  const handleSubmit = () => {
-
-  }
  
 console.log(currentUser);
   return (
@@ -78,22 +67,20 @@ console.log(currentUser);
         </>
 
         {/* FORM-CONTAINER */}
-        <form onSubmit={handleSubmit} className="col">
+        <div className="col">
           <p>{currentUser.userName}</p>
           <p>{currentUser.city}</p>
-        </form>
+        </div>
       </>
 
 
       {/* R I G H T S I D E */}
       <>
-
         {/* TOP-STORE-CONTAINER */}
         <div>
           <h1>my top stores</h1>
 
-          {/* TOP-STORE */}
-          {currentUser?.shops && currentUser.shops.map(()=>{
+          {currentUser?.shops && currentUser.shops.map((shop)=>{
             <div className="store-card flex">
               <div className="col">
                 <p>store</p>
@@ -120,7 +107,6 @@ console.log(currentUser);
               </div>              
             </>
           })}
-
         </div>
       </>
     </div>
