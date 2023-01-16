@@ -8,8 +8,11 @@ import searchS from "../images/coffypaste_icon_search_s.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
 
 const ShowUser = () => {
+
   const { id } = useParams()
   const [currentUser, setCurrentUser] = useState({})
+
+  console.log(currentUser);
 
   useEffect(()=> {
     const fetchUser = async () => {
@@ -26,9 +29,10 @@ const ShowUser = () => {
       })
       }
     fetchUser()
-  },[])
- 
-console.log(currentUser);
+  },[]) 
+
+  console.log(currentUser.topShops);
+  
   return (
 
     <>
@@ -81,6 +85,7 @@ console.log(currentUser);
           <h1>my top stores</h1>
 
           {currentUser?.shops && currentUser.topShops.map((shop)=>{
+            console.log(shop);
             <div className="store-card flex">
               <div className="col">
                 <p>store</p>
