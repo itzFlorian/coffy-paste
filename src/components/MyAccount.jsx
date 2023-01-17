@@ -3,7 +3,6 @@ import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { host } from "../api/Routes.jsx";
 
-
 // components
 import Navigation from "./Navigation.jsx";
 
@@ -20,11 +19,9 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [showButton, setShowButton] = useState(false);
   const [editUser, setEditUser] = useState(true);
-  // const toggleEdit = () => {
-  //   setEditUser(!editUser);
-  //   onclick(!editUser);
-  // };
+
   console.log(currentUserId);
+  console.log(currentUser);
   const handleInput = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
@@ -119,7 +116,6 @@ const MyProfile = () => {
               type="text"
               disabled={editUser}
               placeholder={currentUser.userName}
-              value={userData.userName}
               name="userName"
               className="card"
             />

@@ -35,12 +35,13 @@
 .splitscreen{
     display: flex;
     flex-direction:column;
+    >*{
+        width: 100%;
+    }
 
     @media screen and (min-width: 800px) {
         flex-direction: row;
         justify-content: space-between;
-
-
         >*{
             width: 48%;
         }
