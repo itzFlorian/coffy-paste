@@ -1,11 +1,10 @@
-// - - - - - T E C H - - - - 
+// - - - - - T E C H - - - -
 import UserContext from "../context/userContext.jsx";
-import { useContext, useState } from "react";
-
+import { useContext, useState, useEffect } from "react";
+import { host } from "../api/Routes.jsx";
 
 // - - - - - F I L E S - - - - -
 import Navigation from "./Navigation.jsx";
-
 
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png"
@@ -18,18 +17,42 @@ import plus from "../images/coffypaste_icon_plus.png"
 
 const MyProfile = () => {
   const [userData, setUserData] = useState();
-  const [currentUser, setCurrentUser] = useContext(UserContext);
-  console.log(currentUser);
+  const [currentUserId, setCurrentUserId] = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useState({});
+  const [showButton, setShowButton] = useState(false);
+  const [editUser, setEditUser] = useState(true);
+  // const toggleEdit = () => {
+  //   setEditUser(!editUser);
+  //   onclick(!editUser);
+  // };
+  console.log(currentUserId);
   const handleInput = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
+  useEffect(() => {
+    const fetchUser = async () => {
+      await fetch(`${host}/users/${currentUserId}`, {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((json) => json.json())
+        .then((data) => {
+          setCurrentUser(data);
+        });
+    };
+    fetchUser();
+  }, []);
+  console.log(currentUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateUserData = async () => {
-      await fetch(`${host}/users/`, {
+      await fetch(`${host}/users/${currentUser}`, {
         credentials: "include",
-        method: "PUT",
+        method: "PATCH",
         body: JSON.stringify(userData),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -45,9 +68,12 @@ const MyProfile = () => {
           }
         });
     };
-    sendData();
+    updateUserData();
   };
-
+  const handleEditUser = () => {
+    setEditUser(!editUser);
+    setShowButton(!showButton);
+  };
   return (
     <>
       <div className="flex">
@@ -61,7 +87,6 @@ const MyProfile = () => {
           </button>
         </div>
       </div>
-
 
       <div className="scroll-container">
         {/* L E F T S I D E */}
@@ -81,8 +106,8 @@ const MyProfile = () => {
               </div>
               {/* text */}
               <div className="flex col">
-                <p>my favorite coffee</p>
-                <p>my name</p>
+                <p>{currentUser.myFavCoff}</p>
+                <p>{currentUser.userName}</p>
               </div>
             </div>
           </>
@@ -92,43 +117,54 @@ const MyProfile = () => {
             <input
               onChange={handleInput}
               type="text"
-              placeholder="my username"
-              name="my userName"
+              disabled={editUser}
+              placeholder={currentUser.userName}
+              name="userName"
               className="card"
             />
             <input
               onChange={handleInput}
               type="text"
-              placeholder="my city"
-              name="my city"
+              disabled={editUser}
+              placeholder={currentUser.city}
+              name="city"
               className="card"
             />
             <input
               onChange={handleInput}
               type="text"
-              placeholder="my e-mail-address"
+              disabled={editUser}
+              placeholder={currentUser.email}
               name="my e-mail-address"
               className="card"
             />
             <input
               onChange={handleInput}
-              type="password"
+              type={editUser ? "hidden" : "password"}
+              disabled={editUser}
               placeholder="my password"
               name="my password"
               className="card"
             />
             <div className="center">
-              <button type="submit" className="btn">
-                edit my profile
+              <button type="button" className="btn" onClick={handleEditUser}>
+                {editUser ? "edit my profile" : "close"}
               </button>
+              {showButton && (
+                <button
+                  type="submit"
+                  className="btn"
+                  onClick={() => setEditUser(!editUser)}
+                >
+                  update profile
+                </button>
+              )}
             </div>
           </form>
         </>
 
-
         {/* R I G H T S I D E */}
         <>
-
           {/* TOP-STORE-CONTAINER */}
           <div>
             <h1>my top stores</h1>
@@ -142,7 +178,7 @@ const MyProfile = () => {
               <div className="patch-container">
                 <div className="patch-btn-l row">
                   <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img"/>
+                    <img src={minus} className="patch-img" />
                   </div>
                 </div>
               </div>
@@ -156,7 +192,7 @@ const MyProfile = () => {
               <div className="patch-container">
                 <div className="patch-btn-l row">
                   <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img"/>
+                    <img src={minus} className="patch-img" />
                   </div>
                 </div>
               </div>
@@ -170,7 +206,7 @@ const MyProfile = () => {
               <div className="patch-container">
                 <div className="patch-btn-l row">
                   <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img"/>
+                    <img src={minus} className="patch-img" />
                   </div>
                 </div>
               </div>
@@ -181,15 +217,23 @@ const MyProfile = () => {
               <h1>my comments</h1>
             </div>
             <div className="card">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, veniam?</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
             </div>
             <div className="card">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, veniam?</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
             </div>
             <div className="card">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, veniam?</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
             </div>
-
           </div>
         </>
       </div>
