@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css"
 import searchS from "../images/coffypaste_icon_search_s.png"
 import heart from "../images/coffypaste_icon_heart.png"
 import plus from "../images/coffypaste_icon_plus.png"
-import minus from "../images/coffypaste_icon_minus.png"
 
 
 const Community = () => {
@@ -120,16 +119,19 @@ const Community = () => {
     <>
       <div className="flex">
         <Navigation />
-        <div className="">
+        <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
+          </button>
+          <button className="logout-btn">
+            <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
       </div>
 
       <div className="scroll-container">
         <div className="my-friends-container">
-          <div className="x rotate">
+          <div className="rotate">
           <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
           </div>
           {currentUser?.friends && currentUser.friends.map((friend)=>{

@@ -23,6 +23,31 @@
     justify-content: center;
 }
 
+.logout-btn{
+    margin-left: 1rem;
+    display: flex;
+    position: relative;
+    border: 1px solid var(--OLDWHITE);
+    background-color: var(--EMPTY);
+    color: var(--OLDWHITE);
+    border-radius: 7px;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    img{
+        rotate: (45deg);
+        height: 45px
+    }
+}
+
+
+
+.logout-btn{
+
+}
+
+
 .patch-container{
     display: flex;
 }
