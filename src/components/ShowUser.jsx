@@ -14,8 +14,6 @@ const ShowUser = () => {
   const { id } = useParams()
   const [currentUser, setCurrentUser] = useState({})
 
-  console.log(currentUser);
-
   useEffect(()=> {
     const fetchUser = async () => {
       await fetch(`${host}/users/${id}`, {
@@ -32,8 +30,6 @@ const ShowUser = () => {
       }
     fetchUser()
   },[]) 
-
-  console.log(currentUser.topShops);
   
   return (
 
@@ -88,12 +84,13 @@ const ShowUser = () => {
         <div>
           <h1>my top stores</h1>
 
-          {currentUser?.shops && currentUser.topShops.map((shop)=>{
+          {currentUser?.topShops && currentUser.topShops.map((shop)=>{
             console.log(shop);
+            return(
             <div className="store-card flex">
               <div className="col">
-                <p>store</p>
-                <p>adresse</p>
+                <p>{shop.name}</p>
+                <p>address: {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}</p>
               </div>
               <div className="patch-container">
                 <div className="patch-btn-l row">
@@ -103,6 +100,7 @@ const ShowUser = () => {
                 </div>
               </div>
             </div>
+            )
           })}        
 
           {/* COMMENT-CONTAINER */}
@@ -112,7 +110,7 @@ const ShowUser = () => {
           {currentUser?.comments && currentUser.comments.map((comment)=>{
             <>
               <div className="card">
-                <p>{comment.text}?</p>
+                <p>{comment.comment}?</p>
               </div>              
             </>
           })}
