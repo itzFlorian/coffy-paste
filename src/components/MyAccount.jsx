@@ -85,30 +85,27 @@ const MyProfile = () => {
         </div>
       </div>
 
-      <div className="scroll-container">
-        {/* L E F T S I D E */}
-        <>
-          {/* POFILE-CONTAINER */}
-          <>
-            <h1>my profile</h1>
+    <div className="mt">
+      <div className="x splitscreen">
+        <div>
+          {/* L E F T S I D E */}
+          <h1>my profile</h1>
+          <div className="flex">
+            {/* icons */}
             <div className="flex">
-              {/* icons */}
-              <div className="flex">
-                <div className="iconS">
-                  <img src={avatar} alt="avatar-icon" />
-                </div>
-                <div className="iconS">
-                  <img src={coffee} alt="avatar-icon" />
-                </div>
+              <div className="iconS">
+                <img src={avatar} alt="avatar-icon" />
               </div>
-              {/* text */}
-              <div className="flex col">
-                <p>{currentUser.myFavCoff}</p>
-                <p>{currentUser.userName}</p>
+              <div className="iconS">
+                <img src={coffee} alt="avatar-icon" />
               </div>
             </div>
-          </>
-
+            {/* text */}
+            <div className="flex col">
+              <p>{currentUser.myFavCoff}</p>
+              <p>{currentUser.userName}</p>
+            </div>
+          </div>
           {/* FORM-CONTAINER */}
           <form onSubmit={handleSubmit} className="col">
             <input
@@ -168,9 +165,11 @@ const MyProfile = () => {
               )}
             </div>
           </form>
-        </>
+        </div>
 
-        {/* R I G H T S I D E */}
+
+      {/* R I G H T S I D E */}
+      <div className="scroll-container">
         <>
           {/* TOP-STORE-CONTAINER */}
           <div>
@@ -244,7 +243,10 @@ const MyProfile = () => {
           </div>
         </>
       </div>
+      </div>
+      </div>
     </>
+
   );
 };
 

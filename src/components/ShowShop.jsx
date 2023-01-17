@@ -6,6 +6,7 @@ import { host } from "../api/Routes.jsx";
 
 import searchS from "../images/coffypaste_icon_search_s.png";
 import coffee from "../images/coffypaste_icon_coffee_default.png";
+import heart from "../images/coffypaste_icon_heart.png"
 
 // - - - - - F I L E S - - - - -
 import Navigation from "./Navigation.jsx";
@@ -103,52 +104,108 @@ const ShowShop = () => {
   })
 
   return (
-    <div>      
-      <Navigation/>
-      {currentShop &&
-      <>
-        <div className="nameOfTheShop">
-          <h1>{currentShop.name}</h1>
+    <>
+      <div className="flex">
+        <Navigation />
+        <div className="flex">
+          <button className="search-btn">
+            <img src={searchS} className="search-img" alt="search" />
+          </button>
+          <button className="logout-btn">
+            <img src={plus} className="logout" alt="logout" />
+          </button>
         </div>
-        <div className="shop-container">
-          <p>rating: {"⭐".repeat((ratings.reduce((a,b)=> a+b, 0) / currentShop.rating.length).toFixed())}</p>
-          <p>
-            address: {`${currentShop.location.address.street} ${currentShop.location.address.number} ${currentShop.location.address.zip} ${currentShop.location.address.city}`}
-          </p>  
-          <div className="extras">
-            <h1>services</h1>
-            {currentShop.services.has_sockets && <SiSocketdotio className="service-icons"/>}
-            {currentShop.services.has_wifi && <AiOutlineWifi className="service-icons"/>}
-            {currentShop.services.has_toilet && <TbToiletPaper className="service-icons"/>}
-            {currentShop.services.can_take_calls && <BsFillTelephoneForwardFill className="service-icons"/>}
+      </div>
+
+
+      <div className="mt">
+        <div className="splitscreen">
+          <div className="scroll-container">
+            {/* LEFTSIDE */}
+            <div>
+              <div>
+                <h1>{currentShop?.name}</h1>
+              </div>
+              <div className="card">
+                <p><span className="foBE"> rating: </span>{"⭐".repeat((ratings?.reduce((a,b)=> a+b, 0) / currentShop?.rating.length).toFixed())}</p>
+                <p>
+                <span className="foBE"> address: </span>{`${currentShop?.location.address.street} ${currentShop?.location.address.number} ${currentShop?.location.address.zip} ${currentShop?.location.address.city}`}
+                </p>
+              </div>
+
+
+              <div>
+                <h1>services</h1>
+                <div className="card">
+                  <div className="patch-btn-l row">
+                    <div className="circle serv bg-gradL">
+                      {currentShop?.services.has_sockets &&
+                      <SiSocketdotio className="service-icons"/>}
+                    </div>
+                    <div className="circle serv bg-gradL">
+                      {currentShop?.services.has_wifi && 
+                      <AiOutlineWifi className="service-icons"/>}
+                    </div>
+                    <div className="circle serv bg-gradL">
+                      {currentShop?.services.has_toilet && 
+                      <TbToiletPaper className="service-icons"/>}
+                    </div>
+                    <div className="circle serv bg-gradL">
+                      {currentShop?.services.can_take_calls &&      <BsFillTelephoneForwardFill className="service-icons"/>}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+        {/* RIGHTSIDE */}
+        <div className="scroll-container">
+          <div>
+            <h1>post a comment</h1>
+            <div className="card">
+              <textarea onChange={()=> setText(event.target.value)} name="comment" cols="45" rows="10" value={text}></textarea>
+              <div className="patch-btn-l row">
+                <h1 className="foBE">rating</h1>
+                <div className="circle serv bg-gradL">
+                  <button onClick={()=> setRating(1)}></button>
+                </div>
+                <div className="circle serv bg-gradL">
+                  <button onClick={()=> setRating(2)}>⭐</button>
+                </div>
+                <div className="circle serv bg-gradL">
+                  <button onClick={()=> setRating(3)}>⭐</button>
+                </div>
+                <div className="circle serv bg-gradL">
+                  <button onClick={()=> setRating(4)}>⭐</button>
+                </div>
+                <div className="circle serv bg-gradL">
+                  <button onClick={()=> setRating(5)}>⭐</button>
+                </div>
+              </div>
+
+              <div className="send-btn bg-gradL center">
+                <button onClick={sendRatingHandler}>send</button>
+              </div>
+
+            </div>
+          </div>
+          <h1>read comments</h1>
+        {currentShop?.comments.map((comment)=>{
+          return (
+            <div key={comment._id}>
+              <div>{comment.comment}</div>
+              <div>{comment.createdAt}</div>
+            </div>
+          )
+        })}
+        <ToastContainer/>
         </div>
-        <div className="comment-container">
-          <h1>post a comment</h1>
-          <textarea onChange={()=> setText(event.target.value)} name="comment" cols="45" rows="10" value={text}></textarea>
-          <div className="rating">
-            <h1>rating</h1>
-            <button onClick={()=> setRating(1)}>⭐</button>
-            <button onClick={()=> setRating(2)}>⭐</button>
-            <button onClick={()=> setRating(3)}>⭐</button>
-            <button onClick={()=> setRating(4)}>⭐</button>
-            <button onClick={()=> setRating(5)}>⭐</button>
-          </div>
-          <button onClick={sendRatingHandler}>send</button>
+
+
         </div>
-      </>        
-      }
-      <h1>read comments</h1>
-      {currentShop?.comments.map((comment)=>{
-        return (
-          <div key={comment._id}>
-            <div>{comment.comment}</div>
-            <div>{comment.createdAt}</div>
-          </div>
-        )
-      })}
-      <ToastContainer/>
-    </div>
+      </div>
+    </>
   );
 };
 
