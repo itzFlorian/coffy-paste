@@ -10,6 +10,7 @@ import plus from "../images/coffypaste_icon_plus.png"
 
 
 const ShowUser = () => {
+
   const { id } = useParams()
   const [currentUser, setCurrentUser] = useState({})
 
@@ -28,9 +29,8 @@ const ShowUser = () => {
       })
       }
     fetchUser()
-  },[])
- 
-console.log(currentUser);
+  },[]) 
+  
   return (
 
     <>
@@ -84,11 +84,13 @@ console.log(currentUser);
         <div>
           <h1>my top stores</h1>
 
-          {currentUser?.shops && currentUser.topShops.map((shop)=>{
+          {currentUser?.topShops && currentUser.topShops.map((shop)=>{
+            console.log(shop);
+            return(
             <div className="store-card flex">
               <div className="col">
-                <p>store</p>
-                <p>adresse</p>
+                <p>{shop.name}</p>
+                <p>address: {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}</p>
               </div>
               <div className="patch-container">
                 <div className="patch-btn-l row">
@@ -98,6 +100,7 @@ console.log(currentUser);
                 </div>
               </div>
             </div>
+            )
           })}        
 
           {/* COMMENT-CONTAINER */}
@@ -107,7 +110,7 @@ console.log(currentUser);
           {currentUser?.comments && currentUser.comments.map((comment)=>{
             <>
               <div className="card">
-                <p>{comment.text}?</p>
+                <p>{comment.comment}?</p>
               </div>              
             </>
           })}

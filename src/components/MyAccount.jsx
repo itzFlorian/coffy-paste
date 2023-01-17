@@ -7,14 +7,12 @@ import { host } from "../api/Routes.jsx";
 // components
 import Navigation from "./Navigation.jsx";
 
-// icons
-import searchS from "../images/coffypaste_icon_search_s.png"
-import avatar from "../images/coffypaste_icon_avatar.png"
-import coffee from "../images/coffypaste_icon_coffee_default.png"
-import minus from "../images/coffypaste_icon_minus.png"
-import plus from "../images/coffypaste_icon_plus.png"
-
-
+// - - - - - I M A G E S - - - - -
+import searchS from "../images/coffypaste_icon_search_s.png";
+import avatar from "../images/coffypaste_icon_avatar.png";
+import coffee from "../images/coffypaste_icon_coffee_default.png";
+import minus from "../images/coffypaste_icon_minus.png";
+import plus from "../images/coffypaste_icon_plus.png";
 
 const MyProfile = () => {
   const [userData, setUserData] = useState();
@@ -51,7 +49,7 @@ const MyProfile = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateUserData = async () => {
-      await fetch(`${host}/users/${currentUser}`, {
+      await fetch(`${host}/users/${currentUserId}`, {
         credentials: "include",
         method: "PATCH",
         body: JSON.stringify(userData),
@@ -70,6 +68,7 @@ const MyProfile = () => {
         });
     };
     updateUserData();
+    setShowButton(!showButton);
   };
   const handleEditUser = () => {
     setEditUser(!editUser);
@@ -120,6 +119,7 @@ const MyProfile = () => {
               type="text"
               disabled={editUser}
               placeholder={currentUser.userName}
+              value={userData.userName}
               name="userName"
               className="card"
             />
@@ -147,10 +147,20 @@ const MyProfile = () => {
               name="my password"
               className="card"
             />
+            <input
+              onChange={handleInput}
+              disabled={editUser}
+              type="text"
+              placeholder={`I like my coffee ${currentUser.myFavCoff}`}
+              name="my favCoff"
+              className="card"
+            />
             <div className="center">
-              <button type="button" className="btn" onClick={handleEditUser}>
-                {editUser ? "edit my profile" : "close"}
-              </button>
+              {!showButton && (
+                <button type="button" className="btn" onClick={handleEditUser}>
+                  {editUser ? "edit my profile" : "close"}
+                </button>
+              )}
               {showButton && (
                 <button
                   type="submit"

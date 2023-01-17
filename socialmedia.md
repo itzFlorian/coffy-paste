@@ -13,9 +13,9 @@ https://github.com/elenosis
 F L O R I A N
 - - - -  - - - - - - - - - 
 linkedIN:
-
+https://www.linkedin.com/in/florian-mewes-947649240/
 xing:
-
+https://www.xing.com/profile/Florian_Mewes6/cv
 github:
 https://github.com/itzFlorian
 
