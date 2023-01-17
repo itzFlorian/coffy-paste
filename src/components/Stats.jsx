@@ -26,7 +26,7 @@ const Stats = () => {
       </div>
 
       <div className="mt x splitscreen">
-        <div>
+        <div className="y">
           <h1>user stats</h1>
           <div className="card">
             <p>newest user:</p>
