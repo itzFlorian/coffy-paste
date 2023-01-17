@@ -14,8 +14,6 @@ import Navigation from "./Navigation.jsx";
 import plus from "../images/coffypaste_icon_plus.png";
 
 const ShowShop = () => {
-  const { id } = useParams();
-  const [currentShop, setCurrentShop] = useState(undefined);
   const {id} = useParams()
   const [rating, setRating] = useState(undefined)
   const [text, setText] = useState(undefined)
@@ -37,15 +35,7 @@ const ShowShop = () => {
         });
     };
     fetchShop();
-  }, []);
-      .then(json => json.json())
-      .then(data => {
-        console.log("data",data);
-       setCurrentShop(data)
-      })
-      }
-    fetchShop()
-  },[])
+  }, []);      
 
   const sendRatingHandler = () => {
     console.log(currentShop._id);
