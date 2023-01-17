@@ -10,6 +10,7 @@ import coffee from "../images/coffypaste_icon_coffee_default.png"
 const ShowShop = () => {
   const {id} = useParams()
   const [currentShop, setCurrentShop] = useState(undefined)
+  console.log(id);
 
   useEffect(()=> {
     const fetchShop = async () => {
