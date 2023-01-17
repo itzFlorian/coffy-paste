@@ -30,6 +30,26 @@
     flex-direction: column;
 }
 
+
+
+.splitscreen{
+    display: flex;
+    flex-direction:column;
+
+    @media screen and (min-width: 800px) {
+        flex-direction: row;
+        justify-content: space-between;
+
+
+        >*{
+            width: 48%;
+        }
+    }
+}
+
+
+
+
 .wrap{
     display:flex;
     flex-wrap: wrap;
@@ -41,6 +61,13 @@
     }
 }
 
+.mb3{
+    margin-bottom: 3rem;
+}
+
+.mt{
+    margin-top: 5rem;
+}
 
 .turn{
     transform: rotate(5deg);
@@ -84,11 +111,14 @@
 
 
 
-
 .between{
     justify-content: space-between;
 }
 
 .w50{
     width: 50%
+}
+
+.cantSee{
+    overflow: hidden;
 }

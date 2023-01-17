@@ -130,10 +130,12 @@ const Community = () => {
         </div>
       </div>
 
-      <div className="scroll-container">
-        <div className="my-friends-container">
+      {/* SPLITSCREEN */}
+      <div className="mt">
+      <div className="splitscreen">
+        <div className="scroll-container">
           <div className="rotate">
-          <h1>my friends({currentUser?.friends && currentUser.friends.length})</h1>
+          <h1>my friends: {currentUser?.friends && currentUser.friends.length} </h1>
           </div>
           {currentUser?.friends && currentUser.friends.map((friend)=>{
             return (
@@ -148,7 +150,7 @@ const Community = () => {
                       <p>{friend.favCoffee}</p>
                     </div>
                   </div>
-                  <div className=" patch-container">
+                  <div className="patch-container">
                     <div className="patch-btn-l row">
                       <div className="patch-btn bg-gradL center">
                         <img src={minus} className="patch-img" alt="" onClick={() => deleteFriendHandler(friend._id)}/>
@@ -162,8 +164,8 @@ const Community = () => {
         </div>
 
 
-        <div className="all-users-container">
-          <h1>all users({users && users.length})</h1>
+        <div className="scroll-container">
+          <h1>all users: {users && users.length}</h1>
           <div>
             {users && users.map((user)=>{
               return( 
@@ -190,6 +192,7 @@ const Community = () => {
           </div>
           <ToastContainer/>
         </div>
+      </div>
       </div>
     </>
   );

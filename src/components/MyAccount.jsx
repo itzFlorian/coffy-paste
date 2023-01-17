@@ -1,9 +1,10 @@
-// - - - - - T E C H - - - -
+// import
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { host } from "../api/Routes.jsx";
 
-// - - - - - F I L E S - - - - -
+
+// components
 import Navigation from "./Navigation.jsx";
 
 // - - - - - I M A G E S - - - - -
@@ -48,7 +49,7 @@ const MyProfile = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateUserData = async () => {
-      await fetch(`${host}/users/${currentUser}`, {
+      await fetch(`${host}/users/${currentUserId}`, {
         credentials: "include",
         method: "PATCH",
         body: JSON.stringify(userData),
@@ -67,6 +68,7 @@ const MyProfile = () => {
         });
     };
     updateUserData();
+    setShowButton(!showButton);
   };
   const handleEditUser = () => {
     setEditUser(!editUser);
@@ -117,6 +119,7 @@ const MyProfile = () => {
               type="text"
               disabled={editUser}
               placeholder={currentUser.userName}
+              value={userData.userName}
               name="userName"
               className="card"
             />
@@ -153,9 +156,11 @@ const MyProfile = () => {
               className="card"
             />
             <div className="center">
-              <button type="button" className="btn" onClick={handleEditUser}>
-                {editUser ? "edit my profile" : "close"}
-              </button>
+              {!showButton && (
+                <button type="button" className="btn" onClick={handleEditUser}>
+                  {editUser ? "edit my profile" : "close"}
+                </button>
+              )}
               {showButton && (
                 <button
                   type="submit"

@@ -1,8 +1,11 @@
 .scroll-container{
-    margin: auto;
     height: 56%;
     overflow: scroll;
     overflow-x: hidden;
+    >*{
+        margin-right: 1rem;
+    }
+
 }
 
 ::-webkit-scrollbar{
