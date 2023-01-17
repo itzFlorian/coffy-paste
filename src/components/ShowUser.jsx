@@ -55,30 +55,33 @@ const ShowUser = () => {
       <>
         {/* POFILE-CONTAINER */}
         <>
-          <h1>user details</h1>
+          <div>
+            <p className="sigfontW">username: </p>
+            <h1>" {currentUser.userName}" </h1>
+          </div>
           <div className="flex">
+            <div className="iconS">
+              <img src={currentUser.avatar} alt="avatar-icon" />
+            </div>
+            <div className="ml1 col">
+              <p  className="sigfontW">stadt: </p>
+              <h3 className="sigfontW">{currentUser.city}</h3>
+            </div>
+          </div>
+
+          <div className="flex mt1">
             {/* icons */}
             <div className="flex">
-              <div className="iconS">
-                <img src={currentUser.avatar} alt="avatar-icon" />
-              </div>
               <div className="iconS">
                 <img src={coffee} alt="avatar-icon" />
               </div>
             </div>
-            {/* text */}
-            <div className="flex col">
-              <p>{currentUser.myFavCoff}</p>
-              <p>{currentUser.userName}</p>
+            <div className="ml1 col">
+              <p  className="sigfontW">lieblingskaffee: </p>
+              <h3 className="sigfontW">{currentUser.myFavCoff}</h3>
             </div>
           </div>
         </>
-
-        {/* FORM-CONTAINER */}
-        <div className="col">
-          <p>{currentUser.userName}</p>
-          <p>{currentUser.city}</p>
-        </div>
       </>
     </div>
 
