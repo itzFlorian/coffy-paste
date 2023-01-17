@@ -6,6 +6,7 @@ import Navigation from "./Navigation.jsx";
 import searchS from "../images/coffypaste_icon_search_s.png"
 import avatar from "../images/coffypaste_icon_avatar.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
+import plus from "../images/coffypaste_icon_plus.png"
 
 
 
@@ -14,9 +15,12 @@ const Stats = () => {
     <>
       <div className="flex">
         <Navigation />
-        <div className="">
+        <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
+          </button>
+          <button className="logout-btn">
+            <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
       </div>
