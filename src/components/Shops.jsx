@@ -208,9 +208,6 @@ const overlayHandler = (e, shop) => {
       <div className="mt">
       <div className="splitscreen">
 
-
-
-
       {/* LEFTSIDE */}
       <div className="cantSee">
       <h1>map</h1>
@@ -269,19 +266,21 @@ const overlayHandler = (e, shop) => {
           </div>
           <div className=" patch-container">
             <div className="patch-btn-l row">
-              <div className="patch-btn bg-gradL center" title="shop infos">
-                <p 
-                  onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
+              <div 
+                onClick={()=> navigate(`/showShop/${currShop._id}`)}
+                className="patch-btn bg-gradL center" title="shop infos">
+                <p>
                   <span className="info">i</span>
                 </p>
               </div>
-              <div className="patch-btn bg-gradL center">
+              <div 
+                onClick={() => addShopHandler(currShop._id)}
+                className="patch-btn bg-gradL center">
                 <img
                   src={plus} 
                   className="patch-img" 
                   alt="add" 
                   title="add to favorites"
-                  onClick={() => addShopHandler(currShop._id)}
                 />
               </div>
             </div>
@@ -290,9 +289,6 @@ const overlayHandler = (e, shop) => {
         }
       </div>
     </div>
-
-
-
 
           <div>
             {/* LIST OF SHOPS */}
@@ -321,14 +317,14 @@ const overlayHandler = (e, shop) => {
                           <div >
                             <p><span className="sigfontD">distance: </span>{shops && shop.distance.toFixed(1) + " km"}</p>
                           </div> 
-                          <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
-                          </div> 
-                        </div>
+                          </div>
                       </div>
                       <div className=" patch-container">
                         <div className="patch-btn-l row">
-                          <div className="patch-btn bg-gradD center">
-                            <p><span className="info">i</span></p>
+                          <div 
+                          onClick={()=> navigate(`/showShop/${currShop._id}`)}
+                          className="patch-btn bg-gradD center">
+                            <p ><span className="info">i</span></p>
                           </div>
                           <div className="patch-btn bg-gradD center">
                             <img
@@ -336,7 +332,7 @@ const overlayHandler = (e, shop) => {
                               className="patch-img" 
                               alt="add" 
                               title="add to favorites"
-                             onClick={() => addShopHandler(currShop._id)}/>
+                              onClick={() => addShopHandler(currShop._id)}/>
                           </div>
                         </div>
                       </div>
