@@ -25,14 +25,38 @@ const Stats = () => {
         </div>
       </div>
 
-      <div>
-        <h1>user stats</h1>
-        <div className="card"></div>
-      </div>
+      <div className="mt x splitscreen">
+        <div>
+          <h1>user stats</h1>
+          <div className="card">
+            <p>newest user:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+          <div className="card">
+            <p>user-counter:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+          <div className="card">
+            <p>coffy-buddys:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+        </div>
 
-      <div>
-        <h1>coffy stats</h1>
-        <div className="card"></div>
+        <div>
+          <h1>coffy stats</h1>
+          <div className="card">
+            <p>best shop:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+          <div className="card">
+            <p>shop-counter:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+          <div className="card">
+            <p>most comments:</p>
+            <h1 className="sigfont foBE">xyz</h1>
+          </div>
+        </div>
       </div>
     </>
   );
