@@ -7,6 +7,15 @@ import Navigation from "./Navigation.jsx";
 import searchS from "../images/coffypaste_icon_search_s.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
 
+
+// - - - - - F I L E S - - - - -
+import Navigation from "./Navigation.jsx";
+
+
+// images
+import plus from "../images/coffypaste_icon_plus.png"
+
+
 const ShowShop = () => {
   const {id} = useParams()
   const [currentShop, setCurrentShop] = useState(undefined)
