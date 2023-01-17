@@ -252,20 +252,28 @@ const overlayHandler = (e, shop) => {
           <div className="flex center">
             <div className="col">
               {/* NAME */}
-              <div onClick={() => addShopHandler(currShop._id)}>
-                <p><span className="sigfontL">name: </span>{currShop && 
-                  currShop.name}</p>
+              <div>
+                <p>
+                  <span className="sigfontL">name: </span>
+                  {currShop && currShop.name}
+                </p>
               </div>
               {/* DISTANCE */}
-              <div onClick={() => addShopHandler(currShop._id)}>
-                <p><span className="sigfontL">distance: </span>{currShop && addDistToShops.find(el => el.shop._id === currShop._id).distance.toFixed(1) + " km"}</p>
+              <div>
+                <p>
+                  <span className="sigfontL">distance: </span>
+                  {currShop && addDistToShops.find(el => el.shop._id === currShop._id).distance.toFixed(1) + " km"}
+                </p>
               </div> 
             </div>
           </div>
           <div className=" patch-container">
             <div className="patch-btn-l row">
               <div className="patch-btn bg-gradL center" title="shop infos">
-                <p><span className="info">i</span></p>
+                <p 
+                  onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
+                  <span className="info">i</span>
+                </p>
               </div>
               <div className="patch-btn bg-gradL center">
                 <img
@@ -273,6 +281,7 @@ const overlayHandler = (e, shop) => {
                   className="patch-img" 
                   alt="add" 
                   title="add to favorites"
+                  onClick={() => addShopHandler(currShop._id)}
                 />
               </div>
             </div>
