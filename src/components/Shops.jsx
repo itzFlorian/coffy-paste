@@ -1,4 +1,4 @@
-// I M P O R T:  E X T E R N A L  D E P E N D E N C I E S
+// external dependencies
 import React from 'react'
 import { Map, Marker, ZoomControl, Overlay } from "pigeon-maps";
 import { host } from "../api/Routes.jsx";
@@ -6,28 +6,28 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router'; 
 import Geocode from "react-geocode";
 
-// I M P O R T   C O N T E X T
+
+// import
 import UserContext from '../context/userContext.jsx';
 
-// TOAST 
+
+// toast 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
-// I M P O R T  &  D E C L A R E  K E Y S
+
+// import & declare keys
 import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 
 
-// - - - - - ICONS - - - - - 
+// components
+import Navigation from "./Navigation.jsx";
+
+
+// icons
 import searchS from "../images/coffypaste_icon_search_s.png"
-import efjm from "../images/efjm_logo.png"
-import heart from "../images/coffypaste_icon_heart.png"
-import shop from "../images/coffypaste_icon_shop.png"
-import minus from "../images/coffypaste_icon_minus.png"
 import plus from "../images/coffypaste_icon_plus.png"
 
-
-// - - - - - F I L E S - - - - -
-import Navigation from "./Navigation.jsx";
 
 
 //========================
@@ -201,16 +201,19 @@ console.log(currShop);
         </div>
       </div>
 
-      <div className="scroll-container">
-        <>
-          <h1>map</h1>
 
+      {/* SPLITSCREEN */}
+      <div className="mt">
+      <div className="splitscreen">
+        {/* LEFTSIDE */}
+        <div className="cantSee">
+          <h1>map</h1>
           {/* MAP */}
-          <div className='map'>
+          <div>
             {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
             && 
-            <Map 
-            height={300} width={500} 
+            <Map
+            height={280} width={800} 
             defaultCenter={[userGeoData.lat, userGeoData.lon]}  
             defaultZoom={8}>
               {shops.map((shop) => {
@@ -235,7 +238,6 @@ console.log(currShop);
               <ZoomControl />
             </Map>
             }
-
             {/* CLICKED STORE */}
             <div className="store-card">
               <div className="flex center">
@@ -252,15 +254,28 @@ console.log(currShop);
               </div>
               <div className=" patch-container">
                 <div className="patch-btn-l row">
+                  <div className="patch-btn bg-gradL center" title="shop infos">
+                    <p><span className="info">i</span></p>
+                  </div>
                   <div className="patch-btn bg-gradL center">
-                    <img src={plus} className="patch-img" alt="" />
+                    <img
+                      src={plus} 
+                      className="patch-img" 
+                      alt="add" 
+                      title="add to favorites"
+                    />
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+
+          <div>
             {/* LIST OF SHOPS */}
-            <div>
+            <div className="scroll-container">
+            <div >
               <h1>list sorted by distance</h1>
               <ul>
                 {sortShopsByDist.map((shop) => 
@@ -270,11 +285,9 @@ console.log(currShop);
                     key={shop.shop._id}
                     >
 
-
                     {/* DISTANCE-LIST */}
                     <div className="store-card">
                       <div className="flex center">
-
                         <div className="col">
                           {/* NAME */}
                           <div onClick={() => addShopHandler(currShop._id)}>
@@ -291,7 +304,15 @@ console.log(currShop);
                       <div className=" patch-container">
                         <div className="patch-btn-l row">
                           <div className="patch-btn bg-gradD center">
-                            <img src={plus} className="patch-img" alt="" />
+                            <p><span className="info">i</span></p>
+                          </div>
+                          <div className="patch-btn bg-gradD center">
+                            <img
+                              src={plus} 
+                              className="patch-img" 
+                              alt="add" 
+                              title="add to favorites"
+                            />
                           </div>
                         </div>
                       </div>
@@ -304,12 +325,11 @@ console.log(currShop);
             </div> 
             <ToastContainer/>
           </div>
-
-
-
-        </>
+      </div>
+      </div>
       </div>
     </>
+
   )
 }
 

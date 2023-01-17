@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     img{
-        max-width: 300px;
+        max-width: 280px;
         margin-top: 30px;
         margin-bottom: 30px
     }
@@ -31,7 +31,7 @@
 }
 
 .card{
-    margin: 0.5rem;
+    margin-bottom: 0.5rem;
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1rem;
@@ -40,25 +40,15 @@
     background-color: var(--OLDWHITE);
 }
 
-
-.member-card{
-    margin: 0.5rem;
-    padding-top:0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 5px;
-    background-color: var(--OLDWHITE);
-}
 
 .store-card{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0.5rem;
+    margin-bottom: 0.5rem;
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
-    padding-left: 0rem;
+    padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
     background-color: var(--OLDWHITE);

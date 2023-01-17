@@ -4,7 +4,6 @@ const Navigation = () => {
   const navigate = useNavigate()
   return (
     <div className="flex">
-
       <div className="space">
         <button
           className="btn"
@@ -19,7 +18,6 @@ const Navigation = () => {
           className="btn"
           onClick={() => navigate("/stats")}>stats</button>
       </div>
-
     </div>
   );
 };

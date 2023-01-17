@@ -1,12 +1,13 @@
-// - - - - - T E C H - - - -
+// import
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { host } from "../api/Routes.jsx";
 
-// - - - - - F I L E S - - - - -
+
+// components
 import Navigation from "./Navigation.jsx";
 
-// - - - - - I M A G E S - - - - -
+// icons
 import searchS from "../images/coffypaste_icon_search_s.png"
 import avatar from "../images/coffypaste_icon_avatar.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
