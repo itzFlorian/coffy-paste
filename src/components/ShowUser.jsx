@@ -32,9 +32,8 @@ const ShowUser = () => {
   },[]) 
   
   return (
-
     <>
-      <div className="flex">
+      <div className=" flex">
         <Navigation />
         <div className="flex">
           <button className="search-btn">
@@ -46,7 +45,12 @@ const ShowUser = () => {
         </div>
       </div>
 
-    <div className="x scroll-container">
+<div className="mt">
+<div className="splitscreen">
+
+
+    <div className="scroll-container">
+
       {/* L E F T S I D E */}
       <>
         {/* POFILE-CONTAINER */}
@@ -76,28 +80,23 @@ const ShowUser = () => {
           <p>{currentUser.city}</p>
         </div>
       </>
+    </div>
 
 
       {/* R I G H T S I D E */}
-      <>
+    <>
         {/* TOP-STORE-CONTAINER */}
+      <div className="scroll-container">
         <div>
           <h1>my top stores</h1>
 
           {currentUser?.topShops && currentUser.topShops.map((shop)=>{
             console.log(shop);
             return(
-            <div className="store-card flex">
+            <div className="store-card">
               <div className="col">
                 <p>{shop.name}</p>
                 <p>address: {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}</p>
-              </div>
-              <div className="patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL">
-                    <p>heart</p>
-                  </div>
-                </div>
               </div>
             </div>
             )
@@ -117,7 +116,9 @@ const ShowUser = () => {
             )
           })}
         </div>
+        </div>
       </>
+    </div>
     </div>
   </>
   );
