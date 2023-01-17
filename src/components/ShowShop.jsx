@@ -193,9 +193,9 @@ const ShowShop = () => {
           <h1>read comments</h1>
         {currentShop?.comments.map((comment)=>{
           return (
-            <div key={comment._id}>
-              <div>{comment.comment}</div>
-              <div>{comment.createdAt}</div>
+            <div className="card" key={comment._id}>
+              <p className="foBE">{comment.createdAt}</p>
+              <p>{comment.comment}</p>
             </div>
           )
         })}
