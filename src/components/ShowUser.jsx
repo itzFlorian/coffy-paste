@@ -108,11 +108,13 @@ const ShowUser = () => {
             <h1>my comments</h1>
           </div>
           {currentUser?.comments && currentUser.comments.map((comment)=>{
+            return(
             <>
               <div className="card">
-                <p>{comment.comment}?</p>
+                <p>{comment.comment}</p>
               </div>              
             </>
+            )
           })}
         </div>
       </>
