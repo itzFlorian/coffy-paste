@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { host } from "../api/Routes.jsx";
 
-import Navigation from "./Navigation.jsx";
-
 import searchS from "../images/coffypaste_icon_search_s.png"
 import coffee from "../images/coffypaste_icon_coffee_default.png"
 
@@ -32,7 +30,7 @@ const ShowShop = () => {
       })
       .then(json => json.json())
       .then(data => {
-       setCurrentShop(data)
+        setCurrentShop(data)
       })
       }
     fetchShop()

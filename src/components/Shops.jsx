@@ -183,10 +183,11 @@ const [isShown, setIsShown] = useState(false);
 const overlayHandler = (e, shop) => {
   setCurrShop(shop);
 }
-// console.log();
-// [latitude, longitude]
-console.log(currShop);
 
+// console.log(addDistToShops.find(el => el.shop._id === currShop._id));
+// [0].shop._id
+// .find(shop => shop.shop._id === currShop._id)
+// console.log(currShop && currShop._id);
   return (
     <>
       <div className="flex">
@@ -237,16 +238,18 @@ console.log(currShop);
             }
 
             {/* CLICKED STORE */}
+            {currShop && 
             <div className="store-card">
               <div className="flex center">
                 <div className="col">
                   {/* NAME */}
                   <div onClick={() => addShopHandler(currShop._id)}>
-                    <p><span className="sigfontL">name: </span>{currShop && currShop.name}</p>
+                    <p><span className="sigfontL">name: </span>{currShop && 
+                      currShop.name}</p>
                   </div>
                   {/* DISTANCE */}
                   <div onClick={() => addShopHandler(currShop._id)}>
-                    <p><span className="sigfontL">distance: </span>{currShop && currShop.name}</p>
+                    <p><span className="sigfontL">distance: </span>{currShop && addDistToShops.find(el => el.shop._id === currShop._id).distance.toFixed(1) + " km"}</p>
                   </div> 
                 </div>
               </div>
@@ -257,7 +260,8 @@ console.log(currShop);
                   </div>
                 </div>
               </div>
-            </div>
+            </div>            
+            }
 
             {/* LIST OF SHOPS */}
             <div>
@@ -284,7 +288,7 @@ console.log(currShop);
                           </div>
                           {/* DISTANCE */}
                           <div >
-                            <p><span className="sigfontD">distance: </span>xxx</p>
+                            <p><span className="sigfontD">distance: </span>{shops && shop.distance.toFixed(1) + " km"}</p>
                           </div> 
                           <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
                             <p><span className="sigfontD">SHOW </span></p>
