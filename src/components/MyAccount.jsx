@@ -7,13 +7,11 @@ import { host } from "../api/Routes.jsx";
 import Navigation from "./Navigation.jsx";
 
 // - - - - - I M A G E S - - - - -
-import searchS from "../images/coffypaste_icon_search_s.png"
-import avatar from "../images/coffypaste_icon_avatar.png"
-import coffee from "../images/coffypaste_icon_coffee_default.png"
-import minus from "../images/coffypaste_icon_minus.png"
-import plus from "../images/coffypaste_icon_plus.png"
-
-
+import searchS from "../images/coffypaste_icon_search_s.png";
+import avatar from "../images/coffypaste_icon_avatar.png";
+import coffee from "../images/coffypaste_icon_coffee_default.png";
+import minus from "../images/coffypaste_icon_minus.png";
+import plus from "../images/coffypaste_icon_plus.png";
 
 const MyProfile = () => {
   const [userData, setUserData] = useState();
@@ -148,6 +146,7 @@ const MyProfile = () => {
             />
             <input
               onChange={handleInput}
+              disabled={editUser}
               type="text"
               placeholder={`I like my coffee ${currentUser.myFavCoff}`}
               name="my favCoff"
