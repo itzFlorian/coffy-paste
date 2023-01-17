@@ -88,32 +88,7 @@ console.log(ratings);
     const { location, services, name, comments, espresso_price, img_url, rating, seats, _id } = currentShop
   }
   return (
-    <div>
-      <Navigation />
-      {currentShop && (
-        <>
-          <div className="nameOfTheShop">
-            <h1>{currentShop.name}</h1>
-          </div>
-          <div className="shop-container">
-            <p>
-              rating:{" "}
-              {currentShop.rating.reduce((a, b) => a + b, 0) /
-                currentShop.rating.length}
-            </p>
-            <p>
-              address:{" "}
-              {`${currentShop.location.address.street} ${currentShop.location.address.zip} ${currentShop.location.address.city} `}
-            </p>
-            <div className="extras">
-              {currentShop.services.has_sockets && "Bild für sockets"}
-              {currentShop.services.has_wifi && "Bild für wifi"}
-              {currentShop.services.has_toilet && "Bild für toilet"}
-              {currentShop.services.can_take_calls && "Bild für take calls"}
-            </div>
-          </div>
-        </>
-      )}
+    <div>      
       <Navigation/>
       {currentShop &&
       <>
