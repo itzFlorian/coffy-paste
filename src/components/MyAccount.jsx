@@ -132,15 +132,15 @@ const MyProfile = () => {
               type="text"
               disabled={editUser}
               placeholder={currentUser.email}
-              name="my e-mail-address"
+              name="email"
               className="card"
             />
             <input
               onChange={handleInput}
               type={editUser ? "hidden" : "password"}
               disabled={editUser}
-              placeholder="my password"
-              name="my password"
+              placeholder="password"
+              name="password"
               className="card"
             />
             <input
@@ -148,7 +148,7 @@ const MyProfile = () => {
               disabled={editUser}
               type="text"
               placeholder={`I like my coffee ${currentUser.myFavCoff}`}
-              name="my favCoff"
+              name="myFavCoff"
               className="card"
             />
             <div className="center">
