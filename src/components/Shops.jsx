@@ -188,7 +188,9 @@ const overlayHandler = (e, shop) => {
 // [0].shop._id
 // .find(shop => shop.shop._id === currShop._id)
 // console.log(currShop && currShop._id);
-  return (
+
+
+  return(
     <>
       <div className="flex">
         <Navigation />
@@ -202,76 +204,86 @@ const overlayHandler = (e, shop) => {
         </div>
       </div>
 
-
       {/* SPLITSCREEN */}
       <div className="mt">
       <div className="splitscreen">
-        {/* LEFTSIDE */}
-        <div className="cantSee">
-          <h1>map</h1>
-          {/* MAP */}
-          <div>
-            {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
-            && 
-            <Map
-            height={280} width={800} 
-            defaultCenter={[userGeoData.lat, userGeoData.lon]}  
-            defaultZoom={8}>
-              {shops.map((shop) => {
-                return (      
-                  <Marker
-                    width={30}
-                    anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
-                    key={shop._id}
-                    onClick={(e) => overlayHandler(e, shop)}
-                  />
-                )
-              })}
-              {currShop && 
-                  <Overlay 
-                    anchor={[+currShop.location.address.latitude, +currShop.location.address.longitude]} 
-                    offset={[120, 79]}>
-                    <div width={240} height={158} alt=''>
-                      {currShop.name}
-                    </div>
-                  </Overlay>
-              }
-              <ZoomControl />
-            </Map>
-            }
-            {/* CLICKED STORE */}
+
+
+
+
+      {/* LEFTSIDE */}
+      <div className="cantSee">
+      <h1>map</h1>
+      {/* MAP */}
+      <div>
+        {(userGeoData.lat !== 0 || userGeoData.lon !== 0) 
+        &&
+        <div className="store-card">
+          <Map
+          height={280} width={800} 
+          defaultCenter={[userGeoData.lat, userGeoData.lon]}  
+          defaultZoom={15}>
+            {shops.map((shop) => {
+              return (      
+                <Marker
+                  width={30}
+                  anchor={[+shop.location.address.latitude, +shop.location.address.longitude]}
+                  key={shop._id}
+                  onClick={(e) => overlayHandler(e, shop)}
+                />
+              )
+            })}
             {currShop && 
-            <div className="store-card">
-              <div className="flex center">
-                <div className="col">
-                  {/* NAME */}
-                  <div onClick={() => addShopHandler(currShop._id)}>
-                    <p><span className="sigfontL">name: </span>{currShop && 
-                      currShop.name}</p>
+                <Overlay 
+                  anchor={[+currShop.location.address.latitude, +currShop.location.address.longitude]} 
+                  offset={[120, 79]}>
+                  <div width={240} height={158} alt=''>
+                    {currShop.name}
                   </div>
-                  {/* DISTANCE */}
-                  <div onClick={() => addShopHandler(currShop._id)}>
-                    <p><span className="sigfontL">distance: </span>{currShop && addDistToShops.find(el => el.shop._id === currShop._id).distance.toFixed(1) + " km"}</p>
-                  </div> 
-                </div>
-              </div>
-              <div className=" patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL center" title="shop infos">
-                    <p><span className="info">i</span></p>
-                  </div>
-                  <div className="patch-btn bg-gradL center">
-                    <img
-                      src={plus} 
-                      className="patch-img" 
-                      alt="add" 
-                      title="add to favorites"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>            
+                </Overlay>
             }
+            <ZoomControl />
+          </Map>
+        </div>
+        }
+        {/* CLICKED STORE */}
+        {currShop && 
+        <div className="store-card">
+          <div className="flex center">
+            <div className="col">
+              {/* NAME */}
+              <div onClick={() => addShopHandler(currShop._id)}>
+                <p><span className="sigfontL">name: </span>{currShop && 
+                  currShop.name}</p>
+              </div>
+              {/* DISTANCE */}
+              <div onClick={() => addShopHandler(currShop._id)}>
+                <p><span className="sigfontL">distance: </span>{currShop && addDistToShops.find(el => el.shop._id === currShop._id).distance.toFixed(1) + " km"}</p>
+              </div> 
+            </div>
+          </div>
+          <div className=" patch-container">
+            <div className="patch-btn-l row">
+              <div className="patch-btn bg-gradL center" title="shop infos">
+                <p><span className="info">i</span></p>
+              </div>
+              <div className="patch-btn bg-gradL center">
+                <img
+                  src={plus} 
+                  className="patch-img" 
+                  alt="add" 
+                  title="add to favorites"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+
+
 
           <div>
             {/* LIST OF SHOPS */}
@@ -301,7 +313,6 @@ const overlayHandler = (e, shop) => {
                             <p><span className="sigfontD">distance: </span>{shops && shop.distance.toFixed(1) + " km"}</p>
                           </div> 
                           <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
-                            <p><span className="sigfontD">SHOW </span></p>
                           </div> 
                         </div>
                       </div>
@@ -332,8 +343,8 @@ const overlayHandler = (e, shop) => {
       </div>
       </div>
       </div>
-    </>
 
+    </>
   )
 }
 
