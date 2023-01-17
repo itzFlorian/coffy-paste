@@ -89,3 +89,20 @@
         }
     }
 }
+
+.serv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >*{
+        position: absolute;
+        width: 25px;
+        height:25px;
+    }
+}
+
+.send-btn{
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+}
