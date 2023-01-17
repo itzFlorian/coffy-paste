@@ -264,7 +264,7 @@ console.log(currShop);
               <h1>list sorted by distance</h1>
               <ul>
                 {sortShopsByDist.map((shop) => 
-                <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
+                <div >
                   <li 
                     onClick={(e) => overlayHandler(e, shop.shop)}
                     key={shop.shop._id}
@@ -277,21 +277,24 @@ console.log(currShop);
 
                         <div className="col">
                           {/* NAME */}
-                          <div onClick={() => addShopHandler(currShop._id)}>
+                          <div>
                             <p><span className="sigfontD">name: </span>
                             {shop.shop.name}
                             </p>
                           </div>
                           {/* DISTANCE */}
-                          <div onClick={() => addShopHandler(currShop._id)}>
+                          <div >
                             <p><span className="sigfontD">distance: </span>xxx</p>
+                          </div> 
+                          <div onClick={()=> navigate(`/showShop/${shop.shop._id}`)}>
+                            <p><span className="sigfontD">SHOW </span></p>
                           </div> 
                         </div>
                       </div>
                       <div className=" patch-container">
                         <div className="patch-btn-l row">
                           <div className="patch-btn bg-gradD center">
-                            <img src={plus} className="patch-img" alt="" />
+                            <img src={plus} className="patch-img" alt=""  onClick={() => addShopHandler(currShop._id)}/>
                           </div>
                         </div>
                       </div>
