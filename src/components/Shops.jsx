@@ -131,7 +131,7 @@ const addShopHandler = async (shopId) => {
 })
   .then((response) => {
     if(!response.ok){
-      toast.info("something went wrong", toastOptions)
+      // toast.info("something went wrong", toastOptions)
     }
     return response.json()
   })
