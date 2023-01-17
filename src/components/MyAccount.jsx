@@ -140,6 +140,13 @@ const MyProfile = () => {
               name="my password"
               className="card"
             />
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder={`I like my coffee ${currentUser.myFavCoff}`}
+              name="my favCoff"
+              className="card"
+            />
             <div className="center">
               <button type="button" className="btn" onClick={handleEditUser}>
                 {editUser ? "edit my profile" : "close"}
