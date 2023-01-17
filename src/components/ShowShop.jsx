@@ -168,7 +168,7 @@ const ShowShop = () => {
               <div className="patch-btn-l row">
                 <h1 className="foBE">rating</h1>
                 <div className="circle serv bg-gradL">
-                  <button onClick={()=> setRating(1)}></button>
+                  <button onClick={()=> setRating(1)}>⭐</button>
                 </div>
                 <div className="circle serv bg-gradL">
                   <button onClick={()=> setRating(2)}>⭐</button>

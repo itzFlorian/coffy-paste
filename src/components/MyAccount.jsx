@@ -240,6 +240,24 @@ const MyProfile = () => {
                 Expedita, veniam?
               </p>
             </div>
+            <div className="card">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
+            </div>
+            <div className="card">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
+            </div>
+            <div className="card">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita, veniam?
+              </p>
+            </div>
           </div>
         </>
       </div>
