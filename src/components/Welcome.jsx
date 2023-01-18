@@ -28,7 +28,7 @@ console.log(logoM);
             onClick={() => navigate("/registration")}>create account
           </button>
           <button
-            className="btn"
+            className="btn mt1"
             onClick={() => navigate("/login")}>login
           </button>
         </div>
