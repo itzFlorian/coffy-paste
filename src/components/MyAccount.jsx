@@ -2,6 +2,8 @@
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { host } from "../api/Routes.jsx";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // components
 import Navigation from "./Navigation.jsx";
@@ -19,6 +21,7 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [showButton, setShowButton] = useState(false);
   const [editUser, setEditUser] = useState(true);
+  const [trigger, setTrigger] = useState(true);
 
   console.log(currentUserId);
   console.log(currentUser);
@@ -40,7 +43,7 @@ const MyProfile = () => {
         });
     };
     fetchUser();
-  }, []);
+  }, [trigger]);
   console.log(currentUser);
 
   const handleSubmit = (event) => {
@@ -71,6 +74,22 @@ const MyProfile = () => {
     setEditUser(!editUser);
     setShowButton(!showButton);
   };
+  const removeShopHandler = async (shop) => {
+    await fetch(`${host}/coffeeshops/favshop/${shop}`, {
+      credentials: "include",
+      method: "DELETE",
+      body: JSON.stringify({ shopId: shop, userId: currentUserId }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((json) => json.json())
+      .then((data) => {
+        toast.info(data.message, toastOptions);
+      });
+    setTrigger(!trigger);
+  };
+
   return (
     <>
       <div className="flex">
@@ -85,184 +104,163 @@ const MyProfile = () => {
         </div>
       </div>
 
-    <div className="mt">
-      <div className="splitscreen">
-        <div>
-          {/* L E F T S I D E */}
-          <h1>my profile</h1>
-          <div className="flex">
-            {/* icons */}
-            <div className="flex">
-              <div className="iconS">
-                <img src={avatar} alt="avatar-icon" />
-              </div>
-              <div className="iconS">
-                <img src={coffee} alt="avatar-icon" />
-              </div>
-            </div>
-            {/* text */}
-            <div className="flex col">
-              <p>{currentUser.myFavCoff}</p>
-              <p>{currentUser.userName}</p>
-            </div>
-          </div>
-          {/* FORM-CONTAINER */}
-          <form onSubmit={handleSubmit} className="col">
-            <input
-              onChange={handleInput}
-              type="text"
-              disabled={editUser}
-              placeholder={currentUser.userName}
-              name="userName"
-              className="card"
-            />
-            <input
-              onChange={handleInput}
-              type="text"
-              disabled={editUser}
-              placeholder={currentUser.city}
-              name="city"
-              className="card"
-            />
-            <input
-              onChange={handleInput}
-              type="text"
-              disabled={editUser}
-              placeholder={currentUser.email}
-              name="email"
-              className="card"
-            />
-            <input
-              onChange={handleInput}
-              type={editUser ? "hidden" : "password"}
-              disabled={editUser}
-              placeholder="password"
-              name="password"
-              className="card"
-            />
-            <input
-              onChange={handleInput}
-              disabled={editUser}
-              type="text"
-              placeholder={`I like my coffee ${currentUser.myFavCoff}`}
-              name="myFavCoff"
-              className="card"
-            />
-            <div className="center">
-              {!showButton && (
-                <button type="button" className="btn" onClick={handleEditUser}>
-                  {editUser ? "edit my profile" : "close"}
-                </button>
-              )}
-              {showButton && (
-                <button
-                  type="submit"
-                  className="btn"
-                  onClick={() => setEditUser(!editUser)}
-                >
-                  update profile
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-
-
-      {/* R I G H T S I D E */}
-      <div className="scroll-container">
-          {/* TOP-STORE-CONTAINER */}
+      <div className="mt">
+        <div className="splitscreen">
           <div>
-            <h1>my top stores</h1>
+            {/* L E F T S I D E */}
+            <h1>my profile</h1>
+            <div className="flex">
+              {/* icons */}
+              <div className="flex">
+                <div className="iconS">
+                  <img src={avatar} alt="avatar-icon" />
+                </div>
+                <div className="iconS">
+                  <img src={coffee} alt="avatar-icon" />
+                </div>
+              </div>
+              {/* text */}
+              <div className="flex col">
+                <p>{currentUser.myFavCoff}</p>
+                <p>{currentUser.userName}</p>
+              </div>
+            </div>
+            {/* FORM-CONTAINER */}
 
-            {/* TOP-STORE-1 */}
-            <div className="store-card flex">
-              <div className="col">
-                <p>store</p>
-                <p>adresse</p>
+            <form onSubmit={handleSubmit} className="col">
+              <input
+                onChange={handleInput}
+                type="text"
+                disabled={editUser}
+                placeholder={currentUser.userName}
+                name="userName"
+                className="card"
+              />
+              <input
+                onChange={handleInput}
+                type="text"
+                disabled={editUser}
+                placeholder={currentUser.city}
+                name="city"
+                className="card"
+              />
+              {/* <input
+                onChange={handleInput}
+                type="text"
+                disabled={editUser}
+                placeholder={currentUser.email}
+                name="email"
+                className="card"
+              /> */}
+              <input
+                onChange={handleInput}
+                type={editUser ? "hidden" : "password"}
+                disabled={editUser}
+                placeholder="password"
+                name="password"
+                className="card"
+              />
+              <input
+                onChange={handleInput}
+                disabled={editUser}
+                type="text"
+                placeholder={`I like my coffee ${currentUser.myFavCoff}`}
+                name="myFavCoff"
+                className="card"
+              />
+              <div className="center">
+                {!showButton && (
+                  <button
+                    type="button"
+                    className="btn"
+                    onClick={handleEditUser}
+                  >
+                    {editUser ? "edit my profile" : "close"}
+                  </button>
+                )}
+                {showButton && (
+                  <button
+                    type="submit"
+                    className="btn"
+                    onClick={() => setEditUser(!editUser)}
+                  >
+                    update profile
+                  </button>
+                )}
               </div>
-              <div className="patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* TOP-STORE-2 */}
-            <div className="store-card flex">
-              <div className="col">
-                <p>store</p>
-                <p>adresse</p>
-              </div>
-              <div className="patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* TOP-STORE-3 */}
-            <div className="store-card flex">
-              <div className="col">
-                <p>store</p>
-                <p>adresse</p>
-              </div>
-              <div className="patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL center">
-                    <img src={minus} className="patch-img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* TOP-STORE-CONTAINER */}
-            <div>
-              <h1>my comments</h1>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
+            </form>
           </div>
-      </div>
-      </div>
+
+          {/* R I G H T S I D E */}
+          <div className="scroll-container">
+            <>
+              {/* TOP-STORE-CONTAINER */}
+              <div>
+                <h1>
+                  my top stores:
+                  {currentUser?.topShops && currentUser.topShops.length}
+                </h1>
+                {currentUser?.topShops &&
+                  currentUser.topShops.map((shop) => {
+                    return (
+                      <>
+                        <div className="store-card" key={shop._id}>
+                          <div className="flex center">
+                            {/* <div className="iconS bg-gradL">
+                              <img
+                                src={shop.avatar}
+                                className="avatar-icon"
+                                onClick={() => navigate(`showShop/${shop._id}`)}
+                              />
+                            </div> */}
+                            <div className="col">
+                              <p>{shop.name}</p>
+                              {/* <p>{shop.ratings}</p> */}
+                            </div>
+                          </div>
+                          <div className="patch-container">
+                            <div className="patch-btn-l row">
+                              <div className="patch-btn bg-gradL center">
+                                <img
+                                  src={minus}
+                                  className="patch-img"
+                                  alt=""
+                                  onClick={() => removeShopHandler(shop._id)}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })}
+                <div>
+                  <h1>my comments</h1>
+                </div>
+                <div className="card">
+                  {currentUser?.comments &&
+                    currentUser.comments.map((comment) => {
+                      return (
+                        <>
+                          <div className="store-card" key={comment._id}>
+                            <div className="flex center">
+                              <div className="col">
+                                <p>{comment.comment}</p>
+                              </div>
+                            </div>
+                            <div className="patch-container"></div>
+                          </div>
+                        </>
+                      );
+                    })}
+                </div>
+              </div>
+            </>
+          </div>
+        </div>
+        <ToastContainer />
       </div>
     </>
-
   );
 };
 

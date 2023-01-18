@@ -35,7 +35,7 @@ const Registration = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const sendData = async () => {
-    await fetch(`${host}/users/`, {
+    await fetch(`${host}/users`, {
       credentials:"include",
       method: 'POST',
       body: JSON.stringify(regData),
@@ -48,10 +48,13 @@ const Registration = () => {
       if(data.message){
         toast.info("Please verify your emaildadress",toastOptions)
       }
-      if(data.error){
+      if(data.error.length > 1){
         data.error.map((err)=>{
           toast.error(err.msg, toastOptions)
         })
+      if(data.error) {
+        toast.error(err.msg, toastOptions)
+      }
       }    
     })
     }
