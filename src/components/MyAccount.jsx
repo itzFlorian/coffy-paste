@@ -26,10 +26,11 @@ const MyProfile = () => {
   const [trigger, setTrigger] = useState(true);
 
   console.log(currentUserId);
-  console.log(currentUser);
+
   const handleInput = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
+
   useEffect(() => {
     const fetchUser = async () => {
       await fetch(`${host}/users/${currentUserId}`, {
@@ -46,6 +47,7 @@ const MyProfile = () => {
     };
     fetchUser();
   }, [trigger]);
+
   console.log(currentUser);
 
   const handleSubmit = (event) => {
@@ -72,10 +74,12 @@ const MyProfile = () => {
     updateUserData();
     setShowButton(!showButton);
   };
+
   const handleEditUser = () => {
     setEditUser(!editUser);
     setShowButton(!showButton);
   };
+
   const removeShopHandler = async (shop) => {
     await fetch(`${host}/coffeeshops/favshop/${shop}`, {
       credentials: "include",
@@ -88,8 +92,8 @@ const MyProfile = () => {
       .then((json) => json.json())
       .then((data) => {
         toast.info(data.message, toastOptions);
+        setTrigger(!trigger);
       });
-    setTrigger(!trigger);
   };
 
 
