@@ -206,7 +206,7 @@ const Community = () => {
                       <div className="flex center">
                         <div className="iconS bg-gradD">
                           <img
-                            src={user.avatar}
+                            src={avatar}
                             className="avatar-icon"
                             onClick={() => navigate(`showUser/${user._id}`)}
                           />
