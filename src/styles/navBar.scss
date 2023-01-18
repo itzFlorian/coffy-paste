@@ -1,3 +1,23 @@
 .navbarL{
     margin-top: 10%;
 }
+
+
+.navbarS{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navbar-btn{
+    display: flex;
+    border: 1px solid var(--OLDWHITE);
+    background-color: var(--EMPTY);
+    color: var(--OLDWHITE);
+    border-radius: 7px;
+    width: 25%;
+    height: 2.5rem;
+    >*{ display: flex;
+        align-items: center;
+        margin: auto;
+    }
+}
