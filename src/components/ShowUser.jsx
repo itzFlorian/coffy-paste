@@ -32,9 +32,8 @@ const ShowUser = () => {
   },[]) 
   
   return (
-
     <>
-      <div className="flex">
+      <div className=" flex">
         <Navigation />
         <div className="flex">
           <button className="search-btn">
@@ -46,58 +45,58 @@ const ShowUser = () => {
         </div>
       </div>
 
-    <div className="x scroll-container">
-      {/* L E F T S I D E */}
+<div className="mt">
+<div className="splitscreen">
+
+    {/* L E F T S I D E */}
+    <div>
       <>
         {/* POFILE-CONTAINER */}
         <>
-          <h1>user details</h1>
+          <div>
+            <h1>" {currentUser.userName}" </h1>
+          </div>
           <div className="flex">
+            <div className="iconS">
+              <img src={currentUser.avatar} alt="avatar-icon" />
+            </div>
+            <div className="ml1 col">
+              <p  className="sigfontW">stadt: </p>
+              <h3 className="sigfontW">{currentUser.city}</h3>
+            </div>
+          </div>
+
+          <div className="flex mt1">
             {/* icons */}
             <div className="flex">
-              <div className="iconS">
-                <img src={currentUser.avatar} alt="avatar-icon" />
-              </div>
               <div className="iconS">
                 <img src={coffee} alt="avatar-icon" />
               </div>
             </div>
-            {/* text */}
-            <div className="flex col">
-              <p>{currentUser.myFavCoff}</p>
-              <p>{currentUser.userName}</p>
+            <div className="ml1 col">
+              <p  className="sigfontW">lieblingskaffee: </p>
+              <h3 className="sigfontW">{currentUser.myFavCoff}</h3>
             </div>
           </div>
         </>
-
-        {/* FORM-CONTAINER */}
-        <div className="col">
-          <p>{currentUser.userName}</p>
-          <p>{currentUser.city}</p>
-        </div>
       </>
+    </div>
 
 
       {/* R I G H T S I D E */}
-      <>
+    <>
         {/* TOP-STORE-CONTAINER */}
+      <div className="scroll-container">
         <div>
           <h1>my top stores</h1>
 
           {currentUser?.topShops && currentUser.topShops.map((shop)=>{
             console.log(shop);
             return(
-            <div className="store-card flex">
+            <div className="store-card">
               <div className="col">
                 <p>{shop.name}</p>
                 <p>address: {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}</p>
-              </div>
-              <div className="patch-container">
-                <div className="patch-btn-l row">
-                  <div className="patch-btn bg-gradL">
-                    <p>heart</p>
-                  </div>
-                </div>
               </div>
             </div>
             )
@@ -117,7 +116,9 @@ const ShowUser = () => {
             )
           })}
         </div>
+        </div>
       </>
+    </div>
     </div>
   </>
   );

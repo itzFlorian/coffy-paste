@@ -2,6 +2,8 @@
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { host } from "../api/Routes.jsx";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // components
 import Navigation from "./Navigation.jsx";
@@ -19,6 +21,7 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [showButton, setShowButton] = useState(false);
   const [editUser, setEditUser] = useState(true);
+  const [trigger, setTrigger] = useState(true);
 
   console.log(currentUserId);
   console.log(currentUser);
@@ -40,7 +43,7 @@ const MyProfile = () => {
         });
     };
     fetchUser();
-  }, []);
+  }, [trigger]);
   console.log(currentUser);
 
   const handleSubmit = (event) => {
@@ -71,6 +74,22 @@ const MyProfile = () => {
     setEditUser(!editUser);
     setShowButton(!showButton);
   };
+  const removeShopHandler = async (shop) => {
+    await fetch(`${host}/coffeeshops/favshop/${shop}`, {
+      credentials: "include",
+      method: "DELETE",
+      body: JSON.stringify({ shopId: shop, userId: currentUserId }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((json) => json.json())
+      .then((data) => {
+        toast.info(data.message, toastOptions);
+        setTrigger(!trigger);
+      });
+  };
+
   return (
     <>
       <div className="flex">
@@ -240,31 +259,12 @@ const MyProfile = () => {
                 Expedita, veniam?
               </p>
             </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
-            <div className="card">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Expedita, veniam?
-              </p>
-            </div>
           </div>
         </>
       </div>
       </div>
-      </div>
+      <ToastContainer />
     </>
-
   );
 };
 

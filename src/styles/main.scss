@@ -20,6 +20,13 @@
     align-items: center;
 }
 
+
+.row-center{
+    >*{align-items: center;
+    }
+}
+
+
 .row{
     display: flex;
     flex-direction: row;
@@ -32,21 +39,7 @@
 
 
 
-.splitscreen{
-    display: flex;
-    flex-direction:column;
-    >*{
-        border: 2px solid green;
-    }
 
-    @media screen and (min-width: 800px) {
-        flex-direction: row;
-        justify-content: space-between;
-        >*{
-            width: 48%;
-        }
-    }
-}
 
 
 
@@ -58,17 +51,42 @@
 
 .space{
     *{
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
+}
+
+.mb1{
+    margin-bottom: 1rem;
 }
 
 .mb3{
     margin-bottom: 3rem;
 }
 
+
+
 .mt{
     margin-top: 5rem;
 }
+
+.mt1{
+    margin-top: 1rem;
+}
+
+.mt2{
+    margin-top: 2rem;
+}
+
+.mt3{
+    margin-top: 3rem;
+}
+
+
+
+.ml1{
+    margin-left: 1rem;
+}
+
 
 .turn{
     transform: rotate(5deg);
