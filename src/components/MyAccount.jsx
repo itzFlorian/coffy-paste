@@ -1,6 +1,7 @@
 // import
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { host } from "../api/Routes.jsx";
 
 // components
@@ -14,6 +15,7 @@ import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
 
 const MyProfile = () => {
+  const navigate = useNavigate()
   const [userData, setUserData] = useState();
   const [currentUserId, setCurrentUserId] = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState({});
@@ -71,6 +73,23 @@ const MyProfile = () => {
     setEditUser(!editUser);
     setShowButton(!showButton);
   };
+
+  // LOGOUT 
+  const logout = async () => {
+    await fetch(`${host}/users/logout`, {
+      credentials:"include",
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json => {
+      if(json.ok) {
+        navigate("/welcome")
+      }
+    })
+  }
+
   return (
     <>
       <div className="flex">
@@ -79,7 +98,9 @@ const MyProfile = () => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>

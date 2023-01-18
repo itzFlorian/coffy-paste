@@ -1,3 +1,7 @@
+// external dependencies
+import { useNavigate } from 'react-router'; 
+import { host } from "../api/Routes.jsx";
+
 // - - - - - F I L E S - - - - -
 import Navigation from "./Navigation.jsx";
 
@@ -9,8 +13,25 @@ import coffee from "../images/coffypaste_icon_coffee_default.png"
 import plus from "../images/coffypaste_icon_plus.png"
 
 
-
 const Stats = () => {
+  const navigate = useNavigate()
+  
+  // LOGOUT 
+  const logout = async () => {
+    await fetch(`${host}/users/logout`, {
+      credentials:"include",
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json => {
+      if(json.ok) {
+        navigate("/welcome")
+      }
+    })
+  }
+
   return (
     <>
       <div className="flex">
@@ -19,7 +40,9 @@ const Stats = () => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
