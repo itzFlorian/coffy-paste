@@ -10,25 +10,19 @@ import Geocode from "react-geocode";
 // import
 import UserContext from '../context/userContext.jsx';
 
-
 // toast 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
-
 // import & declare keys
 import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
-
 
 // components
 import Navigation from "./Navigation.jsx";
 
-
 // icons
 import searchS from "../images/coffypaste_icon_search_s.png"
 import plus from "../images/coffypaste_icon_plus.png"
-
-
 
 //========================
 
@@ -184,6 +178,22 @@ const overlayHandler = (e, shop) => {
   setCurrShop(shop);
 }
 
+// LOGOUT 
+const logout = async () => {
+  await fetch(`${host}/users/logout`, {
+    credentials:"include",
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  })
+  .then(json => {
+    if(json.ok) {
+      navigate("/welcome")
+    }
+  })
+}
+
 // console.log(addDistToShops.find(el => el.shop._id === currShop._id));
 // [0].shop._id
 // .find(shop => shop.shop._id === currShop._id)
@@ -198,7 +208,9 @@ const overlayHandler = (e, shop) => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>

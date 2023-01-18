@@ -31,6 +31,9 @@ https://www.xing.com/profile/Jeff_Braun2/cv
 github:
 https://github.com/BreffJaun
 
+TEXT:
+I am a budding full-stack developer from Germany with a soft spot for the backend. My focus in this project was on the backend. I programmed this in close cooperation with Eleni. I supported the frontend team around Florian and Martin where I could.
+
 
 
 

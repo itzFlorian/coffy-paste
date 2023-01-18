@@ -1,6 +1,7 @@
 // import
 import UserContext from "../context/userContext.jsx";
 import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { host } from "../api/Routes.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +17,7 @@ import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
 
 const MyProfile = () => {
+  const navigate = useNavigate()
   const [userData, setUserData] = useState();
   const [currentUserId, setCurrentUserId] = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState({});
@@ -92,6 +94,23 @@ const MyProfile = () => {
       });
   };
 
+
+  // LOGOUT 
+  const logout = async () => {
+    await fetch(`${host}/users/logout`, {
+      credentials:"include",
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json => {
+      if(json.ok) {
+        navigate("/welcome")
+      }
+    })
+  }
+
   return (
     <>
       <div className="flex">
@@ -100,7 +119,9 @@ const MyProfile = () => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
@@ -113,18 +134,24 @@ const MyProfile = () => {
             <h1>my profile</h1>
             <div className="flex">
               {/* icons */}
-              <div className="flex">
-                <div className="iconS">
+              <div className="flex mb1">
+                <div className="iconL center col">
                   <img src={avatar} alt="avatar-icon" />
                 </div>
-                <div className="iconS">
+                <div className="iconL center col ml1">
                   <img src={coffee} alt="avatar-icon" />
                 </div>
               </div>
               {/* text */}
-              <div className="flex col">
-                <p>{currentUser.myFavCoff}</p>
-                <p>{currentUser.userName}</p>
+              <div className="flex col ml1">
+                <div>
+                  <p className="foOW mb1">user:</p>
+                  <h3 className="foOW">"{currentUser.userName}"</h3>
+                </div>
+                <div className="mt2">
+                  <p className="foOW mb1">coffy:</p>
+                  <h3 className="foOW">{currentUser.myFavCoff}</h3>
+                </div>
               </div>
             </div>
             {/* FORM-CONTAINER */}

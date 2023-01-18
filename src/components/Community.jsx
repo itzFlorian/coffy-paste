@@ -116,6 +116,22 @@ const Community = () => {
     setTrigger(!trigger)
   }
 
+  // LOGOUT 
+  const logout = async () => {
+    await fetch(`${host}/users/logout`, {
+      credentials:"include",
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then(json => {
+      if(json.ok) {
+        navigate("/welcome")
+      }
+    })
+  }
+
   return (
     <>
       <div className="flex">
@@ -124,7 +140,9 @@ const Community = () => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
@@ -146,8 +164,8 @@ const Community = () => {
                       <img src={friend.avatar} className="avatar-icon" onClick={() => navigate(`showUser/${friend._id}`)}/>
                     </div>
                     <div className="col">
-                      <p className="foOW">name: <span className="foBE">{friend.userName}</span></p>
-                      <p className="foOW">fav coffy: <span className="foBE">{friend.favCoffee}</span></p>
+                      <p className="foBL">name: <span className="foBE">{friend.userName}</span></p>
+                      <p className="foBL">fav coffy: <span className="foBE">{friend.favCoffee}</span></p>
                     </div>
                   </div>
                   <div className="patch-container">
@@ -197,5 +215,6 @@ const Community = () => {
     </>
   );
 };
+// };
 
 export default Community;

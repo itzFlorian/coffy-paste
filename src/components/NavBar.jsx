@@ -7,6 +7,7 @@ import stats from "/src/images/coffypaste_icon_stats.png";
 import logoM from "/src/images/coffypaste_logo_900.png";
 import efjm from "/src/images/efjm_logo.png";
 
+
 const NavBar = () => {
   const navigate = useNavigate();
   return (
