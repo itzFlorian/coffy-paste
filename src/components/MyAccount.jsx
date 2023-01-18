@@ -25,8 +25,12 @@ const MyProfile = () => {
   const [editUser, setEditUser] = useState(true);
   const [trigger, setTrigger] = useState(true);
 
-  console.log(currentUserId);
-  console.log(currentUser);
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    theme: "dark",
+  };
+
   const handleInput = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
@@ -46,7 +50,6 @@ const MyProfile = () => {
     };
     fetchUser();
   }, [trigger]);
-  console.log(currentUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,7 +64,6 @@ const MyProfile = () => {
       })
         .then((json) => json.json())
         .then((data) => {
-          console.log(data);
           if (data.error) {
             data.error.map((err) => {
               toast.error(err.msg, toastOptions);
@@ -87,9 +89,9 @@ const MyProfile = () => {
     })
       .then((json) => json.json())
       .then((data) => {
-        toast.info(data.message, toastOptions);
+        toast.success(data.message, toastOptions);
+        setTrigger(!trigger);
       });
-    setTrigger(!trigger);
   };
 
 
@@ -171,14 +173,6 @@ const MyProfile = () => {
                 name="city"
                 className="card"
               />
-              {/* <input
-                onChange={handleInput}
-                type="text"
-                disabled={editUser}
-                placeholder={currentUser.email}
-                name="email"
-                className="card"
-              /> */}
               <input
                 onChange={handleInput}
                 type={editUser ? "hidden" : "password"}
