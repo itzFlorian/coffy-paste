@@ -31,9 +31,12 @@ const MyProfile = () => {
     theme: "dark",
   };
 
+  console.log(currentUserId);
+
   const handleInput = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
+
   useEffect(() => {
     const fetchUser = async () => {
       await fetch(`${host}/users/${currentUserId}`, {
@@ -74,10 +77,12 @@ const MyProfile = () => {
     updateUserData();
     setShowButton(!showButton);
   };
+
   const handleEditUser = () => {
     setEditUser(!editUser);
     setShowButton(!showButton);
   };
+
   const removeShopHandler = async (shop) => {
     await fetch(`${host}/coffeeshops/favshop/${shop}`, {
       credentials: "include",

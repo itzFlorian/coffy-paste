@@ -59,47 +59,53 @@ const ShowShop = () => {
     fetchShop();
   }, [trigger]);      
 
-  const sendRatingHandler = () => {   
-    const sendRating = async () => {
-      await fetch(`${host}/ratings`, {
-        credentials:"include",
-        method: 'POST',
-        body: JSON.stringify({
-        shopId: currentShop._id,
-        rating: rating
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then((response) => response.json())
-    .then((json) => {
-      setTrigger(!trigger)
-      setRating(undefined)
-    });
-  }
-  
-    const sendComment = async () => {    
-      await fetch(`${host}/comments`, {
-        credentials:"include",
-        method: 'POST',
-        body: JSON.stringify({
-        shopId: currentShop._id,
-        comment: text
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
+  const sendRatingHandler = () => {  
+    if (rating && text){
+      const sendRating = async () => {
+        await fetch(`${host}/ratings`, {
+          credentials:"include",
+          method: 'POST',
+          body: JSON.stringify({
+          shopId: currentShop._id,
+          rating: rating
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     })
-    .then((response) => response.json())
-    .then((json) => {
-      setText("")
-      setTrigger(!trigger)
-    });
-  }
-  toast.info("You rated this Shop", toastOptions)
-  sendComment()
-  sendRating()
+      .then((response) => response.json())
+      .then((json) => {
+        setTrigger(!trigger)
+        setRating(undefined)
+      });
+    }
+    
+      const sendComment = async () => {    
+        await fetch(`${host}/comments`, {
+          credentials:"include",
+          method: 'POST',
+          body: JSON.stringify({
+          shopId: currentShop._id,
+          comment: text
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        setText("")
+        setTrigger(!trigger)
+      });
+    }
+    toast.info("You rated this Shop", toastOptions)
+    sendComment()
+    sendRating()
+  
+    } else{
+      toast.info("You have to write a text and click your rating", toastOptions)
+
+    }
 }
 
 // ZIEHE DIE RATINGS RAUS UM SPÄTER DRÜBER ZU REDUCEN
