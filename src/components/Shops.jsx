@@ -293,7 +293,7 @@ const overlayHandler = (e, shop) => {
           <div>
             {/* LIST OF SHOPS */}
             <div className="scroll-container">
-            <div >
+              <div>
               <h1>list sorted by distance</h1>
               <ul>
                 {sortShopsByDist.map((shop) => 

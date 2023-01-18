@@ -89,3 +89,16 @@
         }
     }
 }
+
+
+
+.send-btn{
+    display: flex;
+    position: absolute;
+    bottom: -36px ;
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    color: var(--OLDWHITE);
+    background-color: var(--BEIGE);
+}

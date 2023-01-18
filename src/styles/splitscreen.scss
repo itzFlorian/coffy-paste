@@ -1,0 +1,25 @@
+.splitscreen{
+    display: flex;
+    flex-direction:column;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 400px;
+    align-items: flex-start;
+
+    >*{
+        width: 100%;
+        margin-bottom: 3rem;
+        height: 100%;
+    }
+
+    @media screen and (min-width: 800px) {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 480px;
+        overflow: hidden;
+        overflow-x: hidden;
+        >*{
+            width: 48%;
+        }
+    }
+}

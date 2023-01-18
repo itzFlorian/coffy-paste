@@ -1,12 +1,16 @@
 .scroll-container{
-    height: 56%;
-    overflow: scroll;
-    overflow-x: hidden;
     >*{
         margin-right: 1rem;
     }
-
+    @media screen and (min-width: 800px) {
+        height: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
 }
+
+
+
 
 ::-webkit-scrollbar{
     width: 4px;
