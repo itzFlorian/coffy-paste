@@ -104,6 +104,14 @@
     margin: -1.4rem;
 }
 
+.member-top{
+    display: flex;
+    position: absolute;
+    margin: -2.5rem;
+    margin-bottom: -1rem;
+}
+
+
 .icon{
     display: flex;
     flex-direction: row;
@@ -123,6 +131,12 @@
 }
 .sm-icon{
     width: 80px;
+    margin-top: 0.25rem;
+}
+
+.sm-github{
+    width: 95px;
+    margin-top: 0.8rem;
 }
 
 

@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import avatar from "/src/images/coffypaste_icon_avatar.png";
-import community from "/src/images/coffypaste_icon_community.png";
-import searchS from "/src/images/coffypaste_icon_search_s.png";
-import shop from "/src/images/coffypaste_icon_shop.png";
-import stats from "/src/images/coffypaste_icon_stats.png";
-import logoM from "/src/images/coffypaste_logo_900.png";
-import efjm from "/src/images/efjm_logo.png";
+
+
+// images
+import avatar from "../images/coffypaste_icon_avatar.png";
+import community from "../images/coffypaste_icon_community.png";
+import searchS from "../images/coffypaste_icon_search_s.png";
+import shop from "../images/coffypaste_icon_shop.png";
+import stats from "../images/coffypaste_icon_stats.png";
+import logoM from "../images/coffypaste_logo_900.png";
+import efjm from "../images/efjm_logo.png";
 
 
 const NavBar = () => {

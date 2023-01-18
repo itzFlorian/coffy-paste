@@ -7,10 +7,10 @@ import "react-toastify/dist/ReactToastify.css"
 import {host} from "../api/Routes.jsx"
 
 
-// - - - - - ICONS - - - - - 
-import bg from "/src/images/coffypaste_bg_568217968.png"
-import logoM from "/src/images/coffypaste_logo_900.png"
-import efjm from "/src/images/efjm_logo.png"
+// images
+import bg from "../images/coffypaste_bg_568217968.png"
+import logoM from "../images/coffypaste_logo_900.png"
+import efjm from "../images/efjm_logo.png"
 
 
 

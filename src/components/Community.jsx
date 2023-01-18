@@ -13,7 +13,6 @@ import searchS from "../images/coffypaste_icon_search_s.png";
 import heart from "../images/coffypaste_icon_heart.png";
 import plus from "../images/coffypaste_icon_plus.png";
 import minus from "../images/coffypaste_icon_minus.png";
-import avatar from "../images/coffypaste_icon_avatar.png";
 
 const Community = () => {
   const navigate = useNavigate();

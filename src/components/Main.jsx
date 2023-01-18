@@ -13,14 +13,19 @@ import ShowShop from "./ShowShop.jsx";
 
 import UserContext from "../context/userContext.jsx";
 
-// - - - - - ICONS - - - - -
-import avatar from "/src/images/coffypaste_icon_avatar.png";
-import community from "/src/images/coffypaste_icon_community.png";
-import searchS from "/src/images/coffypaste_icon_search_s.png";
-import shop from "/src/images/coffypaste_icon_shop.png";
-import stats from "/src/images/coffypaste_icon_stats.png";
-import logoM from "/src/images/coffypaste_logo_900.png";
-import efjm from "/src/images/efjm_logo.png";
+
+// images
+import bg from "../images/coffypaste_bg_568217968.png";
+import avatar from "../images/coffypaste_icon_avatar.png";
+import coffee from "../images/coffypaste_icon_coffee_default.png";
+import community from "../images/coffypaste_icon_community.png";
+import searchL from "../images/coffypaste_icon_search_l.png";
+import searchS from "../images/coffypaste_icon_search_s.png";
+import shop from "../images/coffypaste_icon_shop.png";
+import stats from "../images/coffypaste_icon_stats.png";
+import logoM from "../images/coffypaste_logo_900.png";
+import logoL from "../images/coffypaste_logo_2352.png";
+import efjm from "../images/efjm_logo.png";
 // - - - - - - - - -
 
 const Main = () => {

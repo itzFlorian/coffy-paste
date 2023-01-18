@@ -20,6 +20,7 @@ import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 // components
 import Navigation from "./Navigation.jsx";
 
+
 // icons
 import searchS from "../images/coffypaste_icon_search_s.png"
 import plus from "../images/coffypaste_icon_plus.png"

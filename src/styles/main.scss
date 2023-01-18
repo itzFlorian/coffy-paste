@@ -21,8 +21,15 @@
 }
 
 
+
+
 .row-center{
     >*{align-items: center;
+    }
+}
+
+.col-center{
+    >*{justify-content: center;
     }
 }
 
