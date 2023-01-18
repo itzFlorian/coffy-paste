@@ -8,7 +8,7 @@ import Navigation from "./Navigation.jsx";
 import searchS from "../images/coffypaste_icon_search_s.png";
 import coffee from "../images/coffypaste_icon_coffee_default.png";
 import plus from "../images/coffypaste_icon_plus.png";
-import avatar from "--/images/coffypaste_icon_avatar.png";
+import avatar from "../images/coffypaste_icon_avatar.png";
 
 const ShowUser = () => {
   const { id } = useParams();
