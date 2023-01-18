@@ -6,6 +6,7 @@ import "./styles/fonts.scss"
 import "./styles/images.scss"
 import "./styles/main.scss"
 import "./styles/scrolling.scss"
+import "./styles/splitscreen.scss"
 
 
 

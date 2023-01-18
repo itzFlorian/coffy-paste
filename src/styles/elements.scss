@@ -30,17 +30,17 @@
     justify-content: space-around;
 }
 
+
 .card{
     margin-bottom: 0.5rem;
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     padding-right: 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: var(--OLDWHITE);
     width: 100%;
 }
-
 
 .store-card{
     display: flex;
@@ -49,9 +49,9 @@
     margin-bottom: 0.5rem;
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     padding-right: 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: var(--OLDWHITE);
 }
 
@@ -67,6 +67,22 @@
     height: 60px;
     border-radius: 7px;
 }
+
+
+.icon-sq40{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    >*{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+    }
+}
+
 
 .icon-top{
     display: flex;
@@ -139,4 +155,3 @@ input{
         flex-direction: column;
     }
 }
-

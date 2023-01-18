@@ -86,7 +86,7 @@ const MyProfile = () => {
       </div>
 
     <div className="mt">
-      <div className="x splitscreen">
+      <div className="splitscreen">
         <div>
           {/* L E F T S I D E */}
           <h1>my profile</h1>
@@ -170,7 +170,6 @@ const MyProfile = () => {
 
       {/* R I G H T S I D E */}
       <div className="scroll-container">
-        <>
           {/* TOP-STORE-CONTAINER */}
           <div>
             <h1>my top stores</h1>
@@ -259,7 +258,6 @@ const MyProfile = () => {
               </p>
             </div>
           </div>
-        </>
       </div>
       </div>
       </div>

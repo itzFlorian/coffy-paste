@@ -48,15 +48,12 @@ const ShowUser = () => {
 <div className="mt">
 <div className="splitscreen">
 
-
-    <div className="scroll-container">
-
-      {/* L E F T S I D E */}
+    {/* L E F T S I D E */}
+    <div>
       <>
         {/* POFILE-CONTAINER */}
         <>
           <div>
-            <p className="sigfontW">username: </p>
             <h1>" {currentUser.userName}" </h1>
           </div>
           <div className="flex">
