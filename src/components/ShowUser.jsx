@@ -31,12 +31,30 @@ const ShowUser = () => {
     fetchUser();
   }, []);
 
+  // LOGOUT 
+const logout = async () => {
+  await fetch(`${host}/users/logout`, {
+    credentials:"include",
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  })
+  .then(json => {
+    if(json.ok) {
+      navigate("/welcome")
+    }
+  })
+}
+
   return (
     <>
       <div className=" flex">
         <Navigation />
         <div className="flex">
-          <button className="search-btn">
+          <button 
+            onClick={() => logout()}
+            className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
           <button className="logout-btn">
