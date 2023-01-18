@@ -48,37 +48,42 @@ const Stats = () => {
         </div>
       </div>
 
-      <div className="mt x splitscreen">
-        <div className="y">
-          <h1>user stats</h1>
-          <div className="card">
-            <p>newest user:</p>
-            <h1 className="sigfont foBE">xyz</h1>
+      <div className="mt splitscreen">
+        {/* LEFTSIDE */}
+        <div>
+          <h1 className="foBE">User-Statistiken</h1>
+
+          <div className="mt2">
+            <p className="foOW">Anzahl der User:</p>
+            <h1>xyz</h1>
           </div>
-          <div className="card">
-            <p>user-counter:</p>
-            <h1 className="sigfont foBE">xyz</h1>
-          </div>
-          <div className="card">
-            <p>coffy-buddys:</p>
-            <h1 className="sigfont foBE">xyz</h1>
+
+          <div className="mt2">
+            <p className="foOW">User-Freundschaften:</p>
+            <h1>xyz</h1>
           </div>
         </div>
 
+
+        {/* RIGHTSIDE */}
         <div>
-          <h1>coffy stats</h1>
-          <div className="card">
-            <p>best shop:</p>
-            <h1 className="sigfont foBE">xyz</h1>
+          <h1 className="foBE">Shop-Statistiken</h1>
+
+          <div className="mt2">
+            <p className="foOW">Anzahl der Shops:</p>
+            <h1>xyz</h1>
           </div>
-          <div className="card">
-            <p>shop-counter:</p>
-            <h1 className="sigfont foBE">xyz</h1>
+
+          <div className="mt2">
+            <p className="foOW">Anzahl der Posts:</p>
+            <h1>xyz</h1>
           </div>
-          <div className="card">
-            <p>most comments:</p>
-            <h1 className="sigfont foBE">xyz</h1>
+
+          <div className="mt2">
+            <p className="foOW">test</p>
+            <h1>xyz</h1>
           </div>
+
         </div>
       </div>
     </>
