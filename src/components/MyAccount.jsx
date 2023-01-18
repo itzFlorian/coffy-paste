@@ -9,12 +9,14 @@ import "react-toastify/dist/ReactToastify.css";
 // components
 import Navigation from "./Navigation.jsx";
 
-// - - - - - I M A G E S - - - - -
+
+// images
 import searchS from "../images/coffypaste_icon_search_s.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 import coffee from "../images/coffypaste_icon_coffee_default.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
+
 
 const MyProfile = () => {
   const navigate = useNavigate();

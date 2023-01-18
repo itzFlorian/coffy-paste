@@ -8,7 +8,8 @@ import UserContext from "../context/userContext.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
-// - - - - - I M A G E S - - - - -
+
+// images
 import searchS from "../images/coffypaste_icon_search_s.png"
 import heart from "../images/coffypaste_icon_heart.png"
 import plus from "../images/coffypaste_icon_plus.png"

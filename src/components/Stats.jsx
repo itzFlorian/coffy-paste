@@ -7,7 +7,7 @@ import { host } from "../api/Routes.jsx";
 import Navigation from "./Navigation.jsx";
 
 
-// - - - - - I M A G E S - - - - -
+// images
 import searchS from "../images/coffypaste_icon_search_s.png"
 import plus from "../images/coffypaste_icon_plus.png"
 

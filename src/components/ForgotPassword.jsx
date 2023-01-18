@@ -8,18 +8,20 @@ import { host } from "../api/Routes.jsx";
 
 import UserContext from "../context/userContext.jsx";
 
-// - - - - - ICONS - - - - -
-const bg = "/src/images/coffypaste_bg_568217968.png";
-const avatar = "/src/images/coffypaste_icon_avatar.png";
-const coffee = "/src/images/coffypaste_icon_coffee_default.png";
-const community = "/src/images/coffypaste_icon_community.png";
-const searchL = "/src/images/coffypaste_icon_search_l.png";
-const searchS = "/src/images/coffypaste_icon_search_s.png";
-const shop = "/src/images/coffypaste_icon_shop.png";
-const stats = "/src/images/coffypaste_icon_stats.png";
-const logoM = "/src/images/coffypaste_logo_900.png";
-const logoL = "/src/images/coffypaste_logo_2352.png";
-const efjm = "/src/images/efjm_logo.png";
+
+// images
+import bg from "../images/coffypaste_bg_568217968.png";
+import avatar from "../images/coffypaste_icon_avatar.png";
+import coffee from "../images/coffypaste_icon_coffee_default.png";
+import community from "../images/coffypaste_icon_community.png";
+import searchL from "../images/coffypaste_icon_search_l.png";
+import searchS from "../images/coffypaste_icon_search_s.png";
+import shop from "../images/coffypaste_icon_shop.png";
+import stats from "../images/coffypaste_icon_stats.png";
+import logoM from "../images/coffypaste_logo_900.png";
+import logoL from "../images/coffypaste_logo_2352.png";
+import efjm from "../images/efjm_logo.png";
+
 // - - - - - - - - -
 
 const INITIAL = {

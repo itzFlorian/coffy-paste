@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 
 
 
-// - - - - - ICONS - - - - - 
+// images
 import bg from "../images/coffypaste_bg_568217968.png"
 import logoM from "../images/coffypaste_logo_900.png"
 import efjm from "../images/efjm_logo.png"
