@@ -111,18 +111,24 @@ const MyProfile = () => {
             <h1>my profile</h1>
             <div className="flex">
               {/* icons */}
-              <div className="flex">
-                <div className="iconS">
+              <div className="flex mb1">
+                <div className="iconL center col">
                   <img src={avatar} alt="avatar-icon" />
                 </div>
-                <div className="iconS">
+                <div className="iconL center col ml1">
                   <img src={coffee} alt="avatar-icon" />
                 </div>
               </div>
               {/* text */}
-              <div className="flex col">
-                <p>{currentUser.myFavCoff}</p>
-                <p>{currentUser.userName}</p>
+              <div className="flex col ml1">
+                <div>
+                  <p className="foOW mb1">user:</p>
+                  <h3 className="foOW">"{currentUser.userName}"</h3>
+                </div>
+                <div className="mt2">
+                  <p className="foOW mb1">coffy:</p>
+                  <h3 className="foOW">{currentUser.myFavCoff}</h3>
+                </div>
               </div>
             </div>
             {/* FORM-CONTAINER */}
