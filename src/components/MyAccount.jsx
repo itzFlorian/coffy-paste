@@ -260,6 +260,7 @@ const MyProfile = () => {
         </div>
       </div>
       <ToastContainer />
+      </div>
     </>
   );
 };
