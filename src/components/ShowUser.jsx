@@ -53,11 +53,13 @@ const logout = async () => {
         <Navigation />
         <div className="flex">
           <button 
-            onClick={() => logout()}
+            
             className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button className="logout-btn">
+          <button 
+            onClick={() => logout()}
+            className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
