@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -114,6 +113,15 @@ const Login = () => {
             /
             <span>
               <NavLink to="/welcome">Back</NavLink>
+            </span>
+          </p>
+        </div>
+        {/* FORGOT PASSWORD  */}
+        <div className="center">
+          <p>
+            Forgot your password?{" "}
+            <span>
+              <NavLink to="/forgotpassword">Click Here</NavLink>
             </span>
           </p>
         </div>

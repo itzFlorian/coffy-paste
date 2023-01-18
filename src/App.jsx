@@ -20,6 +20,8 @@ import Registration from "./components/Registration.jsx"
 import Main from "./components/Main.jsx"
 import Welcome from "./components/Welcome.jsx"
 import EFJM from "./components/EFJM.jsx"
+import ForgotPassword from "./components/ForgotPassword.jsx";
+import SetNewPassword from "./components/SetNewPassword.jsx";
 
 import NavBar from "./components/NavBar.jsx"
 
@@ -30,6 +32,8 @@ function App() {
         <Route path="/welcome" element={<Welcome/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/registration" element={<Registration/>} />
+        <Route path="/forgotpassword" element={<ForgotPassword/>} />
+        <Route path="/setnewpassword" element={<SetNewPassword/>} />
         <Route path="*" element={<Main />} />
         <Route path="/efjm" element={<EFJM />} />     
       </Routes>      
