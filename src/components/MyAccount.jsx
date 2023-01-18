@@ -17,7 +17,7 @@ import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
 
 const MyProfile = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userData, setUserData] = useState();
   const [currentUserId, setCurrentUserId] = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState({});
@@ -94,22 +94,20 @@ const MyProfile = () => {
       });
   };
 
-
-  // LOGOUT 
+  // LOGOUT
   const logout = async () => {
     await fetch(`${host}/users/logout`, {
-      credentials:"include",
-      method: 'GET',
+      credentials: "include",
+      method: "GET",
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((json) => {
+      if (json.ok) {
+        navigate("/welcome");
       }
-    })
-    .then(json => {
-      if(json.ok) {
-        navigate("/welcome")
-      }
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -119,9 +117,7 @@ const MyProfile = () => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button 
-            onClick={() => logout()}
-            className="logout-btn">
+          <button onClick={() => logout()} className="logout-btn">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
@@ -185,7 +181,7 @@ const MyProfile = () => {
                 onChange={handleInput}
                 disabled={editUser}
                 type="text"
-                placeholder={`I like my coffee ${currentUser.myFavCoff}`}
+                placeholder={`${currentUser.myFavCoff}`}
                 name="myFavCoff"
                 className="card"
               />
