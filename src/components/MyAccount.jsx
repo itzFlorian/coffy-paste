@@ -258,8 +258,7 @@ const MyProfile = () => {
             </>
           </div>
         </div>
-      </div>
-      <ToastContainer />
+        <ToastContainer />
       </div>
     </>
   );
