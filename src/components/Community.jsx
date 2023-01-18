@@ -164,8 +164,8 @@ const Community = () => {
                       <img src={friend.avatar} className="avatar-icon" onClick={() => navigate(`showUser/${friend._id}`)}/>
                     </div>
                     <div className="col">
-                      <p className="foOW">name: <span className="foBE">{friend.userName}</span></p>
-                      <p className="foOW">fav coffy: <span className="foBE">{friend.favCoffee}</span></p>
+                      <p className="foBL">name: <span className="foBE">{friend.userName}</span></p>
+                      <p className="foBL">fav coffy: <span className="foBE">{friend.favCoffee}</span></p>
                     </div>
                   </div>
                   <div className="patch-container">

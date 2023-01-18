@@ -25,6 +25,12 @@ const MyProfile = () => {
   const [editUser, setEditUser] = useState(true);
   const [trigger, setTrigger] = useState(true);
 
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    theme: "dark",
+  };
+
   console.log(currentUserId);
 
   const handleInput = (event) => {
@@ -48,8 +54,6 @@ const MyProfile = () => {
     fetchUser();
   }, [trigger]);
 
-  console.log(currentUser);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateUserData = async () => {
@@ -63,7 +67,6 @@ const MyProfile = () => {
       })
         .then((json) => json.json())
         .then((data) => {
-          console.log(data);
           if (data.error) {
             data.error.map((err) => {
               toast.error(err.msg, toastOptions);
@@ -91,7 +94,7 @@ const MyProfile = () => {
     })
       .then((json) => json.json())
       .then((data) => {
-        toast.info(data.message, toastOptions);
+        toast.success(data.message, toastOptions);
         setTrigger(!trigger);
       });
   };
@@ -136,18 +139,24 @@ const MyProfile = () => {
             <h1>my profile</h1>
             <div className="flex">
               {/* icons */}
-              <div className="flex">
-                <div className="iconS">
+              <div className="flex mb1">
+                <div className="iconL center col">
                   <img src={avatar} alt="avatar-icon" />
                 </div>
-                <div className="iconS">
+                <div className="iconL center col ml1">
                   <img src={coffee} alt="avatar-icon" />
                 </div>
               </div>
               {/* text */}
-              <div className="flex col">
-                <p>{currentUser.myFavCoff}</p>
-                <p>{currentUser.userName}</p>
+              <div className="flex col ml1">
+                <div>
+                  <p className="foOW mb1">user:</p>
+                  <h3 className="foOW">"{currentUser.userName}"</h3>
+                </div>
+                <div className="mt2">
+                  <p className="foOW mb1">coffy:</p>
+                  <h3 className="foOW">{currentUser.myFavCoff}</h3>
+                </div>
               </div>
             </div>
             {/* FORM-CONTAINER */}
@@ -169,14 +178,6 @@ const MyProfile = () => {
                 name="city"
                 className="card"
               />
-              {/* <input
-                onChange={handleInput}
-                type="text"
-                disabled={editUser}
-                placeholder={currentUser.email}
-                name="email"
-                className="card"
-              /> */}
               <input
                 onChange={handleInput}
                 type={editUser ? "hidden" : "password"}
