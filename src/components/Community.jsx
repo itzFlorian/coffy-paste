@@ -135,7 +135,7 @@ const Community = () => {
       <div className="splitscreen">
         <div className="scroll-container">
           <div className="rotate">
-          <h1>my friends: {currentUser?.friends && currentUser.friends.length} </h1>
+            <h1>my friends: {currentUser?.friends && currentUser.friends.length} </h1>
           </div>
           {currentUser?.friends && currentUser.friends.map((friend)=>{
             return (
@@ -146,8 +146,8 @@ const Community = () => {
                       <img src={friend.avatar} className="avatar-icon" onClick={() => navigate(`showUser/${friend._id}`)}/>
                     </div>
                     <div className="col">
-                      <p>{friend.userName}</p>
-                      <p>{friend.favCoffee}</p>
+                      <p className="foOW">name: <span className="foBE">{friend.userName}</span></p>
+                      <p className="foOW">fav coffy: <span className="foBE">{friend.favCoffee}</span></p>
                     </div>
                   </div>
                   <div className="patch-container">
@@ -175,8 +175,8 @@ const Community = () => {
                         <img src={user.avatar} className="avatar-icon"  onClick={() => navigate(`showUser/${user._id}`)}/>
                       </div>
                       <div className="col">
-                        <p>{user.userName}</p>
-                        <p>{user.favCoffee}</p>
+                        <p>name: <span className="foBR">{user.userName}</span></p>
+                        <p>fav coffy: <span className="foBR">{user.favCoffee}</span></p>
                       </div>
                     </div>
                     <div className=" patch-container">
