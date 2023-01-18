@@ -276,7 +276,7 @@ const logout = async () => {
               </div> 
             </div>
           </div>
-          <div className=" patch-container">
+          <div className="patch-container">
             <div className="patch-btn-l row">
               <div 
                 onClick={()=> navigate(`/showShop/${currShop._id}`)}
