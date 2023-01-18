@@ -28,16 +28,21 @@ const EFJM = () => {
         <div className="rotate">
           <h1 className="center">Hello, we are "efjm"</h1>
         </div>
+        <div className="mt">
+
 
 
         {/* E L E N I */}
-        <div className="mt splitscreen">
+        <div className="splitscreen">
 
-          <div className="member-card mr2">
-            <div className="icon-container icon-top bg-gradL center">
-              <img src={avatar} className="avatar-icon"/>
-            </div>
-            <div>
+          <div className="mr2 col-center">
+            <div className="member-card mt3">
+              <div className="relative center member-top">
+                <div className="icon-container bg-gradL center absolute">
+                  <img src={avatar} className="avatar-icon"/>
+                </div>
+              </div>
+
               <h2 className="efjm-h2">Eleni</h2>
               <p>
               I am a passionate fullstack developer in progress.
@@ -50,7 +55,6 @@ const EFJM = () => {
               <p>
               I enjoyed a lot working with the members of my team and I am looking forward to our next project.
               </p>
-
 
               <div className="circle-container flex row">
                 <div className="circle bg-gradL center">
@@ -65,19 +69,23 @@ const EFJM = () => {
                 </div>
                 <div className="circle bg-gradL center">
                   <a href="https://github.com/elenosis" target="_blank">
-                    <img src={github} className="sm-icon"></img>
+                    <img src={github} className="sm-github"></img>
                   </a>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+
+
 
           {/* F L O R I A N */}
-          <div className="member-card mr2">
-            <div className="icon-container icon-top bg-gradL flex center">
-              <img src={avatar} className="avatar-icon"/>
-            </div>
-            <div>
+          <div className="mr2 col-center">
+            <div className="member-card mt3">
+              <div className="relative center member-top">
+                <div className="icon-container bg-gradL center absolute">
+                  <img src={avatar} className="avatar-icon"/>
+                </div>
+              </div>
               <h2 className="efjm-h2">Florian</h2>
               <p>I am a full-stack developer. Seems like I'm a native coder. That's what my team-members say.</p>
               <br />
@@ -99,19 +107,21 @@ const EFJM = () => {
                 </div>
                 <div className="circle bg-gradL center">
                   <a href="https://github.com/itzFlorian" target="_blank">
-                    <img src={github} className="sm-icon"></img>
+                    <img src={github} className="sm-github"></img>
                   </a>
-                </div>
+                  </div>
               </div>
             </div>
-          </div>
+        </div>
 
           {/* J E F F */}
-          <div className="member-card mr2">
-            <div className="icon-container icon-top bg-gradL flex center">
-              <img src={avatar} className="avatar-icon"/>
-            </div>
-            <div>
+          <div className="mr2 col-center">
+            <div className="member-card mt3">
+              <div className="relative center member-top">
+                <div className="icon-container bg-gradL center absolute">
+                  <img src={avatar} className="avatar-icon"/>
+                </div>
+              </div>
               <h2 className="efjm-h2">Jeff</h2>
               <p>I am a budding full-stack developer from Germany with a soft spot for the backend.</p>
               <br />
@@ -135,19 +145,21 @@ const EFJM = () => {
                 </div>
                 <div className="circle bg-gradL center">
                   <a href="https://github.com/BreffJaun" target="_blank">
-                    <img src={github} className="sm-icon"></img>
+                    <img src={github} className="sm-github"></img>
                   </a>
-                </div>
+                  </div>
               </div>
             </div>
-          </div>
+        </div>
 
           {/* M A R T I N */}
-          <div className="member-card mr2">
-            <div className="icon-container icon-top bg-gradL flex center">
-              <img src={avatar} className="avatar-icon"/>
-            </div>
-            <div>
+          <div className="mr2 col-center">
+            <div className="member-card mt3">
+              <div className="relative center member-top">
+                <div className="icon-container bg-gradL center absolute">
+                  <img src={avatar} className="avatar-icon"/>
+                </div>
+              </div>
               <h2 className="efjm-h2">Martin</h2>
               <br />
               <p>I am a high skilled media-designer try to learn webdev to become an awesome UX-UI-Designer.</p>
@@ -160,7 +172,7 @@ const EFJM = () => {
               That`s why i came up with the <span className="foBE">UX</span> und <span className="foBE">UI</span> of this app.</p>
               <br />
               <p>
-              MY amazing three team-members made an awesome job by setting up the frontend, mainly made by Florian, and the backend, set up by the amazing Eleni und the awesome Jeff.</p>
+              My amazing three team-members made an awesome job by setting up the frontend, mainly made by Florian, and the backend, set up by the amazing Eleni und the awesome Jeff.</p>
 
               <div className="circle-container flex row">
                 <div className="circle bg-gradL center">
@@ -175,7 +187,7 @@ const EFJM = () => {
                 </div>
                 <div className="circle bg-gradL center">
                   <a href="https://github.com/grossesbewirken" target="_blank">
-                    <img src={github} className="sm-icon"></img>
+                    <img src={github} className="sm-github"></img>
                   </a>
                 </div>
                 <div className="circle bg-gradL center">
@@ -189,6 +201,7 @@ const EFJM = () => {
 
 
         </div>
+      </div>
       </div>
 
       
