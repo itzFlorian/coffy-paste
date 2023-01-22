@@ -30,10 +30,10 @@ import plus from "../images/coffypaste_icon_plus.png"
 // Get latitude & longitude from address. // Google API
 function Shops() {
 // GET USERDATA FROM USECONTEXT //
-const [shops, setShops] = useState([]);                // SHOPS DATA
-const [currShop, setCurrShop] = useState(undefined);   // CURR SHOP
-const [user, setUser] = useContext(UserContext)        // USER ID
-const [userData, setUserData] = useState("");          // USER DATA
+const [shops, setShops] = useState([]);                        // SHOPS DATA
+const [currShop, setCurrShop] = useState(undefined);           // CURR SHOP
+const [user, setUser] = useContext(UserContext)                // USER ID
+const [userData, setUserData] = useState("");                  // USER DATA
 const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0});
 
 const navigate = useNavigate()
@@ -174,7 +174,6 @@ const sortShopsByDist = addDistToShops.sort((a,b) => a.distance - b.distance);
 // CALULATE & FILTER DISTANCE WITH GEOCODES END //
 
 // SHOW PIN OVERLAYS
-const [isShown, setIsShown] = useState(false);
 const overlayHandler = (e, shop) => {
   setCurrShop(shop);
 }
@@ -194,12 +193,6 @@ const logout = async () => {
     }
   })
 }
-
-// console.log(addDistToShops.find(el => el.shop._id === currShop._id));
-// [0].shop._id
-// .find(shop => shop.shop._id === currShop._id)
-// console.log(currShop && currShop._id);
-
 
   return(
     <>
@@ -230,9 +223,17 @@ const logout = async () => {
         &&
         <div className="store-card">
           <Map
-          height={280} width={800} 
-          defaultCenter={[userGeoData.lat, userGeoData.lon]}  
-          defaultZoom={15}>
+            height={280} width={800} 
+            defaultCenter={[userGeoData.lat, userGeoData.lon]}
+            center={[currShop?.location.address.latitude, currShop?.location.address.longitude]}
+            defaultZoom={15}
+          >
+          {/* USER CITY AS DEFAULT-CENTER MARKER */}
+          <Marker 
+              width={30}
+              color={"red"}
+              anchor={[userGeoData.lat, userGeoData.lon]}
+          />          
             {shops.map((shop) => {
               return (      
                 <Marker
@@ -335,17 +336,19 @@ const logout = async () => {
                       <div className=" patch-container">
                         <div className="patch-btn-l row">
                           <div 
-                          onClick={()=> navigate(`/showShop/${currShop._id}`)}
-                          className="patch-btn bg-gradD center">
+                            onClick={()=> navigate(`/showShop/${currShop._id}`)}
+                            className="patch-btn bg-gradD center">
                             <p ><span className="info">i</span></p>
                           </div>
-                          <div className="patch-btn bg-gradD center">
+                          <div 
+                            onClick={() => addShopHandler(currShop._id)}
+                            className="patch-btn bg-gradD center">
                             <img
                               src={plus} 
                               className="patch-img" 
                               alt="add" 
                               title="add to favorites"
-                              onClick={() => addShopHandler(currShop._id)}/>
+                              />
                           </div>
                         </div>
                       </div>
