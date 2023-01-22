@@ -55,7 +55,6 @@
 }
 
 
-
 .store-card{
     display: flex;
     align-items: center;
@@ -67,7 +66,25 @@
     padding-right: 1rem;
     border-radius: 8px;
     background-color: var(--OLDWHITE);
+    
 }
+
+.hover-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    border-radius: 8px;
+    background-color: var(--OLDWHITE);
+    &:hover {
+        outline: 2px solid var(--BEIGE);
+    }
+}
+
 
 .overflow-container{
     width: 90%;

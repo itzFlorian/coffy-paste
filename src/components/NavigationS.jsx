@@ -11,7 +11,7 @@ const Navigation = ({category}) => {
   return (
     <div className="navigationCollapse">
       <div
-        className="navbar-btn navbarS-container"
+        className="navbar-btn navbarS-container cursor-pointer"
         onClick={() => navigate("/")}>
 
         <div>

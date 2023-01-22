@@ -6,12 +6,9 @@ import { host } from "../api/Routes.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 // components
 import Navigation from "./Navigation.jsx";
-import NavigationS from "./NavigationS.jsx"
-
+import NavigationS from "./NavigationS.jsx";
 
 // images
 import searchS from "../images/coffypaste_icon_search_s.png";
@@ -20,8 +17,7 @@ import coffee from "../images/coffypaste_icon_coffee_default.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
 
-
-const MyProfile = ({category}) => {
+const MyProfile = ({ category }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState();
   const [currentUserId, setCurrentUserId] = useContext(UserContext);
@@ -124,13 +120,13 @@ const MyProfile = ({category}) => {
       <div className="flex">
         <Navigation />
         <NavigationS category={category} />
-        
+
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button onClick={() => logout()} className="logout-btn">
-            <img src={plus} className="logout" alt="logout" />
+          <button onClick={() => logout()} className="logout-btn cursor-pointer">
+            <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
       </div>
@@ -204,7 +200,13 @@ const MyProfile = ({category}) => {
                     className="btn"
                     onClick={handleEditUser}
                   >
-                    {editUser ? "edit my profile" : "close"}
+                    {editUser ? "edit my profile" : "close"}{" "}
+                    {/* <img
+                                src={shop.avatar}
+                                className="avatar-icon"
+                              
+                              /> */}
+                    {/* </div> */}
                   </button>
                 )}
                 {showButton && (
@@ -234,22 +236,26 @@ const MyProfile = ({category}) => {
                     return (
                       <>
                         <div className="store-card" key={shop._id}>
-                          <div className="flex center">
-                            {/* <div className="iconS bg-gradL">
-                              <img
+                          <div
+                            className="flex center"
+                            onClick={() => navigate(`/showShop/${shop._id}`)}
+                          >
+                            {/* <div className="iconS bg-gradL"> */}
+                            {/* <img
                                 src={shop.avatar}
                                 className="avatar-icon"
-                                onClick={() => navigate(`showShop/${shop._id}`)}
-                              />
-                            </div> */}
+                              
+                              /> */}
+                            {/* </div> */}
                             <div className="col">
-                              <p>{shop.name}</p>
-                              {/* <p>{shop.ratings}</p> */}
+                              <h5>{shop.name}</h5>
+                              <p>{`${shop.location.address.street}  ${shop.location.address.number} ${shop.location.address.zip} ${shop.location.address.city}`}</p>
+                              {console.log(shop)}
                             </div>
                           </div>
                           <div className="patch-container">
                             <div className="patch-btn-l row">
-                              <div className="patch-btn bg-gradL center">
+                              <div className="patch-btn bg-gradL center cursor-pointer">
                                 <img
                                   src={minus}
                                   className="patch-img"

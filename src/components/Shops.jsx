@@ -1,228 +1,215 @@
 // external dependencies
-import React from 'react'
+import React from "react";
 import { Map, Marker, ZoomControl, Overlay } from "pigeon-maps";
 import { host } from "../api/Routes.jsx";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from 'react-router'; 
+import { useNavigate } from "react-router";
 import Geocode from "react-geocode";
 
-
 // import
-import UserContext from '../context/userContext.jsx';
+import UserContext from "../context/userContext.jsx";
 
-// toast 
+// toast
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
 // import & declare keys
-import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
-
+import { GOOGLE_API_KEY } from "../api/Google_API.jsx";
 
 // components
 import Navigation from "./Navigation.jsx";
-import NavigationS from "./NavigationS.jsx"
-
+import NavigationS from "./NavigationS.jsx";
 
 // icons
-import searchS from "../images/coffypaste_icon_search_s.png"
-import plus from "../images/coffypaste_icon_plus.png"
+import searchS from "../images/coffypaste_icon_search_s.png";
+import plus from "../images/coffypaste_icon_plus.png";
 
 //========================
 
 // Get latitude & longitude from address. // Google API
-function Shops({category}) {
+function Shops({ category }) {
+  // GET USERDATA FROM USECONTEXT //
+  const [shops, setShops] = useState([]); // SHOPS DATA
+  const [currShop, setCurrShop] = useState(undefined); // CURR SHOP
+  const [user, setUser] = useContext(UserContext); // USER ID
+  const [userData, setUserData] = useState(""); // USER DATA
+  const [userGeoData, setUserGeoData] = useState({ lat: 0, lon: 0 });
 
-// GET USERDATA FROM USECONTEXT //
-const [shops, setShops] = useState([]);                // SHOPS DATA
-const [currShop, setCurrShop] = useState(undefined);   // CURR SHOP
-const [user, setUser] = useContext(UserContext)        // USER ID
-const [userData, setUserData] = useState("");          // USER DATA
-const [userGeoData, setUserGeoData] = useState({lat: 0, lon: 0});
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    theme: "dark",
+  };
 
-const toastOptions = {
-  position:"bottom-right",
-  autoClose: 8000,
-  theme:"dark"
-}
+  // FETCH START //
+  useEffect(() => {
+    // FETCH CURRENT USER ID //
+    const checkValidation = async () => {
+      await fetch(`${host}/users/checklogin`, {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((json) => {
+          if (!json.ok) {
+            navigate("/welcome");
+          }
+          return json.json();
+        })
+        .then((data) => {
+          setUser(data.userId);
+        });
+    };
+    checkValidation();
 
-// FETCH START // 
-useEffect(() => {
-  // FETCH CURRENT USER ID //
-  const checkValidation = async () =>{
-    await fetch(`${host}/users/checklogin`, {
-    credentials:"include",
-    method: 'GET',   
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    }
-  })
-  .then(json => {
-    if(!json.ok){
-      navigate("/welcome")
-    }
-    return json.json()
-  })
-  .then(data => {
-    setUser(data.userId)
-  })
-  }
-  checkValidation()
+    // FETCH CURRENT USER DATA //
+    const fetchCurrentUserData = async () => {
+      await fetch(`${host}/users/${user}`, {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((json) => json.json())
+        .then((data) => setUserData(data));
+    };
 
-  // FETCH CURRENT USER DATA //
-  const fetchCurrentUserData = async () =>{
-    await fetch(`${host}/users/${user}`, {
-    credentials:"include",
-    method: 'GET',   
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-      }
-    })
-    .then(json => json.json())
-    .then(data => setUserData(data));
-  }
-
-  // FETCH SHOPS DATA //
-    const fetchShops = async () =>{
+    // FETCH SHOPS DATA //
+    const fetchShops = async () => {
       await fetch(`${host}/coffeeshops`, {
-      credentials:"include",
-      method: 'GET',   
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((json) => json.json())
+        .then((data) => setShops(data));
+    };
+
+    checkValidation();
+    fetchCurrentUserData();
+    fetchShops();
+  }, []);
+
+  useEffect(() => {
+    // FETCH USER LONG.- & LATITUDE //
+    Geocode.setApiKey(GOOGLE_API_KEY);
+    Geocode.setLanguage("de");
+    Geocode.setRegion("de");
+    Geocode.fromAddress(userData.city).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        // console.log(lat, lng)
+        setUserGeoData({ lat: lat, lon: lng });
+      },
+      (error) => {
+        console.error(error);
       }
+    );
+    // console.log(userGeoData);
+  }, [userData]);
+
+  const addShopHandler = async (shopId) => {
+    await fetch(`${host}/coffeeshops/favshop/${shopId}`, {
+      method: "POST",
+      body: JSON.stringify({ userId: user }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
     })
-    .then(json => json.json())
-    .then(data => setShops(data));
+      .then((response) => {
+        if (!response.ok) {
+          // toast.info("something went wrong", toastOptions)
+        }
+        return response.json();
+      })
+      .then((json) => {
+        if (json) {
+          toast.info(json.message, toastOptions);
+          console.log("hallo");
+        }
+      });
+  };
+
+  // FETCH END //
+  // console.log('user', user);
+  // console.log('userData', userData);
+  // console.log('shops', shops);
+
+  // CALULATE & FILTER DISTANCE WITH GEOCODES START //
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
   }
+  const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+    let R = 6371; // Radius of the earth in km
+    let dLat = deg2rad(lat2 - lat1); // deg2rad below
+    let dLon = deg2rad(lon2 - lon1);
+    let a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let d = R * c; // Distance in km
+    return d;
+  };
 
-  checkValidation()
-  fetchCurrentUserData();
-  fetchShops()
-}, []);
-
-useEffect(() => {
-  // FETCH USER LONG.- & LATITUDE //
-  Geocode.setApiKey(GOOGLE_API_KEY);
-  Geocode.setLanguage("de");
-  Geocode.setRegion("de");
-  Geocode.fromAddress(userData.city).then(
-  (response) => {
-    const { lat, lng } = response.results[0].geometry.location;
-    // console.log(lat, lng)
-    setUserGeoData({lat: lat, lon: lng});
-  },
-  (error) => {
-    console.error(error);
-  }
-  );
-  // console.log(userGeoData);
-}, [userData])
-
-const addShopHandler = async (shopId) => {
-  await fetch(`${host}/coffeeshops/favshop/${shopId}`, {
-  method: 'POST',
-  body: JSON.stringify( {userId:user} ),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => {
-    if(!response.ok){
-      // toast.info("something went wrong", toastOptions)
-    }
-    return response.json()
-  })
-  .then((json) => {
-    if(json){
-      toast.info(json.message, toastOptions)
-      console.log("hallo");
-    }
-  });
-}
-
-// FETCH END //
-// console.log('user', user); 
-// console.log('userData', userData);
-// console.log('shops', shops);
-
-// CALULATE & FILTER DISTANCE WITH GEOCODES START //
-function deg2rad(deg) {
-  return deg * (Math.PI/180)
-}
-const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
-  let R = 6371; // Radius of the earth in km
-  let dLat = deg2rad(lat2-lat1);  // deg2rad below
-  let dLon = deg2rad(lon2-lon1); 
-  let a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  let d = R * c; // Distance in km
-  return d;
-}
-
-const addDistToShops = shops.map((shop) => {
-  const addDist = getDistanceFromLatLonInKm(
-      userGeoData.lat, 
-      userGeoData.lon, 
+  const addDistToShops = shops.map((shop) => {
+    const addDist = getDistanceFromLatLonInKm(
+      userGeoData.lat,
+      userGeoData.lon,
       +shop.location.address.latitude,
       +shop.location.address.longitude
-    )
-    return {distance:addDist, shop: shop};
-})
-const sortShopsByDist = addDistToShops.sort((a,b) => a.distance - b.distance);
-// CALULATE & FILTER DISTANCE WITH GEOCODES END //
+    );
+    return { distance: addDist, shop: shop };
+  });
+  const sortShopsByDist = addDistToShops.sort(
+    (a, b) => a.distance - b.distance
+  );
+  // CALULATE & FILTER DISTANCE WITH GEOCODES END //
 
-// SHOW PIN OVERLAYS
-const [isShown, setIsShown] = useState(false);
-const overlayHandler = (e, shop) => {
-  setCurrShop(shop);
-}
+  // SHOW PIN OVERLAYS
+  const overlayHandler = (e, shop) => {
+    setCurrShop(shop);
+  };
 
-// LOGOUT 
-const logout = async () => {
-  await fetch(`${host}/users/logout`, {
-    credentials:"include",
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    }
-  })
-  .then(json => {
-    if(json.ok) {
-      navigate("/welcome")
-    }
-  })
-}
+  // LOGOUT
+  const logout = async () => {
+    await fetch(`${host}/users/logout`, {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((json) => {
+      if (json.ok) {
+        navigate("/welcome");
+      }
+    });
+  };
 
-// console.log(addDistToShops.find(el => el.shop._id === currShop._id));
-// [0].shop._id
-// .find(shop => shop.shop._id === currShop._id)
-// console.log(currShop && currShop._id);
-
-
-  return(
+  return (
     <>
       <div className="flex">
         <Navigation />
-        <NavigationS category={category}
-        />
+        <NavigationS category={category} />
 
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button 
-            onClick={() => logout()}
-            className="logout-btn">
-            <img src={plus} className="logout" alt="logout" />
+          <button onClick={() => logout()} className="logout-btn cursor-pointer">
+            <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
       </div>
-
 
       {/* SPLITSCREEN */}
       <div className="mt">
@@ -237,9 +224,17 @@ const logout = async () => {
         &&
         <div className="store-card">
           <Map
-          height={280} width={800} 
-          defaultCenter={[userGeoData.lat, userGeoData.lon]}  
-          defaultZoom={15}>
+            height={280} width={800} 
+            defaultCenter={[userGeoData.lat, userGeoData.lon]}
+            center={[currShop?.location.address.latitude, currShop?.location.address.longitude]}
+            defaultZoom={15}
+          >
+          {/* USER CITY AS DEFAULT-CENTER MARKER */}
+          <Marker 
+              width={30}
+              color={"red"}
+              anchor={[userGeoData.lat, userGeoData.lon]}
+          />          
             {shops.map((shop) => {
               return (      
                 <Marker
@@ -265,7 +260,7 @@ const logout = async () => {
         }
         {/* CLICKED STORE */}
         {currShop && 
-        <div className="store-card">
+        <div className="hover-card">
           <div className="flex center">
             <div className="col">
               {/* NAME */}
@@ -288,14 +283,14 @@ const logout = async () => {
             <div className="patch-btn-l row">
               <div 
                 onClick={()=> navigate(`/showShop/${currShop._id}`)}
-                className="patch-btn bg-gradL center" title="shop infos">
+                className="patch-btn bg-gradL center cursor-pointer" title="shop infos">
                 <p>
                   <span className="info">i</span>
                 </p>
               </div>
               <div 
                 onClick={() => addShopHandler(currShop._id)}
-                className="patch-btn bg-gradL center">
+                className="patch-btn bg-gradL center cursor-pointer">
                 <img
                   src={plus} 
                   className="patch-img" 
@@ -309,22 +304,21 @@ const logout = async () => {
         }
       </div>
     </div>
-
-          <div>
+        <div>
             {/* LIST OF SHOPS */}
             <div className="scroll-container">
               <div>
               <h1>list sorted by distance</h1>
               <ul>
                 {sortShopsByDist.map((shop) => 
-                <div >
+                <div>
                   <li 
                     onClick={(e) => overlayHandler(e, shop.shop)}
                     key={shop.shop._id}
                     >
 
                     {/* DISTANCE-LIST */}
-                    <div className="store-card">
+                    <div className="hover-card">
                       <div className="flex center">
                         <div className="col">
                           {/* NAME */}
@@ -342,35 +336,35 @@ const logout = async () => {
                       <div className=" patch-container">
                         <div className="patch-btn-l row">
                           <div 
-                          onClick={()=> navigate(`/showShop/${currShop._id}`)}
-                          className="patch-btn bg-gradD center">
+                            onClick={()=> navigate(`/showShop/${currShop._id}`)}
+                            className="patch-btn bg-gradD center cursor-pointer">
                             <p ><span className="info">i</span></p>
                           </div>
-                          <div className="patch-btn bg-gradD center">
+                          <div 
+                            onClick={() => addShopHandler(currShop._id)}
+                            className="patch-btn bg-gradD center cursor-pointer">
                             <img
                               src={plus} 
                               className="patch-img" 
                               alt="add" 
                               title="add to favorites"
-                              onClick={() => addShopHandler(currShop._id)}/>
+                              />
                           </div>
                         </div>
                       </div>
                     </div>
-
-                  </li>
-                </div>
-                )}
-              </ul>
-            </div> 
-            <ToastContainer/>
+                    </li>
+                  </div>
+                  )}
+                </ul>
+              </div>
+              <ToastContainer />
+            </div>
           </div>
+        </div>
       </div>
-      </div>
-      </div>
-
     </>
-  )
+  );
 }
 
 export default Shops;

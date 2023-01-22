@@ -159,6 +159,10 @@
     overflow: hidden;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 
 .navbarS-container{
     height: 50px;
@@ -172,4 +176,9 @@
         position: absolute;
         bottom: -9px;
     }
+}
+
+
+.cursor-pointer {
+    cursor: pointer;
 }
