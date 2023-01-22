@@ -9,14 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 // components
 import Navigation from "./Navigation.jsx";
 
-
 // images
 import searchS from "../images/coffypaste_icon_search_s.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 import coffee from "../images/coffypaste_icon_coffee_default.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
-
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -229,17 +227,21 @@ const MyProfile = () => {
                     return (
                       <>
                         <div className="store-card" key={shop._id}>
-                          <div className="flex center">
-                            {/* <div className="iconS bg-gradL">
-                              <img
+                          <div
+                            className="flex center"
+                            onClick={() => navigate(`/showShop/${shop._id}`)}
+                          >
+                            {/* <div className="iconS bg-gradL"> */}
+                            {/* <img
                                 src={shop.avatar}
                                 className="avatar-icon"
-                                onClick={() => navigate(`showShop/${shop._id}`)}
-                              />
-                            </div> */}
+                              
+                              /> */}
+                            {/* </div> */}
                             <div className="col">
-                              <p>{shop.name}</p>
-                              {/* <p>{shop.ratings}</p> */}
+                              <h5>{shop.name}</h5>
+                              <p>{`${shop.location.address.street}  ${shop.location.address.number} ${shop.location.address.zip} ${shop.location.address.city}`}</p>
+                              {console.log(shop)}
                             </div>
                           </div>
                           <div className="patch-container">
