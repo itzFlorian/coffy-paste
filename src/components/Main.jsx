@@ -67,11 +67,11 @@ const Main = () => {
 
       <Routes>
         <Route path="/" element={<NavBar />} />
-        <Route path="/shops" element={<Shops/>} />
+        <Route path="/shops" element={<Shops category={"shops"}/>} />
         <Route path="/showShop/:id" element={<ShowShop/>} />
-        <Route path="/myaccount/" element={<MyAccount />} />
-        <Route path="/stats" element={<Stats />} />
-        <Route path="/community" element={<Community />} />
+        <Route path="/myaccount/" element={<MyAccount category={"my account"}/>} />
+        <Route path="/stats" element={<Stats category={"stats"}/>} />
+        <Route path="/community" element={<Community category={"community"}/>} />
         <Route path="/community/showUser/:id" element={<ShowUser />} />
         <Route path="/efjm" element={<EFJM/>} />
       </Routes>

@@ -6,8 +6,11 @@ import { host } from "../api/Routes.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+
 // components
 import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
 
 
 // images
@@ -18,7 +21,7 @@ import minus from "../images/coffypaste_icon_minus.png";
 import plus from "../images/coffypaste_icon_plus.png";
 
 
-const MyProfile = () => {
+const MyProfile = ({category}) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState();
   const [currentUserId, setCurrentUserId] = useContext(UserContext);
@@ -120,6 +123,8 @@ const MyProfile = () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category} />
+        
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />

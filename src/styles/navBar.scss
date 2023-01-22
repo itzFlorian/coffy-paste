@@ -3,10 +3,6 @@
 }
 
 
-.navbarS{
-    width: 100%;
-    justify-content: space-between;
-}
 
 .navbar-btn{
     display: flex;
@@ -19,5 +15,29 @@
     >*{ display: flex;
         align-items: center;
         margin: auto;
+    }
+    @media screen and (max-width: 500px){
+        width: 100%;
+    }
+}
+
+
+.navbarS{
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+
+    @media screen and (min-width : 500px) {
+        display: flex;
+    }
+}
+
+
+
+
+.navigationCollapse{
+    width: 100%;
+    @media screen and (min-width: 500px) {
+        display: none;
     }
 }

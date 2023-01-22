@@ -1,4 +1,4 @@
-import Navigation from "./Navigation.jsx";
+
 import { useState, useEffect, useContext } from "react";
 import { host } from "../api/Routes.jsx";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,12 @@ import UserContext from "../context/userContext.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+// components
+import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
+
+
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png";
 import heart from "../images/coffypaste_icon_heart.png";
@@ -15,7 +21,7 @@ import plus from "../images/coffypaste_icon_plus.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 
-const Community = () => {
+const Community = ({category}) => {
   const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
@@ -135,6 +141,8 @@ const Community = () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category} />
+        
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
