@@ -45,7 +45,13 @@
 }
 
 
-
+.row-col{
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+    }
+}
 
 
 
@@ -151,4 +157,19 @@
 
 .cantSee{
     overflow: hidden;
+}
+
+
+.navbarS-container{
+    height: 50px;
+    border: 3px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    >*{
+        display: flex;
+        position: absolute;
+        bottom: -9px;
+    }
 }

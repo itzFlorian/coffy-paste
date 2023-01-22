@@ -11,18 +11,15 @@ const Navigation = ({category}) => {
   return (
     <div className="navigationCollapse">
       <div
-        className="navbar-btn flex relative"
+        className="navbar-btn navbarS-container"
         onClick={() => navigate("/")}>
 
-
-        <div className="y flex absolute">
+        <div>
           <p>{category}</p>
-          <img src={up} 
-          className="x search-img absolute" 
-          alt="up to main" />
+            <img src={up} 
+            className="search-img" 
+            alt="up to main" />
         </div>
-
-
       </div>
     </div>
   );

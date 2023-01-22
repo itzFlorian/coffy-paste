@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { host } from "../api/Routes.jsx";
 
+
+
+// components
 import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
+
+
 
 // images
 import searchS from "../images/coffypaste_icon_search_s.png";
@@ -10,7 +16,9 @@ import coffee from "../images/coffypaste_icon_coffee_default.png";
 import plus from "../images/coffypaste_icon_plus.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 
-const ShowUser = () => {
+
+
+const ShowUser = ({category}) => {
   const { id } = useParams()
   const [currentUser, setCurrentUser] = useState({})
   const [shops, setShops] = useState([])
@@ -64,6 +72,7 @@ const logout = async () => {
     <>
       <div className=" flex">
         <Navigation />
+        <NavigationS category={category}/>
         <div className="flex">
           <button 
             

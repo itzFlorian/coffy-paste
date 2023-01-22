@@ -11,7 +11,7 @@ import stats from "../images/coffypaste_icon_stats.png";
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="navbarL">
+    <div className="navbarL row-col">
       <div className="top row">
         <div
           className="iconL center col"

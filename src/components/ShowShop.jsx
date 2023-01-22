@@ -12,8 +12,12 @@ import heart from "../images/coffypaste_icon_heart.png"
 import star from "../images/coffypaste_icon_star.png"
 
 
-// - - - - - F I L E S - - - - -
+// components
 import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
+
+
+// - - - - - F I L E S - - - - -
 import {SiSocketdotio} from "react-icons/si"
 import {AiOutlineWifi} from "react-icons/ai"
 import {TbToiletPaper} from "react-icons/tb"
@@ -27,7 +31,7 @@ import "react-toastify/dist/ReactToastify.css";
 // images
 import plus from "../images/coffypaste_icon_plus.png";
 
-const ShowShop = () => {
+const ShowShop = ({category}) => {
   const {id} = useParams()
   const [rating, setRating] = useState(undefined)
   const [text, setText] = useState(undefined)
@@ -117,6 +121,7 @@ const ShowShop = () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category}/>
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
