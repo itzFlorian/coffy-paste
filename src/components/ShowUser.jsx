@@ -15,6 +15,7 @@ const ShowUser = () => {
 
   const { id } = useParams()
   const [currentUser, setCurrentUser] = useState({})
+  const [shops, setShops] = useState([])
 
   useEffect(()=> {
     const fetchUser = async () => {
@@ -30,6 +31,18 @@ const ShowUser = () => {
        setCurrentUser(data)
       })
       }
+      const fetchShops = async () =>{
+        await fetch(`${host}/coffeeshops`, {
+        credentials:"include",
+        method: 'GET',   
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+      .then(json => json.json())
+      .then(data => setShops(data));
+    }
+    fetchShops()
     fetchUser()
   },[]) 
   
@@ -93,7 +106,6 @@ const ShowUser = () => {
           <h1>my top stores</h1>
 
           {currentUser?.topShops && currentUser.topShops.map((shop)=>{
-            console.log(shop);
             return(
             <div className="store-card">
               <div className="col">
@@ -109,9 +121,11 @@ const ShowUser = () => {
             <h1>my comments</h1>
           </div>
           {currentUser?.comments && currentUser.comments.map((comment)=>{
+            const findShop = shops.find(shop=>shop._id.toString() === comment.coffeeShopId.toString())
             return(
             <>
               <div className="card">
+                <p>{findShop?.name}</p>
                 <p>{comment.comment}</p>
               </div>              
             </>
