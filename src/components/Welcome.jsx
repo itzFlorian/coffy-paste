@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router";
 
-
 // images
-import logoM from "../images/coffypaste_logo_900.png"
-import efjm from "../images/efjm_logo.png"
-
+import logoM from "../images/coffypaste_logo_900.png";
+import efjm from "../images/efjm_logo.png";
 
 const Welcome = () => {
-  const navigate = useNavigate()
-// console.log(logoM);
+  const navigate = useNavigate();
+  // console.log(logoM);
   return (
     <>
       {/* BODY */}
@@ -22,13 +20,11 @@ const Welcome = () => {
         </div>
 
         <div className="buttons col center">
-          <button
-            className="btn"
-            onClick={() => navigate("/registration")}>create account
+          <button className="btn" onClick={() => navigate("/registration")}>
+            create account
           </button>
-          <button
-            className="btn mt1"
-            onClick={() => navigate("/login")}>login
+          <button className="btn mt1" onClick={() => navigate("/login")}>
+            login
           </button>
         </div>
       </div>
@@ -36,10 +32,9 @@ const Welcome = () => {
       {/* FOOTER */}
       <div className="efjm-logo">
         <div onClick={() => navigate("/efjm")}>
-          <img src={efjm} alt="logo of the efjm-team" />
+          <img src={efjm} alt="logo of the efjm-team" title="meet us" />
         </div>
       </div>
-
     </>
   );
 };

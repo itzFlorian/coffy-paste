@@ -144,7 +144,10 @@ const Community = ({ category }) => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button onClick={() => logout()} className="logout-btn cursor-pointer">
+          <button
+            onClick={() => logout()}
+            className="logout-btn cursor-pointer"
+          >
             <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
@@ -194,6 +197,7 @@ const Community = ({ category }) => {
                               className="patch-img"
                               alt=""
                               onClick={() => deleteFriendHandler(friend._id)}
+                              title="remove friend"
                             />
                           </div>
                         </div>
@@ -243,6 +247,7 @@ const Community = ({ category }) => {
                               className="patch-img"
                               alt=""
                               onClick={() => addFriendHandler(user._id)}
+                              title="add to friends list"
                             />
                           </div>
                         </div>
