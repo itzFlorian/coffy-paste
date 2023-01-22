@@ -1,1 +1,1 @@
-export const host = "https://coffy-paste.onrender.com"
+export const host = "https://coffy-paste.onrender.com";

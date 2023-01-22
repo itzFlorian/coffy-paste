@@ -1,4 +1,4 @@
-import Navigation from "./Navigation.jsx";
+
 import { useState, useEffect, useContext } from "react";
 import { host } from "../api/Routes.jsx";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,12 @@ import UserContext from "../context/userContext.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+// components
+import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
+
+
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png";
 import heart from "../images/coffypaste_icon_heart.png";
@@ -15,7 +21,7 @@ import plus from "../images/coffypaste_icon_plus.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 
-const Community = () => {
+const Community = ({category}) => {
   const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
@@ -135,6 +141,8 @@ const Community = () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category} />
+        
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
@@ -156,15 +164,16 @@ const Community = () => {
             </div>
             {currentUser?.friends &&
               currentUser.friends.map((friend) => {
+                console.log(friend);
                 return (
                   <>
                     <div className="store-card" key={friend._id}>
-                      <div className="flex center">
+                      <div className="flex center"  onClick={() => navigate(`showUser/${friend._id}`)}>
                         <div className="iconS bg-gradL">
                           <img
                             src={avatar}
                             className="avatar-icon"
-                            onClick={() => navigate(`showUser/${friend._id}`)}
+                           
                           />
                         </div>
                         <div className="col">
@@ -174,7 +183,11 @@ const Community = () => {
                           </p>
                           <p className="foBL">
                             fav coffy:{" "}
-                            <span className="foBE">{friend.favCoffee}</span>
+                            <span className="foBE">{friend.myFavCoff}</span>
+                          </p>
+                          <p>
+                            city:{" "}
+                            <span className="foBE">{friend.city}</span>
                           </p>
                         </div>
                       </div>
@@ -202,8 +215,8 @@ const Community = () => {
               {users &&
                 users.map((user) => {
                   return (
-                    <div className="store-card" key={user._id}>
-                      <div className="flex center">
+                    <div className="store-card" key={user._id} >
+                      <div className="flex center" onClick={() => navigate(`showUser/${user._id}`)}>
                         <div className="iconS bg-gradD">
                           <img
                             src={avatar}
@@ -217,7 +230,11 @@ const Community = () => {
                           </p>
                           <p>
                             fav coffy:{" "}
-                            <span className="foBR">{user.favCoffee}</span>
+                            <span className="foBR">{user.myFavCoff}</span>
+                          </p>
+                          <p>
+                            city:{" "}
+                            <span className="foBR">{user.city}</span>
                           </p>
                         </div>
                       </div>

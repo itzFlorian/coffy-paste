@@ -17,8 +17,10 @@ import "react-toastify/dist/ReactToastify.css"
 // import & declare keys
 import {GOOGLE_API_KEY} from '../api/Google_API.jsx';
 
+
 // components
 import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
 
 
 // icons
@@ -28,7 +30,8 @@ import plus from "../images/coffypaste_icon_plus.png"
 //========================
 
 // Get latitude & longitude from address. // Google API
-function Shops() {
+function Shops({category}) {
+
 // GET USERDATA FROM USECONTEXT //
 const [shops, setShops] = useState([]);                        // SHOPS DATA
 const [currShop, setCurrShop] = useState(undefined);           // CURR SHOP
@@ -198,6 +201,9 @@ const logout = async () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category}
+        />
+
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
@@ -209,6 +215,7 @@ const logout = async () => {
           </button>
         </div>
       </div>
+
 
       {/* SPLITSCREEN */}
       <div className="mt">
