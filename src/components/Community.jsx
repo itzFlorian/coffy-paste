@@ -144,13 +144,8 @@ const Community = ({ category }) => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-<<<<<<< HEAD
           <button onClick={() => logout()} className="logout-btn cursor-pointer">
-            <img src={plus} className="logout" alt="logout" />
-=======
-          <button onClick={() => logout()} className="logout-btn">
             <img src={plus} className="logout" alt="logout" title="log out" />
->>>>>>> 1ef5087c90f750ff9c121bf3a8c4ad46f4e5a4d5
           </button>
         </div>
       </div>
