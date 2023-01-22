@@ -200,7 +200,13 @@ const MyProfile = ({ category }) => {
                     className="btn"
                     onClick={handleEditUser}
                   >
-                    {editUser ? "edit my profile" : "close"}
+                    {editUser ? "edit my profile" : "close"}{" "}
+                    {/* <img
+                                src={shop.avatar}
+                                className="avatar-icon"
+                              
+                              /> */}
+                    {/* </div> */}
                   </button>
                 )}
                 {showButton && (
