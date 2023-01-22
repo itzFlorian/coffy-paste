@@ -136,30 +136,29 @@ const MyProfile = ({ category }) => {
           <div>
             {/* L E F T S I D E */}
             <h1>my profile</h1>
-            <div className="flex">
-              {/* icons */}
+
+            <div className="flex col row-center">
               <div className="flex mb1">
-                <div className="iconL center col">
+                <div className="iconS center">
                   <img src={avatar} alt="avatar-icon" />
                 </div>
-                <div className="iconL center col ml1">
-                  <img src={coffee} alt="avatar-icon" />
-                </div>
-              </div>
-              {/* text */}
-              <div className="flex col ml1">
                 <div>
-                  <p className="foOW mb1">user:</p>
+                  <p className="foOW">user:</p>
                   <h3 className="foOW">"{currentUser.userName}"</h3>
                 </div>
-                <div className="mt2">
-                  <p className="foOW mb1">coffy:</p>
-                  <h3 className="foOW">{currentUser.myFavCoff}</h3>
+              </div>
+              <div className="flex mb1">
+                <div className="iconS center">
+                  <img src={coffee} alt="avatar-icon" />
+                </div>
+                <div>
+                  <p className="foOW">coffy:</p>
+                  <h3 className="foOW">"{currentUser.myFavCoff}"</h3>
                 </div>
               </div>
             </div>
-            {/* FORM-CONTAINER */}
 
+            {/* FORM-CONTAINER */}
             <form onSubmit={handleSubmit} className="col">
               <input
                 onChange={handleInput}
@@ -248,7 +247,7 @@ const MyProfile = ({ category }) => {
                               /> */}
                             {/* </div> */}
                             <div className="col">
-                              <h5>{shop.name}</h5>
+                              <h4 className="foBE">{shop.name}</h4>
                               <p>{`${shop.location.address.street}  ${shop.location.address.number} ${shop.location.address.zip} ${shop.location.address.city}`}</p>
                               {console.log(shop)}
                             </div>
