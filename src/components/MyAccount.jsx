@@ -125,7 +125,10 @@ const MyProfile = ({ category }) => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button onClick={() => logout()} className="logout-btn cursor-pointer">
+          <button
+            onClick={() => logout()}
+            className="logout-btn cursor-pointer"
+          >
             <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
@@ -261,6 +264,7 @@ const MyProfile = ({ category }) => {
                                   className="patch-img"
                                   alt=""
                                   onClick={() => removeShopHandler(shop._id)}
+                                  title="remove from top shops"
                                 />
                               </div>
                             </div>
