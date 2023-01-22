@@ -210,7 +210,7 @@ const logout = async () => {
           </button>
           <button 
             onClick={() => logout()}
-            className="logout-btn">
+            className="logout-btn cursor-pointer">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
@@ -266,7 +266,7 @@ const logout = async () => {
         }
         {/* CLICKED STORE */}
         {currShop && 
-        <div className="store-card">
+        <div className="hover-card">
           <div className="flex center">
             <div className="col">
               {/* NAME */}
@@ -289,14 +289,14 @@ const logout = async () => {
             <div className="patch-btn-l row">
               <div 
                 onClick={()=> navigate(`/showShop/${currShop._id}`)}
-                className="patch-btn bg-gradL center" title="shop infos">
+                className="patch-btn bg-gradL center cursor-pointer" title="shop infos">
                 <p>
                   <span className="info">i</span>
                 </p>
               </div>
               <div 
                 onClick={() => addShopHandler(currShop._id)}
-                className="patch-btn bg-gradL center">
+                className="patch-btn bg-gradL center cursor-pointer">
                 <img
                   src={plus} 
                   className="patch-img" 
@@ -318,14 +318,14 @@ const logout = async () => {
               <h1>list sorted by distance</h1>
               <ul>
                 {sortShopsByDist.map((shop) => 
-                <div >
+                <div>
                   <li 
                     onClick={(e) => overlayHandler(e, shop.shop)}
                     key={shop.shop._id}
                     >
 
                     {/* DISTANCE-LIST */}
-                    <div className="store-card">
+                    <div className="hover-card">
                       <div className="flex center">
                         <div className="col">
                           {/* NAME */}
@@ -344,12 +344,12 @@ const logout = async () => {
                         <div className="patch-btn-l row">
                           <div 
                             onClick={()=> navigate(`/showShop/${currShop._id}`)}
-                            className="patch-btn bg-gradD center">
+                            className="patch-btn bg-gradD center cursor-pointer">
                             <p ><span className="info">i</span></p>
                           </div>
                           <div 
                             onClick={() => addShopHandler(currShop._id)}
-                            className="patch-btn bg-gradD center">
+                            className="patch-btn bg-gradD center cursor-pointer">
                             <img
                               src={plus} 
                               className="patch-img" 

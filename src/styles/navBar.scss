@@ -16,7 +16,7 @@
         align-items: center;
         margin: auto;
     }
-    @media screen and (max-width: 500px){
+    @media screen and (max-width: 800px){
         width: 100%;
     }
 }
@@ -26,18 +26,16 @@
     width: 100%;
     display: none;
     justify-content: space-between;
-
-    @media screen and (min-width : 500px) {
+    @media screen and (min-width : 800px) {
         display: flex;
     }
 }
 
 
 
-
 .navigationCollapse{
     width: 100%;
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 800px) {
         display: none;
     }
 }

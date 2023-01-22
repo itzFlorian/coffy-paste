@@ -11,17 +11,17 @@ import stats from "../images/coffypaste_icon_stats.png";
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="navbarL">
+    <div className="navbarL ">
       <div className="top row">
         <div
-          className="iconL center col"
+          className="iconL center col cursor-pointer"
           onClick={() => navigate("/myaccount")}
         >
           <img src={avatar} />
           <p>my account</p>
         </div>
         <div
-          className="iconL center col"
+          className="iconL center col cursor-pointer"
           onClick={() => navigate("/community")}
         >
           <img src={community} />
@@ -30,11 +30,11 @@ const NavBar = () => {
       </div>
 
       <div className="bottom row" >
-        <div className="iconL center col" onClick={() => navigate("/shops")}>
+        <div className="iconL center col cursor-pointer" onClick={() => navigate("/shops")}>
           <img src={shop} />
           <p>shops</p>
         </div>
-        <div className="iconL center col" onClick={() => navigate("/stats")}>
+        <div className="iconL center col cursor-pointer" onClick={() => navigate("/stats")}>
           <img src={stats} />
           <p>stats</p>
         </div>

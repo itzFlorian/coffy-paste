@@ -46,7 +46,7 @@ const Stats = ({category}) => {
           </button>
           <button 
             onClick={() => logout()}
-            className="logout-btn">
+            className="logout-btn cursor-pointer">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>

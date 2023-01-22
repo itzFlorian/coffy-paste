@@ -61,8 +61,8 @@ const Main = () => {
         <div className="bg"></div>
       </div>
 
-      <div className="logoM-container" onClick={() => navigate("/")}>
-        <img src={logoM} alt="logo" />
+      <div className="logoM-container " onClick={() => navigate("/")}>
+        <img src={logoM} alt="logo" className="cursor-pointer" />
       </div>
 
       <Routes>
@@ -76,7 +76,7 @@ const Main = () => {
         <Route path="/efjm" element={<EFJM/>} />
       </Routes>
 
-      <div className="efjm-logo">
+      <div className="efjm-logo cursor-pointer">
         <div onClick={() => navigate("/efjm")}>
           <img src={efjm} alt="logo of the efjm-team" />
         </div>

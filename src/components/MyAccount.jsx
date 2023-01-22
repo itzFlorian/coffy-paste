@@ -125,7 +125,7 @@ const MyProfile = ({ category }) => {
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
-          <button onClick={() => logout()} className="logout-btn">
+          <button onClick={() => logout()} className="logout-btn cursor-pointer">
             <img src={plus} className="logout" alt="logout" />
           </button>
         </div>
@@ -249,7 +249,7 @@ const MyProfile = ({ category }) => {
                           </div>
                           <div className="patch-container">
                             <div className="patch-btn-l row">
-                              <div className="patch-btn bg-gradL center">
+                              <div className="patch-btn bg-gradL center cursor-pointer">
                                 <img
                                   src={minus}
                                   className="patch-img"

@@ -11,7 +11,7 @@ const Navigation = ({category}) => {
   return (
     <div className="navigationCollapse">
       <div
-        className="navbar-btn flex relative"
+        className="navbar-btn flex relative cursor-pointer"
         onClick={() => navigate("/")}>
 
 
