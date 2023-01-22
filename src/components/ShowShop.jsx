@@ -119,7 +119,7 @@ const ShowShop = () => {
             <img src={searchS} className="search-img" alt="search" />
           </button>
           <button className="logout-btn">
-            <img src={plus} className="logout" alt="logout" />
+            <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
       </div>
