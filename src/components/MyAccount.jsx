@@ -126,7 +126,7 @@ const MyProfile = ({ category }) => {
             <img src={searchS} className="search-img" alt="search" />
           </button>
           <button onClick={() => logout()} className="logout-btn cursor-pointer">
-            <img src={plus} className="logout" alt="logout" />
+            <img src={plus} className="logout" alt="logout" title="log out" />
           </button>
         </div>
       </div>
@@ -200,7 +200,13 @@ const MyProfile = ({ category }) => {
                     className="btn"
                     onClick={handleEditUser}
                   >
-                    {editUser ? "edit my profile" : "close"}
+                    {editUser ? "edit my profile" : "close"}{" "}
+                    {/* <img
+                                src={shop.avatar}
+                                className="avatar-icon"
+                              
+                              /> */}
+                    {/* </div> */}
                   </button>
                 )}
                 {showButton && (

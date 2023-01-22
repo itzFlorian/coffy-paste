@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useContext } from "react";
 import { host } from "../api/Routes.jsx";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +7,9 @@ import UserContext from "../context/userContext.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 // components
 import Navigation from "./Navigation.jsx";
-import NavigationS from "./NavigationS.jsx"
-
+import NavigationS from "./NavigationS.jsx";
 
 // - - - - - I M A G E S - - - - -
 import searchS from "../images/coffypaste_icon_search_s.png";
@@ -21,7 +18,7 @@ import plus from "../images/coffypaste_icon_plus.png";
 import minus from "../images/coffypaste_icon_minus.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 
-const Community = ({category}) => {
+const Community = ({ category }) => {
   const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
@@ -142,13 +139,18 @@ const Community = ({category}) => {
       <div className="flex">
         <Navigation />
         <NavigationS category={category} />
-        
+
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />
           </button>
+<<<<<<< HEAD
           <button onClick={() => logout()} className="logout-btn cursor-pointer">
             <img src={plus} className="logout" alt="logout" />
+=======
+          <button onClick={() => logout()} className="logout-btn">
+            <img src={plus} className="logout" alt="logout" title="log out" />
+>>>>>>> 1ef5087c90f750ff9c121bf3a8c4ad46f4e5a4d5
           </button>
         </div>
       </div>
@@ -168,13 +170,12 @@ const Community = ({category}) => {
                 return (
                   <>
                     <div className="store-card" key={friend._id}>
-                      <div className="flex center"  onClick={() => navigate(`showUser/${friend._id}`)}>
+                      <div
+                        className="flex center"
+                        onClick={() => navigate(`showUser/${friend._id}`)}
+                      >
                         <div className="iconS bg-gradL">
-                          <img
-                            src={avatar}
-                            className="avatar-icon"
-                           
-                          />
+                          <img src={avatar} className="avatar-icon" />
                         </div>
                         <div className="col">
                           <p className="foBL">
@@ -186,8 +187,7 @@ const Community = ({category}) => {
                             <span className="foBE">{friend.myFavCoff}</span>
                           </p>
                           <p>
-                            city:{" "}
-                            <span className="foBE">{friend.city}</span>
+                            city: <span className="foBE">{friend.city}</span>
                           </p>
                         </div>
                       </div>
@@ -215,8 +215,11 @@ const Community = ({category}) => {
               {users &&
                 users.map((user) => {
                   return (
-                    <div className="store-card" key={user._id} >
-                      <div className="flex center" onClick={() => navigate(`showUser/${user._id}`)}>
+                    <div className="store-card" key={user._id}>
+                      <div
+                        className="flex center"
+                        onClick={() => navigate(`showUser/${user._id}`)}
+                      >
                         <div className="iconS bg-gradD">
                           <img
                             src={avatar}
@@ -233,8 +236,7 @@ const Community = ({category}) => {
                             <span className="foBR">{user.myFavCoff}</span>
                           </p>
                           <p>
-                            city:{" "}
-                            <span className="foBR">{user.city}</span>
+                            city: <span className="foBR">{user.city}</span>
                           </p>
                         </div>
                       </div>
