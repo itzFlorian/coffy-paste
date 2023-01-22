@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router';
 import { host } from "../api/Routes.jsx";
 import { useEffect, useState } from 'react';
 
+
 // - - - - - F I L E S - - - - -
 import Navigation from "./Navigation.jsx";
+import NavigationS from "./NavigationS.jsx"
+
 
 
 // images
@@ -12,7 +15,7 @@ import searchS from "../images/coffypaste_icon_search_s.png"
 import plus from "../images/coffypaste_icon_plus.png"
 
 
-const Stats = () => {
+const Stats = ({category}) => {
   const navigate = useNavigate()
   const [shops, setShops] = useState()
   const [users, setUsers] = useState()
@@ -80,6 +83,8 @@ const Stats = () => {
     <>
       <div className="flex">
         <Navigation />
+        <NavigationS category={category} />
+
         <div className="flex">
           <button className="search-btn">
             <img src={searchS} className="search-img" alt="search" />

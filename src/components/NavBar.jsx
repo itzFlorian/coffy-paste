@@ -4,17 +4,14 @@ import { useNavigate } from "react-router-dom";
 // images
 import avatar from "../images/coffypaste_icon_avatar.png";
 import community from "../images/coffypaste_icon_community.png";
-import searchS from "../images/coffypaste_icon_search_s.png";
 import shop from "../images/coffypaste_icon_shop.png";
 import stats from "../images/coffypaste_icon_stats.png";
-import logoM from "../images/coffypaste_logo_900.png";
-import efjm from "../images/efjm_logo.png";
 
 
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="navbarL row-col">
+    <div className="navbarL">
       <div className="top row">
         <div
           className="iconL center col"
