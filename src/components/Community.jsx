@@ -164,15 +164,16 @@ const Community = ({category}) => {
             </div>
             {currentUser?.friends &&
               currentUser.friends.map((friend) => {
+                console.log(friend);
                 return (
                   <>
                     <div className="store-card" key={friend._id}>
-                      <div className="flex center">
+                      <div className="flex center"  onClick={() => navigate(`showUser/${friend._id}`)}>
                         <div className="iconS bg-gradL">
                           <img
                             src={avatar}
                             className="avatar-icon"
-                            onClick={() => navigate(`showUser/${friend._id}`)}
+                           
                           />
                         </div>
                         <div className="col">
@@ -182,7 +183,11 @@ const Community = ({category}) => {
                           </p>
                           <p className="foBL">
                             fav coffy:{" "}
-                            <span className="foBE">{friend.favCoffee}</span>
+                            <span className="foBE">{friend.myFavCoff}</span>
+                          </p>
+                          <p>
+                            city:{" "}
+                            <span className="foBE">{friend.city}</span>
                           </p>
                         </div>
                       </div>
@@ -210,8 +215,8 @@ const Community = ({category}) => {
               {users &&
                 users.map((user) => {
                   return (
-                    <div className="store-card" key={user._id}>
-                      <div className="flex center">
+                    <div className="store-card" key={user._id} >
+                      <div className="flex center" onClick={() => navigate(`showUser/${user._id}`)}>
                         <div className="iconS bg-gradD">
                           <img
                             src={avatar}
@@ -225,7 +230,11 @@ const Community = ({category}) => {
                           </p>
                           <p>
                             fav coffy:{" "}
-                            <span className="foBR">{user.favCoffee}</span>
+                            <span className="foBR">{user.myFavCoff}</span>
+                          </p>
+                          <p>
+                            city:{" "}
+                            <span className="foBR">{user.city}</span>
                           </p>
                         </div>
                       </div>
