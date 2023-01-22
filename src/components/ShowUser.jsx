@@ -11,10 +11,11 @@ import plus from "../images/coffypaste_icon_plus.png";
 import avatar from "../images/coffypaste_icon_avatar.png";
 
 const ShowUser = () => {
-  const { id } = useParams();
-  const [currentUser, setCurrentUser] = useState({});
+  const { id } = useParams()
+  const [currentUser, setCurrentUser] = useState({})
+  const [shops, setShops] = useState([])
 
-  useEffect(() => {
+  useEffect(()=> {
     const fetchUser = async () => {
       await fetch(`${host}/users/${id}`, {
         credentials: "include",
@@ -46,6 +47,18 @@ const logout = async () => {
     }
   })
 }
+      const fetchShops = async () =>{
+        await fetch(`${host}/coffeeshops`, {
+        credentials:"include",
+        method: 'GET',   
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+      .then(json => json.json())
+      .then(data => setShops(data));
+    }
+    fetchShops()
 
   return (
     <>
@@ -108,42 +121,38 @@ const logout = async () => {
               <div>
                 <h1>my top stores</h1>
 
-                {currentUser?.topShops &&
-                  currentUser.topShops.map((shop) => {
-                    console.log(shop);
-                    return (
-                      <div className="store-card">
-                        <div className="col">
-                          <p>{shop.name}</p>
-                          <p>
-                            address:{" "}
-                            {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                {/* COMMENT-CONTAINER */}
-                <div>
-                  <h1>my comments</h1>
-                </div>
-                {currentUser?.comments &&
-                  currentUser.comments.map((comment) => {
-                    return (
-                      <>
-                        <div className="card">
-                          <p>{comment.comment}</p>
-                        </div>
-                      </>
-                    );
-                  })}
+          {currentUser?.topShops && currentUser.topShops.map((shop)=>{
+            return(
+            <div className="store-card">
+              <div className="col">
+                <p>{shop.name}</p>
+                <p>address: {`${shop.location.address.street} ${shop.location.address.zip} ${shop.location.address.city} `}</p>
               </div>
             </div>
-          </>
+            )
+          })}        
+
+          {/* COMMENT-CONTAINER */}
+          <div>
+            <h1>my comments</h1>
+          </div>
+          {currentUser?.comments && currentUser.comments.map((comment)=>{
+            const findShop = shops.find(shop=>shop._id.toString() === comment.coffeeShopId.toString())
+            return(
+            <>
+              <div className="card">
+                <p>{findShop?.name}</p>
+                <p>{comment.comment}</p>
+              </div>              
+            </>
+            )
+          })}
         </div>
-      </div>
-    </>
+        </div>
+      </>
+    </div>
+    </div>
+  </>
   );
 };
 
